@@ -45,7 +45,7 @@ struct StakedSui {
 
 impl Client {
     pub async fn get_delegated_stake(&mut self, staked_haneul_id: &Address) -> Result<DelegatedStake> {
-        let maybe_staked_sui = self
+        let maybe_staked_haneul = self
             .ledger_client()
             .get_object(
                 GetObjectRequest::new(staked_haneul_id)
@@ -57,7 +57,7 @@ impl Client {
             .unwrap_or_default();
 
         let mut stakes = self
-            .try_create_delegated_stake_info(&[maybe_staked_sui])
+            .try_create_delegated_stake_info(&[maybe_staked_haneul])
             .await?;
         Ok(stakes.remove(0))
     }
@@ -101,9 +101,9 @@ impl Client {
 
     async fn try_create_delegated_stake_info(
         &mut self,
-        maybe_staked_sui: &[Object],
+        maybe_staked_haneul: &[Object],
     ) -> Result<Vec<DelegatedStake>> {
-        let staked_suis = maybe_staked_sui
+        let staked_haneuls = maybe_staked_haneul
             .iter()
             .map(|o| {
                 o.contents()
@@ -113,23 +113,23 @@ impl Client {
             })
             .collect::<Result<Vec<StakedSui>>>()?;
 
-        let ids = staked_suis.iter().map(|s| s.id).collect::<Vec<_>>();
-        let pool_ids = staked_suis.iter().map(|s| s.pool_id).collect::<Vec<_>>();
+        let ids = staked_haneuls.iter().map(|s| s.id).collect::<Vec<_>>();
+        let pool_ids = staked_haneuls.iter().map(|s| s.pool_id).collect::<Vec<_>>();
 
         let rewards = self.calculate_rewards(&ids).await?;
         let validator_addresses = self.get_validator_address_by_pool_id(&pool_ids).await?;
 
-        Ok(staked_suis
+        Ok(staked_haneuls
             .into_iter()
             .zip(rewards)
             .zip(validator_addresses)
             .map(
-                |((staked_sui, (_id, rewards)), (_pool_id, validator_address))| DelegatedStake {
-                    staked_haneul_id: staked_sui.id,
+                |((staked_haneul, (_id, rewards)), (_pool_id, validator_address))| DelegatedStake {
+                    staked_haneul_id: staked_haneul.id,
                     validator_address,
-                    staking_pool: staked_sui.pool_id,
-                    activation_epoch: staked_sui.stake_activation_epoch,
-                    principal: staked_sui.principal,
+                    staking_pool: staked_haneul.pool_id,
+                    activation_epoch: staked_haneul.stake_activation_epoch,
+                    principal: staked_haneul.principal,
                     rewards,
                 },
             )
@@ -145,7 +145,7 @@ impl Client {
         let system_object = Argument::new_input(0);
 
         for id in staked_haneul_ids {
-            let staked_sui = Argument::new_input(ptb.inputs.len() as u16);
+            let staked_haneul = Argument::new_input(ptb.inputs.len() as u16);
 
             ptb.inputs.push(Input::default().with_object_id(id));
 
@@ -154,7 +154,7 @@ impl Client {
                     .with_package("0x3")
                     .with_module("haneul_system")
                     .with_function("calculate_rewards")
-                    .with_arguments(vec![system_object, staked_sui])
+                    .with_arguments(vec![system_object, staked_haneul])
                     .into(),
             );
         }

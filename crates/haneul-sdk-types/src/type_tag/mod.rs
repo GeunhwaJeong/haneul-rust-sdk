@@ -259,10 +259,10 @@ impl StructTag {
 
     /// Returns the struct tag for the native HANEUL token (without the Coin wrapper).
     /// This represents `0x2::haneul::HANEUL`.
-    pub fn sui() -> Self {
+    pub fn haneul() -> Self {
         Self {
             address: Address::TWO,
-            module: Identifier::new("sui").unwrap(),
+            module: Identifier::new("haneul").unwrap(),
             name: Identifier::new("HANEUL").unwrap(),
             type_params: vec![],
         }
@@ -271,7 +271,7 @@ impl StructTag {
     /// Returns the struct tag for HANEUL wrapped in a Coin.
     /// This represents `0x2::coin::Coin<0x2::haneul::HANEUL>`.
     pub fn gas_coin() -> Self {
-        Self::coin(Self::sui().into())
+        Self::coin(Self::haneul().into())
     }
 
     /// Wraps any type tag in a Coin type.
@@ -285,11 +285,11 @@ impl StructTag {
         }
     }
 
-    pub fn staked_sui() -> Self {
+    pub fn staked_haneul() -> Self {
         Self {
             address: Address::THREE,
             module: Identifier::new("staking_pool").unwrap(),
-            name: Identifier::new("StakedSui").unwrap(),
+            name: Identifier::new("StakedHaneul").unwrap(),
             type_params: vec![],
         }
     }

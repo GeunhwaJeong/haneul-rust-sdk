@@ -548,8 +548,8 @@ mod serialization {
         Other(StructTag),
         /// A HANEUL coin (i.e., `0x2::coin::Coin<0x2::haneul::HANEUL>`)
         GasCoin,
-        /// A record of a staked HANEUL coin (i.e., `0x3::staking_pool::StakedSui`)
-        StakedSui,
+        /// A record of a staked HANEUL coin (i.e., `0x3::staking_pool::StakedHaneul`)
+        StakedHaneul,
         /// A non-HANEUL coin type (i.e., `0x2::coin::Coin<T> where T != 0x2::haneul::HANEUL`)
         Coin(TypeTag),
         // NOTE: if adding a new type here, and there are existing on-chain objects of that
@@ -564,8 +564,8 @@ mod serialization {
         Other(&'a StructTag),
         /// A HANEUL coin (i.e., `0x2::coin::Coin<0x2::haneul::HANEUL>`)
         GasCoin,
-        /// A record of a staked HANEUL coin (i.e., `0x3::staking_pool::StakedSui`)
-        StakedSui,
+        /// A record of a staked HANEUL coin (i.e., `0x3::staking_pool::StakedHaneul`)
+        StakedHaneul,
         /// A non-HANEUL coin type (i.e., `0x2::coin::Coin<T> where T != 0x2::haneul::HANEUL`)
         Coin(&'a TypeTag),
         // NOTE: if adding a new type here, and there are existing on-chain objects of that
@@ -578,7 +578,7 @@ mod serialization {
             match self {
                 MoveStructType::Other(tag) => tag,
                 MoveStructType::GasCoin => StructTag::gas_coin(),
-                MoveStructType::StakedSui => StructTag::staked_sui(),
+                MoveStructType::StakedHaneul => StructTag::staked_haneul(),
                 MoveStructType::Coin(type_tag) => StructTag::coin(type_tag),
             }
         }
@@ -610,10 +610,10 @@ mod serialization {
                 Self::Coin(coin_type)
             } else if address == &Address::THREE
                 && module == "staking_pool"
-                && name == "StakedSui"
+                && name == "StakedHaneul"
                 && type_params.is_empty()
             {
-                Self::StakedSui
+                Self::StakedHaneul
             } else {
                 Self::Other(s)
             }

@@ -5,7 +5,7 @@ use google::rpc::bad_request::FieldViolation;
 use haneul::rpc::v2::ErrorReason;
 
 pub mod google;
-pub mod sui;
+pub mod haneul;
 
 type BoxError = Box<dyn std::error::Error + Send + Sync + 'static>;
 

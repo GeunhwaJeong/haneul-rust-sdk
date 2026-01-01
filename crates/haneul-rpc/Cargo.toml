@@ -1,0 +1,56 @@
+[package]
+name = "haneul-rpc"
+version = "0.1.1"
+authors = ["Brandon Williams <brandon@mystenlabs.com>"]
+repository = "https://github.com/mystenlabs/haneul-rust-sdk/"
+license = "Apache-2.0"
+edition = "2024"
+description = "RPC interface definitions and client for the Sui Sdk"
+
+[package.metadata.docs.rs]
+# To build locally:
+# RUSTDOCFLAGS="--cfg=doc_cfg -Zunstable-options --generate-link-to-definition" RUSTC_BOOTSTRAP=1 cargo doc --all-features --no-deps --open
+all-features = true
+rustdoc-args = [
+    # Enable doc_cfg showing the required features.
+    "--cfg=doc_cfg",
+
+    # Generate links to definition in rustdoc source code pages
+    # https://github.com/rust-lang/rust/pull/84176
+    "-Zunstable-options", "--generate-link-to-definition"
+]
+
+[features]
+default = []
+faucet = ["dep:reqwest"]
+
+[dependencies]
+bcs = "0.1.6"
+serde = { version = "1.0.228" }
+haneul-sdk-types = { version = "0.1.1", path = "../haneul-sdk-types", default-features = false, features = ["serde", "hash"] }
+
+# dependencies for the protobuf and gRPC definitions
+bytes = "1.10"
+tonic = { version = "0.14.2", default-features = false, features = ["channel", "codegen", "tls-ring", "tls-webpki-roots", "zstd"] }
+tonic-prost = "0.14.2"
+prost = "0.14.1"
+prost-types = "0.14.1"
+tap = "1"
+base64 = "0.22.1"
+serde_json = "1.0.145"
+http = "1.3.1"
+futures = "0.3"
+tokio = { version = "1.40", features = ["time"] }
+
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json"], optional = true }
+
+[dev-dependencies]
+rand = "0.8"
+paste = "1.0.15"
+proptest = { version = "1.8.0", default-features = false, features = ["std"] }
+test-strategy = { version = "0.4" }
+haneul-sdk-types = { version = "0.1.1", path = "../haneul-sdk-types", default-features = false, features = ["proptest", "serde", "hash"] }
+serde_json = { version = "1.0.145" }
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(doc_cfg)'] }

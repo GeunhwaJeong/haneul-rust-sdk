@@ -1,0 +1,20 @@
+[package]
+name = "proto-build"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+prost-types = "0.14.1"
+prost = "0.14.1"
+protox = "0.9"
+tonic-prost-build = { version = "0.14.2", features = ["cleanup-markdown"] }
+walkdir = "2.5.0"
+quote = "1.0.41"
+proc-macro2 = "1.0.101"
+syn = "2.0.107"
+prettyplease = "0.2.37"
+pbjson-build = { path = "pbjson-build" }
+heck = { version = ">=0.4, <=0.5" }
+petgraph = { version = ">=0.6, <=0.7", default-features = false }
+itertools = { version = ">=0.10, <=0.14", default-features = false, features = ["use_alloc"] }

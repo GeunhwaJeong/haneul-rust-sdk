@@ -1,19 +1,19 @@
 #![allow(clippy::uninlined_format_args)]
 
 // Include the generated proto definitions
-include!("../../../generated/sui.rpc.v2.rs");
+include!("../../../generated/haneul.rpc.v2.rs");
 
 // Include generated field info impls
-include!("../../../generated/sui.rpc.v2.field_info.rs");
+include!("../../../generated/haneul.rpc.v2.field_info.rs");
 
 // Include generated serde impls
-include!("../../../generated/sui.rpc.v2.serde.rs");
-include!("../../../generated/sui.rpc.v2.accessors.rs");
+include!("../../../generated/haneul.rpc.v2.serde.rs");
+include!("../../../generated/haneul.rpc.v2.accessors.rs");
 
 pub use descriptor::FILE_DESCRIPTOR_SET;
 mod descriptor {
     /// Byte encoded FILE_DESCRIPTOR_SET.
-    pub const FILE_DESCRIPTOR_SET: &[u8] = include_bytes!("../../../generated/sui.rpc.v2.fds.bin");
+    pub const FILE_DESCRIPTOR_SET: &[u8] = include_bytes!("../../../generated/haneul.rpc.v2.fds.bin");
 
     #[cfg(test)]
     mod tests {

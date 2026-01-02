@@ -98,7 +98,7 @@ impl serde::Serialize for AccumulatorWrite {
         if self.value.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.AccumulatorWrite", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.AccumulatorWrite", len)?;
         if let Some(v) = self.address.as_ref() {
             struct_ser.serialize_field("address", v)?;
         }
@@ -178,7 +178,7 @@ impl<'de> serde::Deserialize<'de> for AccumulatorWrite {
             type Value = AccumulatorWrite;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.AccumulatorWrite")
+                formatter.write_str("struct haneul.rpc.v2.AccumulatorWrite")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<AccumulatorWrite, V::Error>
@@ -230,7 +230,7 @@ impl<'de> serde::Deserialize<'de> for AccumulatorWrite {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.AccumulatorWrite", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.AccumulatorWrite", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for accumulator_write::AccumulatorOperation {
@@ -324,7 +324,7 @@ impl serde::Serialize for ActiveJwk {
         if self.epoch.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ActiveJwk", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ActiveJwk", len)?;
         if let Some(v) = self.id.as_ref() {
             struct_ser.serialize_field("id", v)?;
         }
@@ -395,7 +395,7 @@ impl<'de> serde::Deserialize<'de> for ActiveJwk {
             type Value = ActiveJwk;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ActiveJwk")
+                formatter.write_str("struct haneul.rpc.v2.ActiveJwk")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ActiveJwk, V::Error>
@@ -439,7 +439,7 @@ impl<'de> serde::Deserialize<'de> for ActiveJwk {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ActiveJwk", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ActiveJwk", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for AddressAliasesVersion {
@@ -453,7 +453,7 @@ impl serde::Serialize for AddressAliasesVersion {
         if self.version.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.AddressAliasesVersion", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.AddressAliasesVersion", len)?;
         if let Some(v) = self.version.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -512,7 +512,7 @@ impl<'de> serde::Deserialize<'de> for AddressAliasesVersion {
             type Value = AddressAliasesVersion;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.AddressAliasesVersion")
+                formatter.write_str("struct haneul.rpc.v2.AddressAliasesVersion")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<AddressAliasesVersion, V::Error>
@@ -540,7 +540,7 @@ impl<'de> serde::Deserialize<'de> for AddressAliasesVersion {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.AddressAliasesVersion", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.AddressAliasesVersion", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for Argument {
@@ -563,7 +563,7 @@ impl serde::Serialize for Argument {
         if self.subresult.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Argument", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Argument", len)?;
         if let Some(v) = self.kind.as_ref() {
             let v = argument::ArgumentKind::try_from(*v)
                 .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", *v)))?;
@@ -640,7 +640,7 @@ impl<'de> serde::Deserialize<'de> for Argument {
             type Value = Argument;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Argument")
+                formatter.write_str("struct haneul.rpc.v2.Argument")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Argument, V::Error>
@@ -696,7 +696,7 @@ impl<'de> serde::Deserialize<'de> for Argument {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Argument", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Argument", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for argument::ArgumentKind {
@@ -790,7 +790,7 @@ impl serde::Serialize for AuthenticatorStateExpire {
         if self.authenticator_object_initial_shared_version.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.AuthenticatorStateExpire", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.AuthenticatorStateExpire", len)?;
         if let Some(v) = self.min_epoch.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -859,7 +859,7 @@ impl<'de> serde::Deserialize<'de> for AuthenticatorStateExpire {
             type Value = AuthenticatorStateExpire;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.AuthenticatorStateExpire")
+                formatter.write_str("struct haneul.rpc.v2.AuthenticatorStateExpire")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<AuthenticatorStateExpire, V::Error>
@@ -897,7 +897,7 @@ impl<'de> serde::Deserialize<'de> for AuthenticatorStateExpire {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.AuthenticatorStateExpire", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.AuthenticatorStateExpire", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for AuthenticatorStateUpdate {
@@ -920,7 +920,7 @@ impl serde::Serialize for AuthenticatorStateUpdate {
         if self.authenticator_object_initial_shared_version.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.AuthenticatorStateUpdate", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.AuthenticatorStateUpdate", len)?;
         if let Some(v) = self.epoch.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -1003,7 +1003,7 @@ impl<'de> serde::Deserialize<'de> for AuthenticatorStateUpdate {
             type Value = AuthenticatorStateUpdate;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.AuthenticatorStateUpdate")
+                formatter.write_str("struct haneul.rpc.v2.AuthenticatorStateUpdate")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<AuthenticatorStateUpdate, V::Error>
@@ -1059,7 +1059,7 @@ impl<'de> serde::Deserialize<'de> for AuthenticatorStateUpdate {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.AuthenticatorStateUpdate", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.AuthenticatorStateUpdate", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for Balance {
@@ -1076,7 +1076,7 @@ impl serde::Serialize for Balance {
         if self.balance.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Balance", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Balance", len)?;
         if let Some(v) = self.coin_type.as_ref() {
             struct_ser.serialize_field("coinType", v)?;
         }
@@ -1142,7 +1142,7 @@ impl<'de> serde::Deserialize<'de> for Balance {
             type Value = Balance;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Balance")
+                formatter.write_str("struct haneul.rpc.v2.Balance")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Balance, V::Error>
@@ -1178,7 +1178,7 @@ impl<'de> serde::Deserialize<'de> for Balance {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Balance", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Balance", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for BalanceChange {
@@ -1198,7 +1198,7 @@ impl serde::Serialize for BalanceChange {
         if self.amount.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.BalanceChange", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.BalanceChange", len)?;
         if let Some(v) = self.address.as_ref() {
             struct_ser.serialize_field("address", v)?;
         }
@@ -1268,7 +1268,7 @@ impl<'de> serde::Deserialize<'de> for BalanceChange {
             type Value = BalanceChange;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.BalanceChange")
+                formatter.write_str("struct haneul.rpc.v2.BalanceChange")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<BalanceChange, V::Error>
@@ -1310,7 +1310,7 @@ impl<'de> serde::Deserialize<'de> for BalanceChange {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.BalanceChange", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.BalanceChange", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for BatchGetObjectsRequest {
@@ -1327,7 +1327,7 @@ impl serde::Serialize for BatchGetObjectsRequest {
         if self.read_mask.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.BatchGetObjectsRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.BatchGetObjectsRequest", len)?;
         if !self.requests.is_empty() {
             struct_ser.serialize_field("requests", &self.requests)?;
         }
@@ -1391,7 +1391,7 @@ impl<'de> serde::Deserialize<'de> for BatchGetObjectsRequest {
             type Value = BatchGetObjectsRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.BatchGetObjectsRequest")
+                formatter.write_str("struct haneul.rpc.v2.BatchGetObjectsRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<BatchGetObjectsRequest, V::Error>
@@ -1425,7 +1425,7 @@ impl<'de> serde::Deserialize<'de> for BatchGetObjectsRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.BatchGetObjectsRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.BatchGetObjectsRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for BatchGetObjectsResponse {
@@ -1439,7 +1439,7 @@ impl serde::Serialize for BatchGetObjectsResponse {
         if !self.objects.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.BatchGetObjectsResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.BatchGetObjectsResponse", len)?;
         if !self.objects.is_empty() {
             struct_ser.serialize_field("objects", &self.objects)?;
         }
@@ -1496,7 +1496,7 @@ impl<'de> serde::Deserialize<'de> for BatchGetObjectsResponse {
             type Value = BatchGetObjectsResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.BatchGetObjectsResponse")
+                formatter.write_str("struct haneul.rpc.v2.BatchGetObjectsResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<BatchGetObjectsResponse, V::Error>
@@ -1522,7 +1522,7 @@ impl<'de> serde::Deserialize<'de> for BatchGetObjectsResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.BatchGetObjectsResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.BatchGetObjectsResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for BatchGetTransactionsRequest {
@@ -1539,7 +1539,7 @@ impl serde::Serialize for BatchGetTransactionsRequest {
         if self.read_mask.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.BatchGetTransactionsRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.BatchGetTransactionsRequest", len)?;
         if !self.digests.is_empty() {
             struct_ser.serialize_field("digests", &self.digests)?;
         }
@@ -1603,7 +1603,7 @@ impl<'de> serde::Deserialize<'de> for BatchGetTransactionsRequest {
             type Value = BatchGetTransactionsRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.BatchGetTransactionsRequest")
+                formatter.write_str("struct haneul.rpc.v2.BatchGetTransactionsRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<BatchGetTransactionsRequest, V::Error>
@@ -1637,7 +1637,7 @@ impl<'de> serde::Deserialize<'de> for BatchGetTransactionsRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.BatchGetTransactionsRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.BatchGetTransactionsRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for BatchGetTransactionsResponse {
@@ -1651,7 +1651,7 @@ impl serde::Serialize for BatchGetTransactionsResponse {
         if !self.transactions.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.BatchGetTransactionsResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.BatchGetTransactionsResponse", len)?;
         if !self.transactions.is_empty() {
             struct_ser.serialize_field("transactions", &self.transactions)?;
         }
@@ -1708,7 +1708,7 @@ impl<'de> serde::Deserialize<'de> for BatchGetTransactionsResponse {
             type Value = BatchGetTransactionsResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.BatchGetTransactionsResponse")
+                formatter.write_str("struct haneul.rpc.v2.BatchGetTransactionsResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<BatchGetTransactionsResponse, V::Error>
@@ -1734,7 +1734,7 @@ impl<'de> serde::Deserialize<'de> for BatchGetTransactionsResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.BatchGetTransactionsResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.BatchGetTransactionsResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for Bcs {
@@ -1751,7 +1751,7 @@ impl serde::Serialize for Bcs {
         if self.value.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Bcs", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Bcs", len)?;
         if let Some(v) = self.name.as_ref() {
             struct_ser.serialize_field("name", v)?;
         }
@@ -1816,7 +1816,7 @@ impl<'de> serde::Deserialize<'de> for Bcs {
             type Value = Bcs;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Bcs")
+                formatter.write_str("struct haneul.rpc.v2.Bcs")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Bcs, V::Error>
@@ -1852,7 +1852,7 @@ impl<'de> serde::Deserialize<'de> for Bcs {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Bcs", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Bcs", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for CanceledTransaction {
@@ -1869,7 +1869,7 @@ impl serde::Serialize for CanceledTransaction {
         if !self.version_assignments.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.CanceledTransaction", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.CanceledTransaction", len)?;
         if let Some(v) = self.digest.as_ref() {
             struct_ser.serialize_field("digest", v)?;
         }
@@ -1933,7 +1933,7 @@ impl<'de> serde::Deserialize<'de> for CanceledTransaction {
             type Value = CanceledTransaction;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.CanceledTransaction")
+                formatter.write_str("struct haneul.rpc.v2.CanceledTransaction")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<CanceledTransaction, V::Error>
@@ -1967,7 +1967,7 @@ impl<'de> serde::Deserialize<'de> for CanceledTransaction {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.CanceledTransaction", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.CanceledTransaction", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ChangeEpoch {
@@ -2002,7 +2002,7 @@ impl serde::Serialize for ChangeEpoch {
         if !self.system_packages.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ChangeEpoch", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ChangeEpoch", len)?;
         if let Some(v) = self.epoch.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -2120,7 +2120,7 @@ impl<'de> serde::Deserialize<'de> for ChangeEpoch {
             type Value = ChangeEpoch;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ChangeEpoch")
+                formatter.write_str("struct haneul.rpc.v2.ChangeEpoch")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ChangeEpoch, V::Error>
@@ -2214,7 +2214,7 @@ impl<'de> serde::Deserialize<'de> for ChangeEpoch {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ChangeEpoch", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ChangeEpoch", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ChangedObject {
@@ -2261,7 +2261,7 @@ impl serde::Serialize for ChangedObject {
         if self.object_type.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ChangedObject", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ChangedObject", len)?;
         if let Some(v) = self.object_id.as_ref() {
             struct_ser.serialize_field("objectId", v)?;
         }
@@ -2406,7 +2406,7 @@ impl<'de> serde::Deserialize<'de> for ChangedObject {
             type Value = ChangedObject;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ChangedObject")
+                formatter.write_str("struct haneul.rpc.v2.ChangedObject")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ChangedObject, V::Error>
@@ -2524,7 +2524,7 @@ impl<'de> serde::Deserialize<'de> for ChangedObject {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ChangedObject", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ChangedObject", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for changed_object::IdOperation {
@@ -2787,7 +2787,7 @@ impl serde::Serialize for Checkpoint {
         if self.objects.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Checkpoint", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Checkpoint", len)?;
         if let Some(v) = self.sequence_number.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -2883,7 +2883,7 @@ impl<'de> serde::Deserialize<'de> for Checkpoint {
             type Value = Checkpoint;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Checkpoint")
+                formatter.write_str("struct haneul.rpc.v2.Checkpoint")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Checkpoint, V::Error>
@@ -2959,7 +2959,7 @@ impl<'de> serde::Deserialize<'de> for Checkpoint {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Checkpoint", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Checkpoint", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for CheckpointCommitment {
@@ -2976,7 +2976,7 @@ impl serde::Serialize for CheckpointCommitment {
         if self.digest.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.CheckpointCommitment", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.CheckpointCommitment", len)?;
         if let Some(v) = self.kind.as_ref() {
             let v = checkpoint_commitment::CheckpointCommitmentKind::try_from(*v)
                 .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", *v)))?;
@@ -3041,7 +3041,7 @@ impl<'de> serde::Deserialize<'de> for CheckpointCommitment {
             type Value = CheckpointCommitment;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.CheckpointCommitment")
+                formatter.write_str("struct haneul.rpc.v2.CheckpointCommitment")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<CheckpointCommitment, V::Error>
@@ -3075,7 +3075,7 @@ impl<'de> serde::Deserialize<'de> for CheckpointCommitment {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.CheckpointCommitment", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.CheckpointCommitment", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for checkpoint_commitment::CheckpointCommitmentKind {
@@ -3172,7 +3172,7 @@ impl serde::Serialize for CheckpointContents {
         if !self.transactions.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.CheckpointContents", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.CheckpointContents", len)?;
         if let Some(v) = self.bcs.as_ref() {
             struct_ser.serialize_field("bcs", v)?;
         }
@@ -3247,7 +3247,7 @@ impl<'de> serde::Deserialize<'de> for CheckpointContents {
             type Value = CheckpointContents;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.CheckpointContents")
+                formatter.write_str("struct haneul.rpc.v2.CheckpointContents")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<CheckpointContents, V::Error>
@@ -3299,7 +3299,7 @@ impl<'de> serde::Deserialize<'de> for CheckpointContents {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.CheckpointContents", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.CheckpointContents", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for CheckpointSummary {
@@ -3346,7 +3346,7 @@ impl serde::Serialize for CheckpointSummary {
         if self.version_specific_data.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.CheckpointSummary", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.CheckpointSummary", len)?;
         if let Some(v) = self.bcs.as_ref() {
             struct_ser.serialize_field("bcs", v)?;
         }
@@ -3484,7 +3484,7 @@ impl<'de> serde::Deserialize<'de> for CheckpointSummary {
             type Value = CheckpointSummary;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.CheckpointSummary")
+                formatter.write_str("struct haneul.rpc.v2.CheckpointSummary")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<CheckpointSummary, V::Error>
@@ -3606,7 +3606,7 @@ impl<'de> serde::Deserialize<'de> for CheckpointSummary {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.CheckpointSummary", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.CheckpointSummary", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for CheckpointedTransactionInfo {
@@ -3629,7 +3629,7 @@ impl serde::Serialize for CheckpointedTransactionInfo {
         if !self.address_aliases_versions.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.CheckpointedTransactionInfo", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.CheckpointedTransactionInfo", len)?;
         if let Some(v) = self.transaction.as_ref() {
             struct_ser.serialize_field("transaction", v)?;
         }
@@ -3705,7 +3705,7 @@ impl<'de> serde::Deserialize<'de> for CheckpointedTransactionInfo {
             type Value = CheckpointedTransactionInfo;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.CheckpointedTransactionInfo")
+                formatter.write_str("struct haneul.rpc.v2.CheckpointedTransactionInfo")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<CheckpointedTransactionInfo, V::Error>
@@ -3755,7 +3755,7 @@ impl<'de> serde::Deserialize<'de> for CheckpointedTransactionInfo {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.CheckpointedTransactionInfo", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.CheckpointedTransactionInfo", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for CircomG1 {
@@ -3775,7 +3775,7 @@ impl serde::Serialize for CircomG1 {
         if self.e2.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.CircomG1", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.CircomG1", len)?;
         if let Some(v) = self.e0.as_ref() {
             struct_ser.serialize_field("e0", v)?;
         }
@@ -3844,7 +3844,7 @@ impl<'de> serde::Deserialize<'de> for CircomG1 {
             type Value = CircomG1;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.CircomG1")
+                formatter.write_str("struct haneul.rpc.v2.CircomG1")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<CircomG1, V::Error>
@@ -3886,7 +3886,7 @@ impl<'de> serde::Deserialize<'de> for CircomG1 {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.CircomG1", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.CircomG1", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for CircomG2 {
@@ -3915,7 +3915,7 @@ impl serde::Serialize for CircomG2 {
         if self.e21.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.CircomG2", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.CircomG2", len)?;
         if let Some(v) = self.e00.as_ref() {
             struct_ser.serialize_field("e00", v)?;
         }
@@ -4002,7 +4002,7 @@ impl<'de> serde::Deserialize<'de> for CircomG2 {
             type Value = CircomG2;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.CircomG2")
+                formatter.write_str("struct haneul.rpc.v2.CircomG2")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<CircomG2, V::Error>
@@ -4068,7 +4068,7 @@ impl<'de> serde::Deserialize<'de> for CircomG2 {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.CircomG2", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.CircomG2", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for CleverError {
@@ -4094,7 +4094,7 @@ impl serde::Serialize for CleverError {
         if self.value.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.CleverError", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.CleverError", len)?;
         if let Some(v) = self.error_code.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -4195,7 +4195,7 @@ impl<'de> serde::Deserialize<'de> for CleverError {
             type Value = CleverError;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.CleverError")
+                formatter.write_str("struct haneul.rpc.v2.CleverError")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<CleverError, V::Error>
@@ -4263,7 +4263,7 @@ impl<'de> serde::Deserialize<'de> for CleverError {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.CleverError", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.CleverError", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for CoinDenyListError {
@@ -4280,7 +4280,7 @@ impl serde::Serialize for CoinDenyListError {
         if self.coin_type.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.CoinDenyListError", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.CoinDenyListError", len)?;
         if let Some(v) = self.address.as_ref() {
             struct_ser.serialize_field("address", v)?;
         }
@@ -4344,7 +4344,7 @@ impl<'de> serde::Deserialize<'de> for CoinDenyListError {
             type Value = CoinDenyListError;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.CoinDenyListError")
+                formatter.write_str("struct haneul.rpc.v2.CoinDenyListError")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<CoinDenyListError, V::Error>
@@ -4378,7 +4378,7 @@ impl<'de> serde::Deserialize<'de> for CoinDenyListError {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.CoinDenyListError", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.CoinDenyListError", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for CoinMetadata {
@@ -4413,7 +4413,7 @@ impl serde::Serialize for CoinMetadata {
         if self.metadata_cap_state.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.CoinMetadata", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.CoinMetadata", len)?;
         if let Some(v) = self.id.as_ref() {
             struct_ser.serialize_field("id", v)?;
         }
@@ -4517,7 +4517,7 @@ impl<'de> serde::Deserialize<'de> for CoinMetadata {
             type Value = CoinMetadata;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.CoinMetadata")
+                formatter.write_str("struct haneul.rpc.v2.CoinMetadata")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<CoinMetadata, V::Error>
@@ -4601,7 +4601,7 @@ impl<'de> serde::Deserialize<'de> for CoinMetadata {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.CoinMetadata", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.CoinMetadata", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for coin_metadata::MetadataCapState {
@@ -4698,7 +4698,7 @@ impl serde::Serialize for CoinTreasury {
         if self.supply_state.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.CoinTreasury", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.CoinTreasury", len)?;
         if let Some(v) = self.id.as_ref() {
             struct_ser.serialize_field("id", v)?;
         }
@@ -4773,7 +4773,7 @@ impl<'de> serde::Deserialize<'de> for CoinTreasury {
             type Value = CoinTreasury;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.CoinTreasury")
+                formatter.write_str("struct haneul.rpc.v2.CoinTreasury")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<CoinTreasury, V::Error>
@@ -4817,7 +4817,7 @@ impl<'de> serde::Deserialize<'de> for CoinTreasury {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.CoinTreasury", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.CoinTreasury", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for coin_treasury::SupplyState {
@@ -4905,7 +4905,7 @@ impl serde::Serialize for Command {
         if self.command.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Command", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Command", len)?;
         if let Some(v) = self.command.as_ref() {
             match v {
                 command::Command::MoveCall(v) => {
@@ -5007,7 +5007,7 @@ impl<'de> serde::Deserialize<'de> for Command {
             type Value = Command;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Command")
+                formatter.write_str("struct haneul.rpc.v2.Command")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Command, V::Error>
@@ -5076,7 +5076,7 @@ impl<'de> serde::Deserialize<'de> for Command {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Command", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Command", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for CommandArgumentError {
@@ -5096,7 +5096,7 @@ impl serde::Serialize for CommandArgumentError {
         if self.index_error.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.CommandArgumentError", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.CommandArgumentError", len)?;
         if let Some(v) = self.argument.as_ref() {
             struct_ser.serialize_field("argument", v)?;
         }
@@ -5168,7 +5168,7 @@ impl<'de> serde::Deserialize<'de> for CommandArgumentError {
             type Value = CommandArgumentError;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.CommandArgumentError")
+                formatter.write_str("struct haneul.rpc.v2.CommandArgumentError")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<CommandArgumentError, V::Error>
@@ -5212,7 +5212,7 @@ impl<'de> serde::Deserialize<'de> for CommandArgumentError {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.CommandArgumentError", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.CommandArgumentError", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for command_argument_error::CommandArgumentErrorKind {
@@ -5357,7 +5357,7 @@ impl serde::Serialize for CommandOutput {
         if self.json.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.CommandOutput", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.CommandOutput", len)?;
         if let Some(v) = self.argument.as_ref() {
             struct_ser.serialize_field("argument", v)?;
         }
@@ -5426,7 +5426,7 @@ impl<'de> serde::Deserialize<'de> for CommandOutput {
             type Value = CommandOutput;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.CommandOutput")
+                formatter.write_str("struct haneul.rpc.v2.CommandOutput")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<CommandOutput, V::Error>
@@ -5468,7 +5468,7 @@ impl<'de> serde::Deserialize<'de> for CommandOutput {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.CommandOutput", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.CommandOutput", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for CommandResult {
@@ -5485,7 +5485,7 @@ impl serde::Serialize for CommandResult {
         if !self.mutated_by_ref.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.CommandResult", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.CommandResult", len)?;
         if !self.return_values.is_empty() {
             struct_ser.serialize_field("returnValues", &self.return_values)?;
         }
@@ -5550,7 +5550,7 @@ impl<'de> serde::Deserialize<'de> for CommandResult {
             type Value = CommandResult;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.CommandResult")
+                formatter.write_str("struct haneul.rpc.v2.CommandResult")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<CommandResult, V::Error>
@@ -5584,7 +5584,7 @@ impl<'de> serde::Deserialize<'de> for CommandResult {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.CommandResult", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.CommandResult", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for CongestedObjects {
@@ -5598,7 +5598,7 @@ impl serde::Serialize for CongestedObjects {
         if !self.objects.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.CongestedObjects", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.CongestedObjects", len)?;
         if !self.objects.is_empty() {
             struct_ser.serialize_field("objects", &self.objects)?;
         }
@@ -5655,7 +5655,7 @@ impl<'de> serde::Deserialize<'de> for CongestedObjects {
             type Value = CongestedObjects;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.CongestedObjects")
+                formatter.write_str("struct haneul.rpc.v2.CongestedObjects")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<CongestedObjects, V::Error>
@@ -5681,7 +5681,7 @@ impl<'de> serde::Deserialize<'de> for CongestedObjects {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.CongestedObjects", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.CongestedObjects", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ConsensusCommitPrologue {
@@ -5713,7 +5713,7 @@ impl serde::Serialize for ConsensusCommitPrologue {
         if self.additional_state_digest.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ConsensusCommitPrologue", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ConsensusCommitPrologue", len)?;
         if let Some(v) = self.epoch.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -5817,7 +5817,7 @@ impl<'de> serde::Deserialize<'de> for ConsensusCommitPrologue {
             type Value = ConsensusCommitPrologue;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ConsensusCommitPrologue")
+                formatter.write_str("struct haneul.rpc.v2.ConsensusCommitPrologue")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ConsensusCommitPrologue, V::Error>
@@ -5897,7 +5897,7 @@ impl<'de> serde::Deserialize<'de> for ConsensusCommitPrologue {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ConsensusCommitPrologue", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ConsensusCommitPrologue", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ConsensusDeterminedVersionAssignments {
@@ -5914,7 +5914,7 @@ impl serde::Serialize for ConsensusDeterminedVersionAssignments {
         if !self.canceled_transactions.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ConsensusDeterminedVersionAssignments", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ConsensusDeterminedVersionAssignments", len)?;
         if let Some(v) = self.version.as_ref() {
             struct_ser.serialize_field("version", v)?;
         }
@@ -5978,7 +5978,7 @@ impl<'de> serde::Deserialize<'de> for ConsensusDeterminedVersionAssignments {
             type Value = ConsensusDeterminedVersionAssignments;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ConsensusDeterminedVersionAssignments")
+                formatter.write_str("struct haneul.rpc.v2.ConsensusDeterminedVersionAssignments")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ConsensusDeterminedVersionAssignments, V::Error>
@@ -6014,7 +6014,7 @@ impl<'de> serde::Deserialize<'de> for ConsensusDeterminedVersionAssignments {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ConsensusDeterminedVersionAssignments", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ConsensusDeterminedVersionAssignments", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for DatatypeDescriptor {
@@ -6052,7 +6052,7 @@ impl serde::Serialize for DatatypeDescriptor {
         if !self.variants.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.DatatypeDescriptor", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.DatatypeDescriptor", len)?;
         if let Some(v) = self.type_name.as_ref() {
             struct_ser.serialize_field("typeName", v)?;
         }
@@ -6166,7 +6166,7 @@ impl<'de> serde::Deserialize<'de> for DatatypeDescriptor {
             type Value = DatatypeDescriptor;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.DatatypeDescriptor")
+                formatter.write_str("struct haneul.rpc.v2.DatatypeDescriptor")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<DatatypeDescriptor, V::Error>
@@ -6256,7 +6256,7 @@ impl<'de> serde::Deserialize<'de> for DatatypeDescriptor {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.DatatypeDescriptor", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.DatatypeDescriptor", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for datatype_descriptor::DatatypeKind {
@@ -6368,7 +6368,7 @@ impl serde::Serialize for DynamicField {
         if self.child_object.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.DynamicField", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.DynamicField", len)?;
         if let Some(v) = self.kind.as_ref() {
             let v = dynamic_field::DynamicFieldKind::try_from(*v)
                 .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", *v)))?;
@@ -6480,7 +6480,7 @@ impl<'de> serde::Deserialize<'de> for DynamicField {
             type Value = DynamicField;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.DynamicField")
+                formatter.write_str("struct haneul.rpc.v2.DynamicField")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<DynamicField, V::Error>
@@ -6570,7 +6570,7 @@ impl<'de> serde::Deserialize<'de> for DynamicField {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.DynamicField", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.DynamicField", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for dynamic_field::DynamicFieldKind {
@@ -6664,7 +6664,7 @@ impl serde::Serialize for EndOfEpochData {
         if !self.epoch_commitments.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.EndOfEpochData", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.EndOfEpochData", len)?;
         if !self.next_epoch_committee.is_empty() {
             struct_ser.serialize_field("nextEpochCommittee", &self.next_epoch_committee)?;
         }
@@ -6738,7 +6738,7 @@ impl<'de> serde::Deserialize<'de> for EndOfEpochData {
             type Value = EndOfEpochData;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.EndOfEpochData")
+                formatter.write_str("struct haneul.rpc.v2.EndOfEpochData")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<EndOfEpochData, V::Error>
@@ -6782,7 +6782,7 @@ impl<'de> serde::Deserialize<'de> for EndOfEpochData {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.EndOfEpochData", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.EndOfEpochData", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for EndOfEpochTransaction {
@@ -6796,7 +6796,7 @@ impl serde::Serialize for EndOfEpochTransaction {
         if !self.transactions.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.EndOfEpochTransaction", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.EndOfEpochTransaction", len)?;
         if !self.transactions.is_empty() {
             struct_ser.serialize_field("transactions", &self.transactions)?;
         }
@@ -6853,7 +6853,7 @@ impl<'de> serde::Deserialize<'de> for EndOfEpochTransaction {
             type Value = EndOfEpochTransaction;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.EndOfEpochTransaction")
+                formatter.write_str("struct haneul.rpc.v2.EndOfEpochTransaction")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<EndOfEpochTransaction, V::Error>
@@ -6879,7 +6879,7 @@ impl<'de> serde::Deserialize<'de> for EndOfEpochTransaction {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.EndOfEpochTransaction", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.EndOfEpochTransaction", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for EndOfEpochTransactionKind {
@@ -6896,7 +6896,7 @@ impl serde::Serialize for EndOfEpochTransactionKind {
         if self.data.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.EndOfEpochTransactionKind", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.EndOfEpochTransactionKind", len)?;
         if let Some(v) = self.kind.as_ref() {
             let v = end_of_epoch_transaction_kind::Kind::try_from(*v)
                 .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", *v)))?;
@@ -6996,7 +6996,7 @@ impl<'de> serde::Deserialize<'de> for EndOfEpochTransactionKind {
             type Value = EndOfEpochTransactionKind;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.EndOfEpochTransactionKind")
+                formatter.write_str("struct haneul.rpc.v2.EndOfEpochTransactionKind")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<EndOfEpochTransactionKind, V::Error>
@@ -7057,7 +7057,7 @@ impl<'de> serde::Deserialize<'de> for EndOfEpochTransactionKind {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.EndOfEpochTransactionKind", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.EndOfEpochTransactionKind", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for end_of_epoch_transaction_kind::Kind {
@@ -7199,7 +7199,7 @@ impl serde::Serialize for Epoch {
         if self.protocol_config.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Epoch", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Epoch", len)?;
         if let Some(v) = self.epoch.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -7317,7 +7317,7 @@ impl<'de> serde::Deserialize<'de> for Epoch {
             type Value = Epoch;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Epoch")
+                formatter.write_str("struct haneul.rpc.v2.Epoch")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Epoch, V::Error>
@@ -7415,7 +7415,7 @@ impl<'de> serde::Deserialize<'de> for Epoch {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Epoch", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Epoch", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ErrorReason {
@@ -7518,7 +7518,7 @@ impl serde::Serialize for Event {
         if self.json.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Event", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Event", len)?;
         if let Some(v) = self.package_id.as_ref() {
             struct_ser.serialize_field("packageId", v)?;
         }
@@ -7607,7 +7607,7 @@ impl<'de> serde::Deserialize<'de> for Event {
             type Value = Event;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Event")
+                formatter.write_str("struct haneul.rpc.v2.Event")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Event, V::Error>
@@ -7673,7 +7673,7 @@ impl<'de> serde::Deserialize<'de> for Event {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Event", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Event", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ExecuteTransactionRequest {
@@ -7693,7 +7693,7 @@ impl serde::Serialize for ExecuteTransactionRequest {
         if self.read_mask.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ExecuteTransactionRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ExecuteTransactionRequest", len)?;
         if let Some(v) = self.transaction.as_ref() {
             struct_ser.serialize_field("transaction", v)?;
         }
@@ -7763,7 +7763,7 @@ impl<'de> serde::Deserialize<'de> for ExecuteTransactionRequest {
             type Value = ExecuteTransactionRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ExecuteTransactionRequest")
+                formatter.write_str("struct haneul.rpc.v2.ExecuteTransactionRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ExecuteTransactionRequest, V::Error>
@@ -7805,7 +7805,7 @@ impl<'de> serde::Deserialize<'de> for ExecuteTransactionRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ExecuteTransactionRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ExecuteTransactionRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ExecuteTransactionResponse {
@@ -7819,7 +7819,7 @@ impl serde::Serialize for ExecuteTransactionResponse {
         if self.transaction.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ExecuteTransactionResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ExecuteTransactionResponse", len)?;
         if let Some(v) = self.transaction.as_ref() {
             struct_ser.serialize_field("transaction", v)?;
         }
@@ -7876,7 +7876,7 @@ impl<'de> serde::Deserialize<'de> for ExecuteTransactionResponse {
             type Value = ExecuteTransactionResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ExecuteTransactionResponse")
+                formatter.write_str("struct haneul.rpc.v2.ExecuteTransactionResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ExecuteTransactionResponse, V::Error>
@@ -7902,7 +7902,7 @@ impl<'de> serde::Deserialize<'de> for ExecuteTransactionResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ExecuteTransactionResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ExecuteTransactionResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ExecutedTransaction {
@@ -7940,7 +7940,7 @@ impl serde::Serialize for ExecutedTransaction {
         if self.objects.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ExecutedTransaction", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ExecutedTransaction", len)?;
         if let Some(v) = self.digest.as_ref() {
             struct_ser.serialize_field("digest", v)?;
         }
@@ -8048,7 +8048,7 @@ impl<'de> serde::Deserialize<'de> for ExecutedTransaction {
             type Value = ExecutedTransaction;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ExecutedTransaction")
+                formatter.write_str("struct haneul.rpc.v2.ExecutedTransaction")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ExecutedTransaction, V::Error>
@@ -8140,7 +8140,7 @@ impl<'de> serde::Deserialize<'de> for ExecutedTransaction {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ExecutedTransaction", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ExecutedTransaction", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ExecutionError {
@@ -8163,7 +8163,7 @@ impl serde::Serialize for ExecutionError {
         if self.error_details.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ExecutionError", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ExecutionError", len)?;
         if let Some(v) = self.description.as_ref() {
             struct_ser.serialize_field("description", v)?;
         }
@@ -8302,7 +8302,7 @@ impl<'de> serde::Deserialize<'de> for ExecutionError {
             type Value = ExecutionError;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ExecutionError")
+                formatter.write_str("struct haneul.rpc.v2.ExecutionError")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ExecutionError, V::Error>
@@ -8410,7 +8410,7 @@ impl<'de> serde::Deserialize<'de> for ExecutionError {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ExecutionError", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ExecutionError", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for execution_error::ExecutionErrorKind {
@@ -8621,7 +8621,7 @@ impl serde::Serialize for ExecutionStatus {
         if self.error.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ExecutionStatus", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ExecutionStatus", len)?;
         if let Some(v) = self.success.as_ref() {
             struct_ser.serialize_field("success", v)?;
         }
@@ -8684,7 +8684,7 @@ impl<'de> serde::Deserialize<'de> for ExecutionStatus {
             type Value = ExecutionStatus;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ExecutionStatus")
+                formatter.write_str("struct haneul.rpc.v2.ExecutionStatus")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ExecutionStatus, V::Error>
@@ -8718,7 +8718,7 @@ impl<'de> serde::Deserialize<'de> for ExecutionStatus {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ExecutionStatus", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ExecutionStatus", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ExecutionTimeObservation {
@@ -8738,7 +8738,7 @@ impl serde::Serialize for ExecutionTimeObservation {
         if !self.validator_observations.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ExecutionTimeObservation", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ExecutionTimeObservation", len)?;
         if let Some(v) = self.kind.as_ref() {
             let v = execution_time_observation::ExecutionTimeObservationKind::try_from(*v)
                 .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", *v)))?;
@@ -8811,7 +8811,7 @@ impl<'de> serde::Deserialize<'de> for ExecutionTimeObservation {
             type Value = ExecutionTimeObservation;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ExecutionTimeObservation")
+                formatter.write_str("struct haneul.rpc.v2.ExecutionTimeObservation")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ExecutionTimeObservation, V::Error>
@@ -8853,7 +8853,7 @@ impl<'de> serde::Deserialize<'de> for ExecutionTimeObservation {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ExecutionTimeObservation", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ExecutionTimeObservation", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for execution_time_observation::ExecutionTimeObservationKind {
@@ -8959,7 +8959,7 @@ impl serde::Serialize for ExecutionTimeObservations {
         if !self.observations.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ExecutionTimeObservations", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ExecutionTimeObservations", len)?;
         if let Some(v) = self.version.as_ref() {
             struct_ser.serialize_field("version", v)?;
         }
@@ -9022,7 +9022,7 @@ impl<'de> serde::Deserialize<'de> for ExecutionTimeObservations {
             type Value = ExecutionTimeObservations;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ExecutionTimeObservations")
+                formatter.write_str("struct haneul.rpc.v2.ExecutionTimeObservations")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ExecutionTimeObservations, V::Error>
@@ -9058,7 +9058,7 @@ impl<'de> serde::Deserialize<'de> for ExecutionTimeObservations {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ExecutionTimeObservations", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ExecutionTimeObservations", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for FieldDescriptor {
@@ -9078,7 +9078,7 @@ impl serde::Serialize for FieldDescriptor {
         if self.r#type.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.FieldDescriptor", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.FieldDescriptor", len)?;
         if let Some(v) = self.name.as_ref() {
             struct_ser.serialize_field("name", v)?;
         }
@@ -9147,7 +9147,7 @@ impl<'de> serde::Deserialize<'de> for FieldDescriptor {
             type Value = FieldDescriptor;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.FieldDescriptor")
+                formatter.write_str("struct haneul.rpc.v2.FieldDescriptor")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<FieldDescriptor, V::Error>
@@ -9191,7 +9191,7 @@ impl<'de> serde::Deserialize<'de> for FieldDescriptor {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.FieldDescriptor", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.FieldDescriptor", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for FunctionDescriptor {
@@ -9220,7 +9220,7 @@ impl serde::Serialize for FunctionDescriptor {
         if !self.returns.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.FunctionDescriptor", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.FunctionDescriptor", len)?;
         if let Some(v) = self.name.as_ref() {
             struct_ser.serialize_field("name", v)?;
         }
@@ -9311,7 +9311,7 @@ impl<'de> serde::Deserialize<'de> for FunctionDescriptor {
             type Value = FunctionDescriptor;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.FunctionDescriptor")
+                formatter.write_str("struct haneul.rpc.v2.FunctionDescriptor")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<FunctionDescriptor, V::Error>
@@ -9377,7 +9377,7 @@ impl<'de> serde::Deserialize<'de> for FunctionDescriptor {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.FunctionDescriptor", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.FunctionDescriptor", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for function_descriptor::Visibility {
@@ -9474,7 +9474,7 @@ impl serde::Serialize for FundsWithdrawal {
         if self.source.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.FundsWithdrawal", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.FundsWithdrawal", len)?;
         if let Some(v) = self.amount.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -9548,7 +9548,7 @@ impl<'de> serde::Deserialize<'de> for FundsWithdrawal {
             type Value = FundsWithdrawal;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.FundsWithdrawal")
+                formatter.write_str("struct haneul.rpc.v2.FundsWithdrawal")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<FundsWithdrawal, V::Error>
@@ -9592,7 +9592,7 @@ impl<'de> serde::Deserialize<'de> for FundsWithdrawal {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.FundsWithdrawal", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.FundsWithdrawal", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for funds_withdrawal::Source {
@@ -9689,7 +9689,7 @@ impl serde::Serialize for GasCostSummary {
         if self.non_refundable_storage_fee.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GasCostSummary", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GasCostSummary", len)?;
         if let Some(v) = self.computation_cost.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -9776,7 +9776,7 @@ impl<'de> serde::Deserialize<'de> for GasCostSummary {
             type Value = GasCostSummary;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GasCostSummary")
+                formatter.write_str("struct haneul.rpc.v2.GasCostSummary")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GasCostSummary, V::Error>
@@ -9834,7 +9834,7 @@ impl<'de> serde::Deserialize<'de> for GasCostSummary {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GasCostSummary", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GasCostSummary", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GasPayment {
@@ -9857,7 +9857,7 @@ impl serde::Serialize for GasPayment {
         if self.budget.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GasPayment", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GasPayment", len)?;
         if !self.objects.is_empty() {
             struct_ser.serialize_field("objects", &self.objects)?;
         }
@@ -9936,7 +9936,7 @@ impl<'de> serde::Deserialize<'de> for GasPayment {
             type Value = GasPayment;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GasPayment")
+                formatter.write_str("struct haneul.rpc.v2.GasPayment")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GasPayment, V::Error>
@@ -9990,7 +9990,7 @@ impl<'de> serde::Deserialize<'de> for GasPayment {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GasPayment", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GasPayment", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GenesisTransaction {
@@ -10004,7 +10004,7 @@ impl serde::Serialize for GenesisTransaction {
         if !self.objects.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GenesisTransaction", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GenesisTransaction", len)?;
         if !self.objects.is_empty() {
             struct_ser.serialize_field("objects", &self.objects)?;
         }
@@ -10061,7 +10061,7 @@ impl<'de> serde::Deserialize<'de> for GenesisTransaction {
             type Value = GenesisTransaction;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GenesisTransaction")
+                formatter.write_str("struct haneul.rpc.v2.GenesisTransaction")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GenesisTransaction, V::Error>
@@ -10087,7 +10087,7 @@ impl<'de> serde::Deserialize<'de> for GenesisTransaction {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GenesisTransaction", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GenesisTransaction", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetBalanceRequest {
@@ -10104,7 +10104,7 @@ impl serde::Serialize for GetBalanceRequest {
         if self.coin_type.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetBalanceRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetBalanceRequest", len)?;
         if let Some(v) = self.owner.as_ref() {
             struct_ser.serialize_field("owner", v)?;
         }
@@ -10168,7 +10168,7 @@ impl<'de> serde::Deserialize<'de> for GetBalanceRequest {
             type Value = GetBalanceRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetBalanceRequest")
+                formatter.write_str("struct haneul.rpc.v2.GetBalanceRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetBalanceRequest, V::Error>
@@ -10202,7 +10202,7 @@ impl<'de> serde::Deserialize<'de> for GetBalanceRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetBalanceRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetBalanceRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetBalanceResponse {
@@ -10216,7 +10216,7 @@ impl serde::Serialize for GetBalanceResponse {
         if self.balance.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetBalanceResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetBalanceResponse", len)?;
         if let Some(v) = self.balance.as_ref() {
             struct_ser.serialize_field("balance", v)?;
         }
@@ -10273,7 +10273,7 @@ impl<'de> serde::Deserialize<'de> for GetBalanceResponse {
             type Value = GetBalanceResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetBalanceResponse")
+                formatter.write_str("struct haneul.rpc.v2.GetBalanceResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetBalanceResponse, V::Error>
@@ -10299,7 +10299,7 @@ impl<'de> serde::Deserialize<'de> for GetBalanceResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetBalanceResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetBalanceResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetCheckpointRequest {
@@ -10316,7 +10316,7 @@ impl serde::Serialize for GetCheckpointRequest {
         if self.checkpoint_id.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetCheckpointRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetCheckpointRequest", len)?;
         if let Some(v) = self.read_mask.as_ref() {
             struct_ser.serialize_field("readMask", &crate::_serde::FieldMaskSerializer(v))?;
         }
@@ -10393,7 +10393,7 @@ impl<'de> serde::Deserialize<'de> for GetCheckpointRequest {
             type Value = GetCheckpointRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetCheckpointRequest")
+                formatter.write_str("struct haneul.rpc.v2.GetCheckpointRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetCheckpointRequest, V::Error>
@@ -10433,7 +10433,7 @@ impl<'de> serde::Deserialize<'de> for GetCheckpointRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetCheckpointRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetCheckpointRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetCheckpointResponse {
@@ -10447,7 +10447,7 @@ impl serde::Serialize for GetCheckpointResponse {
         if self.checkpoint.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetCheckpointResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetCheckpointResponse", len)?;
         if let Some(v) = self.checkpoint.as_ref() {
             struct_ser.serialize_field("checkpoint", v)?;
         }
@@ -10504,7 +10504,7 @@ impl<'de> serde::Deserialize<'de> for GetCheckpointResponse {
             type Value = GetCheckpointResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetCheckpointResponse")
+                formatter.write_str("struct haneul.rpc.v2.GetCheckpointResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetCheckpointResponse, V::Error>
@@ -10530,7 +10530,7 @@ impl<'de> serde::Deserialize<'de> for GetCheckpointResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetCheckpointResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetCheckpointResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetCoinInfoRequest {
@@ -10544,7 +10544,7 @@ impl serde::Serialize for GetCoinInfoRequest {
         if self.coin_type.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetCoinInfoRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetCoinInfoRequest", len)?;
         if let Some(v) = self.coin_type.as_ref() {
             struct_ser.serialize_field("coinType", v)?;
         }
@@ -10602,7 +10602,7 @@ impl<'de> serde::Deserialize<'de> for GetCoinInfoRequest {
             type Value = GetCoinInfoRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetCoinInfoRequest")
+                formatter.write_str("struct haneul.rpc.v2.GetCoinInfoRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetCoinInfoRequest, V::Error>
@@ -10628,7 +10628,7 @@ impl<'de> serde::Deserialize<'de> for GetCoinInfoRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetCoinInfoRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetCoinInfoRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetCoinInfoResponse {
@@ -10651,7 +10651,7 @@ impl serde::Serialize for GetCoinInfoResponse {
         if self.regulated_metadata.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetCoinInfoResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetCoinInfoResponse", len)?;
         if let Some(v) = self.coin_type.as_ref() {
             struct_ser.serialize_field("coinType", v)?;
         }
@@ -10728,7 +10728,7 @@ impl<'de> serde::Deserialize<'de> for GetCoinInfoResponse {
             type Value = GetCoinInfoResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetCoinInfoResponse")
+                formatter.write_str("struct haneul.rpc.v2.GetCoinInfoResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetCoinInfoResponse, V::Error>
@@ -10778,7 +10778,7 @@ impl<'de> serde::Deserialize<'de> for GetCoinInfoResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetCoinInfoResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetCoinInfoResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetDatatypeRequest {
@@ -10798,7 +10798,7 @@ impl serde::Serialize for GetDatatypeRequest {
         if self.name.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetDatatypeRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetDatatypeRequest", len)?;
         if let Some(v) = self.package_id.as_ref() {
             struct_ser.serialize_field("packageId", v)?;
         }
@@ -10869,7 +10869,7 @@ impl<'de> serde::Deserialize<'de> for GetDatatypeRequest {
             type Value = GetDatatypeRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetDatatypeRequest")
+                formatter.write_str("struct haneul.rpc.v2.GetDatatypeRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetDatatypeRequest, V::Error>
@@ -10911,7 +10911,7 @@ impl<'de> serde::Deserialize<'de> for GetDatatypeRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetDatatypeRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetDatatypeRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetDatatypeResponse {
@@ -10925,7 +10925,7 @@ impl serde::Serialize for GetDatatypeResponse {
         if self.datatype.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetDatatypeResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetDatatypeResponse", len)?;
         if let Some(v) = self.datatype.as_ref() {
             struct_ser.serialize_field("datatype", v)?;
         }
@@ -10982,7 +10982,7 @@ impl<'de> serde::Deserialize<'de> for GetDatatypeResponse {
             type Value = GetDatatypeResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetDatatypeResponse")
+                formatter.write_str("struct haneul.rpc.v2.GetDatatypeResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetDatatypeResponse, V::Error>
@@ -11008,7 +11008,7 @@ impl<'de> serde::Deserialize<'de> for GetDatatypeResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetDatatypeResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetDatatypeResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetEpochRequest {
@@ -11025,7 +11025,7 @@ impl serde::Serialize for GetEpochRequest {
         if self.read_mask.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetEpochRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetEpochRequest", len)?;
         if let Some(v) = self.epoch.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -11091,7 +11091,7 @@ impl<'de> serde::Deserialize<'de> for GetEpochRequest {
             type Value = GetEpochRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetEpochRequest")
+                formatter.write_str("struct haneul.rpc.v2.GetEpochRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetEpochRequest, V::Error>
@@ -11127,7 +11127,7 @@ impl<'de> serde::Deserialize<'de> for GetEpochRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetEpochRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetEpochRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetEpochResponse {
@@ -11141,7 +11141,7 @@ impl serde::Serialize for GetEpochResponse {
         if self.epoch.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetEpochResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetEpochResponse", len)?;
         if let Some(v) = self.epoch.as_ref() {
             struct_ser.serialize_field("epoch", v)?;
         }
@@ -11198,7 +11198,7 @@ impl<'de> serde::Deserialize<'de> for GetEpochResponse {
             type Value = GetEpochResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetEpochResponse")
+                formatter.write_str("struct haneul.rpc.v2.GetEpochResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetEpochResponse, V::Error>
@@ -11224,7 +11224,7 @@ impl<'de> serde::Deserialize<'de> for GetEpochResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetEpochResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetEpochResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetFunctionRequest {
@@ -11244,7 +11244,7 @@ impl serde::Serialize for GetFunctionRequest {
         if self.name.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetFunctionRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetFunctionRequest", len)?;
         if let Some(v) = self.package_id.as_ref() {
             struct_ser.serialize_field("packageId", v)?;
         }
@@ -11315,7 +11315,7 @@ impl<'de> serde::Deserialize<'de> for GetFunctionRequest {
             type Value = GetFunctionRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetFunctionRequest")
+                formatter.write_str("struct haneul.rpc.v2.GetFunctionRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetFunctionRequest, V::Error>
@@ -11357,7 +11357,7 @@ impl<'de> serde::Deserialize<'de> for GetFunctionRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetFunctionRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetFunctionRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetFunctionResponse {
@@ -11371,7 +11371,7 @@ impl serde::Serialize for GetFunctionResponse {
         if self.function.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetFunctionResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetFunctionResponse", len)?;
         if let Some(v) = self.function.as_ref() {
             struct_ser.serialize_field("function", v)?;
         }
@@ -11428,7 +11428,7 @@ impl<'de> serde::Deserialize<'de> for GetFunctionResponse {
             type Value = GetFunctionResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetFunctionResponse")
+                formatter.write_str("struct haneul.rpc.v2.GetFunctionResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetFunctionResponse, V::Error>
@@ -11454,7 +11454,7 @@ impl<'de> serde::Deserialize<'de> for GetFunctionResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetFunctionResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetFunctionResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetObjectRequest {
@@ -11474,7 +11474,7 @@ impl serde::Serialize for GetObjectRequest {
         if self.read_mask.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetObjectRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetObjectRequest", len)?;
         if let Some(v) = self.object_id.as_ref() {
             struct_ser.serialize_field("objectId", v)?;
         }
@@ -11547,7 +11547,7 @@ impl<'de> serde::Deserialize<'de> for GetObjectRequest {
             type Value = GetObjectRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetObjectRequest")
+                formatter.write_str("struct haneul.rpc.v2.GetObjectRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetObjectRequest, V::Error>
@@ -11591,7 +11591,7 @@ impl<'de> serde::Deserialize<'de> for GetObjectRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetObjectRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetObjectRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetObjectResponse {
@@ -11605,7 +11605,7 @@ impl serde::Serialize for GetObjectResponse {
         if self.object.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetObjectResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetObjectResponse", len)?;
         if let Some(v) = self.object.as_ref() {
             struct_ser.serialize_field("object", v)?;
         }
@@ -11662,7 +11662,7 @@ impl<'de> serde::Deserialize<'de> for GetObjectResponse {
             type Value = GetObjectResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetObjectResponse")
+                formatter.write_str("struct haneul.rpc.v2.GetObjectResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetObjectResponse, V::Error>
@@ -11688,7 +11688,7 @@ impl<'de> serde::Deserialize<'de> for GetObjectResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetObjectResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetObjectResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetObjectResult {
@@ -11702,7 +11702,7 @@ impl serde::Serialize for GetObjectResult {
         if self.result.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetObjectResult", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetObjectResult", len)?;
         if let Some(v) = self.result.as_ref() {
             match v {
                 get_object_result::Result::Object(v) => {
@@ -11769,7 +11769,7 @@ impl<'de> serde::Deserialize<'de> for GetObjectResult {
             type Value = GetObjectResult;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetObjectResult")
+                formatter.write_str("struct haneul.rpc.v2.GetObjectResult")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetObjectResult, V::Error>
@@ -11803,7 +11803,7 @@ impl<'de> serde::Deserialize<'de> for GetObjectResult {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetObjectResult", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetObjectResult", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetPackageRequest {
@@ -11817,7 +11817,7 @@ impl serde::Serialize for GetPackageRequest {
         if self.package_id.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetPackageRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetPackageRequest", len)?;
         if let Some(v) = self.package_id.as_ref() {
             struct_ser.serialize_field("packageId", v)?;
         }
@@ -11875,7 +11875,7 @@ impl<'de> serde::Deserialize<'de> for GetPackageRequest {
             type Value = GetPackageRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetPackageRequest")
+                formatter.write_str("struct haneul.rpc.v2.GetPackageRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetPackageRequest, V::Error>
@@ -11901,7 +11901,7 @@ impl<'de> serde::Deserialize<'de> for GetPackageRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetPackageRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetPackageRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetPackageResponse {
@@ -11915,7 +11915,7 @@ impl serde::Serialize for GetPackageResponse {
         if self.package.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetPackageResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetPackageResponse", len)?;
         if let Some(v) = self.package.as_ref() {
             struct_ser.serialize_field("package", v)?;
         }
@@ -11972,7 +11972,7 @@ impl<'de> serde::Deserialize<'de> for GetPackageResponse {
             type Value = GetPackageResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetPackageResponse")
+                formatter.write_str("struct haneul.rpc.v2.GetPackageResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetPackageResponse, V::Error>
@@ -11998,7 +11998,7 @@ impl<'de> serde::Deserialize<'de> for GetPackageResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetPackageResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetPackageResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetServiceInfoRequest {
@@ -12009,7 +12009,7 @@ impl serde::Serialize for GetServiceInfoRequest {
     {
         use serde::ser::SerializeStruct;
         let len = 0;
-        let struct_ser = serializer.serialize_struct("sui.rpc.v2.GetServiceInfoRequest", len)?;
+        let struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetServiceInfoRequest", len)?;
         struct_ser.end()
     }
 }
@@ -12058,7 +12058,7 @@ impl<'de> serde::Deserialize<'de> for GetServiceInfoRequest {
             type Value = GetServiceInfoRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetServiceInfoRequest")
+                formatter.write_str("struct haneul.rpc.v2.GetServiceInfoRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetServiceInfoRequest, V::Error>
@@ -12072,7 +12072,7 @@ impl<'de> serde::Deserialize<'de> for GetServiceInfoRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetServiceInfoRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetServiceInfoRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetServiceInfoResponse {
@@ -12107,7 +12107,7 @@ impl serde::Serialize for GetServiceInfoResponse {
         if self.server.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetServiceInfoResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetServiceInfoResponse", len)?;
         if let Some(v) = self.chain_id.as_ref() {
             struct_ser.serialize_field("chainId", v)?;
         }
@@ -12218,7 +12218,7 @@ impl<'de> serde::Deserialize<'de> for GetServiceInfoResponse {
             type Value = GetServiceInfoResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetServiceInfoResponse")
+                formatter.write_str("struct haneul.rpc.v2.GetServiceInfoResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetServiceInfoResponse, V::Error>
@@ -12308,7 +12308,7 @@ impl<'de> serde::Deserialize<'de> for GetServiceInfoResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetServiceInfoResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetServiceInfoResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetTransactionRequest {
@@ -12325,7 +12325,7 @@ impl serde::Serialize for GetTransactionRequest {
         if self.read_mask.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetTransactionRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetTransactionRequest", len)?;
         if let Some(v) = self.digest.as_ref() {
             struct_ser.serialize_field("digest", v)?;
         }
@@ -12389,7 +12389,7 @@ impl<'de> serde::Deserialize<'de> for GetTransactionRequest {
             type Value = GetTransactionRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetTransactionRequest")
+                formatter.write_str("struct haneul.rpc.v2.GetTransactionRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetTransactionRequest, V::Error>
@@ -12423,7 +12423,7 @@ impl<'de> serde::Deserialize<'de> for GetTransactionRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetTransactionRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetTransactionRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetTransactionResponse {
@@ -12437,7 +12437,7 @@ impl serde::Serialize for GetTransactionResponse {
         if self.transaction.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetTransactionResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetTransactionResponse", len)?;
         if let Some(v) = self.transaction.as_ref() {
             struct_ser.serialize_field("transaction", v)?;
         }
@@ -12494,7 +12494,7 @@ impl<'de> serde::Deserialize<'de> for GetTransactionResponse {
             type Value = GetTransactionResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetTransactionResponse")
+                formatter.write_str("struct haneul.rpc.v2.GetTransactionResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetTransactionResponse, V::Error>
@@ -12520,7 +12520,7 @@ impl<'de> serde::Deserialize<'de> for GetTransactionResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetTransactionResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetTransactionResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for GetTransactionResult {
@@ -12534,7 +12534,7 @@ impl serde::Serialize for GetTransactionResult {
         if self.result.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.GetTransactionResult", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GetTransactionResult", len)?;
         if let Some(v) = self.result.as_ref() {
             match v {
                 get_transaction_result::Result::Transaction(v) => {
@@ -12601,7 +12601,7 @@ impl<'de> serde::Deserialize<'de> for GetTransactionResult {
             type Value = GetTransactionResult;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.GetTransactionResult")
+                formatter.write_str("struct haneul.rpc.v2.GetTransactionResult")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<GetTransactionResult, V::Error>
@@ -12635,7 +12635,7 @@ impl<'de> serde::Deserialize<'de> for GetTransactionResult {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.GetTransactionResult", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.GetTransactionResult", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for IndexError {
@@ -12652,7 +12652,7 @@ impl serde::Serialize for IndexError {
         if self.subresult.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.IndexError", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.IndexError", len)?;
         if let Some(v) = self.index.as_ref() {
             struct_ser.serialize_field("index", v)?;
         }
@@ -12715,7 +12715,7 @@ impl<'de> serde::Deserialize<'de> for IndexError {
             type Value = IndexError;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.IndexError")
+                formatter.write_str("struct haneul.rpc.v2.IndexError")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<IndexError, V::Error>
@@ -12753,7 +12753,7 @@ impl<'de> serde::Deserialize<'de> for IndexError {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.IndexError", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.IndexError", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for Input {
@@ -12791,7 +12791,7 @@ impl serde::Serialize for Input {
         if self.literal.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Input", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Input", len)?;
         if let Some(v) = self.kind.as_ref() {
             let v = input::InputKind::try_from(*v)
                 .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", *v)))?;
@@ -12906,7 +12906,7 @@ impl<'de> serde::Deserialize<'de> for Input {
             type Value = Input;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Input")
+                formatter.write_str("struct haneul.rpc.v2.Input")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Input, V::Error>
@@ -13000,7 +13000,7 @@ impl<'de> serde::Deserialize<'de> for Input {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Input", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Input", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for input::InputKind {
@@ -13183,7 +13183,7 @@ impl serde::Serialize for Jwk {
         if self.alg.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Jwk", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Jwk", len)?;
         if let Some(v) = self.kty.as_ref() {
             struct_ser.serialize_field("kty", v)?;
         }
@@ -13258,7 +13258,7 @@ impl<'de> serde::Deserialize<'de> for Jwk {
             type Value = Jwk;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Jwk")
+                formatter.write_str("struct haneul.rpc.v2.Jwk")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Jwk, V::Error>
@@ -13308,7 +13308,7 @@ impl<'de> serde::Deserialize<'de> for Jwk {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Jwk", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Jwk", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for JwkId {
@@ -13325,7 +13325,7 @@ impl serde::Serialize for JwkId {
         if self.kid.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.JwkId", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.JwkId", len)?;
         if let Some(v) = self.iss.as_ref() {
             struct_ser.serialize_field("iss", v)?;
         }
@@ -13388,7 +13388,7 @@ impl<'de> serde::Deserialize<'de> for JwkId {
             type Value = JwkId;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.JwkId")
+                formatter.write_str("struct haneul.rpc.v2.JwkId")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<JwkId, V::Error>
@@ -13422,7 +13422,7 @@ impl<'de> serde::Deserialize<'de> for JwkId {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.JwkId", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.JwkId", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for Linkage {
@@ -13442,7 +13442,7 @@ impl serde::Serialize for Linkage {
         if self.upgraded_version.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Linkage", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Linkage", len)?;
         if let Some(v) = self.original_id.as_ref() {
             struct_ser.serialize_field("originalId", v)?;
         }
@@ -13516,7 +13516,7 @@ impl<'de> serde::Deserialize<'de> for Linkage {
             type Value = Linkage;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Linkage")
+                formatter.write_str("struct haneul.rpc.v2.Linkage")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Linkage, V::Error>
@@ -13560,7 +13560,7 @@ impl<'de> serde::Deserialize<'de> for Linkage {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Linkage", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Linkage", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ListBalancesRequest {
@@ -13580,7 +13580,7 @@ impl serde::Serialize for ListBalancesRequest {
         if self.page_token.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ListBalancesRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ListBalancesRequest", len)?;
         if let Some(v) = self.owner.as_ref() {
             struct_ser.serialize_field("owner", v)?;
         }
@@ -13653,7 +13653,7 @@ impl<'de> serde::Deserialize<'de> for ListBalancesRequest {
             type Value = ListBalancesRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ListBalancesRequest")
+                formatter.write_str("struct haneul.rpc.v2.ListBalancesRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ListBalancesRequest, V::Error>
@@ -13699,7 +13699,7 @@ impl<'de> serde::Deserialize<'de> for ListBalancesRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ListBalancesRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ListBalancesRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ListBalancesResponse {
@@ -13716,7 +13716,7 @@ impl serde::Serialize for ListBalancesResponse {
         if self.next_page_token.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ListBalancesResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ListBalancesResponse", len)?;
         if !self.balances.is_empty() {
             struct_ser.serialize_field("balances", &self.balances)?;
         }
@@ -13782,7 +13782,7 @@ impl<'de> serde::Deserialize<'de> for ListBalancesResponse {
             type Value = ListBalancesResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ListBalancesResponse")
+                formatter.write_str("struct haneul.rpc.v2.ListBalancesResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ListBalancesResponse, V::Error>
@@ -13818,7 +13818,7 @@ impl<'de> serde::Deserialize<'de> for ListBalancesResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ListBalancesResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ListBalancesResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ListDynamicFieldsRequest {
@@ -13841,7 +13841,7 @@ impl serde::Serialize for ListDynamicFieldsRequest {
         if self.read_mask.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ListDynamicFieldsRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ListDynamicFieldsRequest", len)?;
         if let Some(v) = self.parent.as_ref() {
             struct_ser.serialize_field("parent", v)?;
         }
@@ -13921,7 +13921,7 @@ impl<'de> serde::Deserialize<'de> for ListDynamicFieldsRequest {
             type Value = ListDynamicFieldsRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ListDynamicFieldsRequest")
+                formatter.write_str("struct haneul.rpc.v2.ListDynamicFieldsRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ListDynamicFieldsRequest, V::Error>
@@ -13975,7 +13975,7 @@ impl<'de> serde::Deserialize<'de> for ListDynamicFieldsRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ListDynamicFieldsRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ListDynamicFieldsRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ListDynamicFieldsResponse {
@@ -13992,7 +13992,7 @@ impl serde::Serialize for ListDynamicFieldsResponse {
         if self.next_page_token.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ListDynamicFieldsResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ListDynamicFieldsResponse", len)?;
         if !self.dynamic_fields.is_empty() {
             struct_ser.serialize_field("dynamicFields", &self.dynamic_fields)?;
         }
@@ -14059,7 +14059,7 @@ impl<'de> serde::Deserialize<'de> for ListDynamicFieldsResponse {
             type Value = ListDynamicFieldsResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ListDynamicFieldsResponse")
+                formatter.write_str("struct haneul.rpc.v2.ListDynamicFieldsResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ListDynamicFieldsResponse, V::Error>
@@ -14095,7 +14095,7 @@ impl<'de> serde::Deserialize<'de> for ListDynamicFieldsResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ListDynamicFieldsResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ListDynamicFieldsResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ListOwnedObjectsRequest {
@@ -14121,7 +14121,7 @@ impl serde::Serialize for ListOwnedObjectsRequest {
         if self.object_type.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ListOwnedObjectsRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ListOwnedObjectsRequest", len)?;
         if let Some(v) = self.owner.as_ref() {
             struct_ser.serialize_field("owner", v)?;
         }
@@ -14208,7 +14208,7 @@ impl<'de> serde::Deserialize<'de> for ListOwnedObjectsRequest {
             type Value = ListOwnedObjectsRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ListOwnedObjectsRequest")
+                formatter.write_str("struct haneul.rpc.v2.ListOwnedObjectsRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ListOwnedObjectsRequest, V::Error>
@@ -14270,7 +14270,7 @@ impl<'de> serde::Deserialize<'de> for ListOwnedObjectsRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ListOwnedObjectsRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ListOwnedObjectsRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ListOwnedObjectsResponse {
@@ -14287,7 +14287,7 @@ impl serde::Serialize for ListOwnedObjectsResponse {
         if self.next_page_token.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ListOwnedObjectsResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ListOwnedObjectsResponse", len)?;
         if !self.objects.is_empty() {
             struct_ser.serialize_field("objects", &self.objects)?;
         }
@@ -14353,7 +14353,7 @@ impl<'de> serde::Deserialize<'de> for ListOwnedObjectsResponse {
             type Value = ListOwnedObjectsResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ListOwnedObjectsResponse")
+                formatter.write_str("struct haneul.rpc.v2.ListOwnedObjectsResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ListOwnedObjectsResponse, V::Error>
@@ -14389,7 +14389,7 @@ impl<'de> serde::Deserialize<'de> for ListOwnedObjectsResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ListOwnedObjectsResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ListOwnedObjectsResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ListPackageVersionsRequest {
@@ -14409,7 +14409,7 @@ impl serde::Serialize for ListPackageVersionsRequest {
         if self.page_token.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ListPackageVersionsRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ListPackageVersionsRequest", len)?;
         if let Some(v) = self.package_id.as_ref() {
             struct_ser.serialize_field("packageId", v)?;
         }
@@ -14483,7 +14483,7 @@ impl<'de> serde::Deserialize<'de> for ListPackageVersionsRequest {
             type Value = ListPackageVersionsRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ListPackageVersionsRequest")
+                formatter.write_str("struct haneul.rpc.v2.ListPackageVersionsRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ListPackageVersionsRequest, V::Error>
@@ -14529,7 +14529,7 @@ impl<'de> serde::Deserialize<'de> for ListPackageVersionsRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ListPackageVersionsRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ListPackageVersionsRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ListPackageVersionsResponse {
@@ -14546,7 +14546,7 @@ impl serde::Serialize for ListPackageVersionsResponse {
         if self.next_page_token.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ListPackageVersionsResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ListPackageVersionsResponse", len)?;
         if !self.versions.is_empty() {
             struct_ser.serialize_field("versions", &self.versions)?;
         }
@@ -14612,7 +14612,7 @@ impl<'de> serde::Deserialize<'de> for ListPackageVersionsResponse {
             type Value = ListPackageVersionsResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ListPackageVersionsResponse")
+                formatter.write_str("struct haneul.rpc.v2.ListPackageVersionsResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ListPackageVersionsResponse, V::Error>
@@ -14648,7 +14648,7 @@ impl<'de> serde::Deserialize<'de> for ListPackageVersionsResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ListPackageVersionsResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ListPackageVersionsResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for LookupNameRequest {
@@ -14662,7 +14662,7 @@ impl serde::Serialize for LookupNameRequest {
         if self.name.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.LookupNameRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.LookupNameRequest", len)?;
         if let Some(v) = self.name.as_ref() {
             struct_ser.serialize_field("name", v)?;
         }
@@ -14719,7 +14719,7 @@ impl<'de> serde::Deserialize<'de> for LookupNameRequest {
             type Value = LookupNameRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.LookupNameRequest")
+                formatter.write_str("struct haneul.rpc.v2.LookupNameRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<LookupNameRequest, V::Error>
@@ -14745,7 +14745,7 @@ impl<'de> serde::Deserialize<'de> for LookupNameRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.LookupNameRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.LookupNameRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for LookupNameResponse {
@@ -14759,7 +14759,7 @@ impl serde::Serialize for LookupNameResponse {
         if self.record.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.LookupNameResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.LookupNameResponse", len)?;
         if let Some(v) = self.record.as_ref() {
             struct_ser.serialize_field("record", v)?;
         }
@@ -14816,7 +14816,7 @@ impl<'de> serde::Deserialize<'de> for LookupNameResponse {
             type Value = LookupNameResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.LookupNameResponse")
+                formatter.write_str("struct haneul.rpc.v2.LookupNameResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<LookupNameResponse, V::Error>
@@ -14842,7 +14842,7 @@ impl<'de> serde::Deserialize<'de> for LookupNameResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.LookupNameResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.LookupNameResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for MakeMoveVector {
@@ -14859,7 +14859,7 @@ impl serde::Serialize for MakeMoveVector {
         if !self.elements.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.MakeMoveVector", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.MakeMoveVector", len)?;
         if let Some(v) = self.element_type.as_ref() {
             struct_ser.serialize_field("elementType", v)?;
         }
@@ -14923,7 +14923,7 @@ impl<'de> serde::Deserialize<'de> for MakeMoveVector {
             type Value = MakeMoveVector;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.MakeMoveVector")
+                formatter.write_str("struct haneul.rpc.v2.MakeMoveVector")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<MakeMoveVector, V::Error>
@@ -14957,7 +14957,7 @@ impl<'de> serde::Deserialize<'de> for MakeMoveVector {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.MakeMoveVector", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.MakeMoveVector", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for MergeCoins {
@@ -14974,7 +14974,7 @@ impl serde::Serialize for MergeCoins {
         if !self.coins_to_merge.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.MergeCoins", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.MergeCoins", len)?;
         if let Some(v) = self.coin.as_ref() {
             struct_ser.serialize_field("coin", v)?;
         }
@@ -15038,7 +15038,7 @@ impl<'de> serde::Deserialize<'de> for MergeCoins {
             type Value = MergeCoins;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.MergeCoins")
+                formatter.write_str("struct haneul.rpc.v2.MergeCoins")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<MergeCoins, V::Error>
@@ -15072,7 +15072,7 @@ impl<'de> serde::Deserialize<'de> for MergeCoins {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.MergeCoins", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.MergeCoins", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for Module {
@@ -15095,7 +15095,7 @@ impl serde::Serialize for Module {
         if !self.functions.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Module", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Module", len)?;
         if let Some(v) = self.name.as_ref() {
             struct_ser.serialize_field("name", v)?;
         }
@@ -15172,7 +15172,7 @@ impl<'de> serde::Deserialize<'de> for Module {
             type Value = Module;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Module")
+                formatter.write_str("struct haneul.rpc.v2.Module")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Module, V::Error>
@@ -15224,7 +15224,7 @@ impl<'de> serde::Deserialize<'de> for Module {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Module", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Module", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for MoveAbort {
@@ -15244,7 +15244,7 @@ impl serde::Serialize for MoveAbort {
         if self.clever_error.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.MoveAbort", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.MoveAbort", len)?;
         if let Some(v) = self.abort_code.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -15317,7 +15317,7 @@ impl<'de> serde::Deserialize<'de> for MoveAbort {
             type Value = MoveAbort;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.MoveAbort")
+                formatter.write_str("struct haneul.rpc.v2.MoveAbort")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<MoveAbort, V::Error>
@@ -15361,7 +15361,7 @@ impl<'de> serde::Deserialize<'de> for MoveAbort {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.MoveAbort", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.MoveAbort", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for MoveCall {
@@ -15387,7 +15387,7 @@ impl serde::Serialize for MoveCall {
         if !self.arguments.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.MoveCall", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.MoveCall", len)?;
         if let Some(v) = self.package.as_ref() {
             struct_ser.serialize_field("package", v)?;
         }
@@ -15469,7 +15469,7 @@ impl<'de> serde::Deserialize<'de> for MoveCall {
             type Value = MoveCall;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.MoveCall")
+                formatter.write_str("struct haneul.rpc.v2.MoveCall")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<MoveCall, V::Error>
@@ -15527,7 +15527,7 @@ impl<'de> serde::Deserialize<'de> for MoveCall {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.MoveCall", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.MoveCall", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for MoveLocation {
@@ -15553,7 +15553,7 @@ impl serde::Serialize for MoveLocation {
         if self.function_name.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.MoveLocation", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.MoveLocation", len)?;
         if let Some(v) = self.package.as_ref() {
             struct_ser.serialize_field("package", v)?;
         }
@@ -15635,7 +15635,7 @@ impl<'de> serde::Deserialize<'de> for MoveLocation {
             type Value = MoveLocation;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.MoveLocation")
+                formatter.write_str("struct haneul.rpc.v2.MoveLocation")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<MoveLocation, V::Error>
@@ -15697,7 +15697,7 @@ impl<'de> serde::Deserialize<'de> for MoveLocation {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.MoveLocation", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.MoveLocation", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for MoveTable {
@@ -15714,7 +15714,7 @@ impl serde::Serialize for MoveTable {
         if self.size.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.MoveTable", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.MoveTable", len)?;
         if let Some(v) = self.id.as_ref() {
             struct_ser.serialize_field("id", v)?;
         }
@@ -15779,7 +15779,7 @@ impl<'de> serde::Deserialize<'de> for MoveTable {
             type Value = MoveTable;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.MoveTable")
+                formatter.write_str("struct haneul.rpc.v2.MoveTable")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<MoveTable, V::Error>
@@ -15815,7 +15815,7 @@ impl<'de> serde::Deserialize<'de> for MoveTable {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.MoveTable", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.MoveTable", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for MultisigAggregatedSignature {
@@ -15838,7 +15838,7 @@ impl serde::Serialize for MultisigAggregatedSignature {
         if self.committee.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.MultisigAggregatedSignature", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.MultisigAggregatedSignature", len)?;
         if !self.signatures.is_empty() {
             struct_ser.serialize_field("signatures", &self.signatures)?;
         }
@@ -15916,7 +15916,7 @@ impl<'de> serde::Deserialize<'de> for MultisigAggregatedSignature {
             type Value = MultisigAggregatedSignature;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.MultisigAggregatedSignature")
+                formatter.write_str("struct haneul.rpc.v2.MultisigAggregatedSignature")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<MultisigAggregatedSignature, V::Error>
@@ -15970,7 +15970,7 @@ impl<'de> serde::Deserialize<'de> for MultisigAggregatedSignature {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.MultisigAggregatedSignature", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.MultisigAggregatedSignature", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for MultisigCommittee {
@@ -15987,7 +15987,7 @@ impl serde::Serialize for MultisigCommittee {
         if self.threshold.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.MultisigCommittee", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.MultisigCommittee", len)?;
         if !self.members.is_empty() {
             struct_ser.serialize_field("members", &self.members)?;
         }
@@ -16050,7 +16050,7 @@ impl<'de> serde::Deserialize<'de> for MultisigCommittee {
             type Value = MultisigCommittee;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.MultisigCommittee")
+                formatter.write_str("struct haneul.rpc.v2.MultisigCommittee")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<MultisigCommittee, V::Error>
@@ -16086,7 +16086,7 @@ impl<'de> serde::Deserialize<'de> for MultisigCommittee {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.MultisigCommittee", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.MultisigCommittee", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for MultisigMember {
@@ -16103,7 +16103,7 @@ impl serde::Serialize for MultisigMember {
         if self.weight.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.MultisigMember", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.MultisigMember", len)?;
         if let Some(v) = self.public_key.as_ref() {
             struct_ser.serialize_field("publicKey", v)?;
         }
@@ -16167,7 +16167,7 @@ impl<'de> serde::Deserialize<'de> for MultisigMember {
             type Value = MultisigMember;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.MultisigMember")
+                formatter.write_str("struct haneul.rpc.v2.MultisigMember")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<MultisigMember, V::Error>
@@ -16203,7 +16203,7 @@ impl<'de> serde::Deserialize<'de> for MultisigMember {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.MultisigMember", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.MultisigMember", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for MultisigMemberPublicKey {
@@ -16223,7 +16223,7 @@ impl serde::Serialize for MultisigMemberPublicKey {
         if self.zklogin.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.MultisigMemberPublicKey", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.MultisigMemberPublicKey", len)?;
         if let Some(v) = self.scheme.as_ref() {
             let v = SignatureScheme::try_from(*v)
                 .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", *v)))?;
@@ -16297,7 +16297,7 @@ impl<'de> serde::Deserialize<'de> for MultisigMemberPublicKey {
             type Value = MultisigMemberPublicKey;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.MultisigMemberPublicKey")
+                formatter.write_str("struct haneul.rpc.v2.MultisigMemberPublicKey")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<MultisigMemberPublicKey, V::Error>
@@ -16341,7 +16341,7 @@ impl<'de> serde::Deserialize<'de> for MultisigMemberPublicKey {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.MultisigMemberPublicKey", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.MultisigMemberPublicKey", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for MultisigMemberSignature {
@@ -16364,7 +16364,7 @@ impl serde::Serialize for MultisigMemberSignature {
         if self.passkey.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.MultisigMemberSignature", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.MultisigMemberSignature", len)?;
         if let Some(v) = self.scheme.as_ref() {
             let v = SignatureScheme::try_from(*v)
                 .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", *v)))?;
@@ -16443,7 +16443,7 @@ impl<'de> serde::Deserialize<'de> for MultisigMemberSignature {
             type Value = MultisigMemberSignature;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.MultisigMemberSignature")
+                formatter.write_str("struct haneul.rpc.v2.MultisigMemberSignature")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<MultisigMemberSignature, V::Error>
@@ -16495,7 +16495,7 @@ impl<'de> serde::Deserialize<'de> for MultisigMemberSignature {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.MultisigMemberSignature", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.MultisigMemberSignature", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for NameRecord {
@@ -16524,7 +16524,7 @@ impl serde::Serialize for NameRecord {
         if !self.data.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.NameRecord", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.NameRecord", len)?;
         if let Some(v) = self.id.as_ref() {
             struct_ser.serialize_field("id", v)?;
         }
@@ -16614,7 +16614,7 @@ impl<'de> serde::Deserialize<'de> for NameRecord {
             type Value = NameRecord;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.NameRecord")
+                formatter.write_str("struct haneul.rpc.v2.NameRecord")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<NameRecord, V::Error>
@@ -16682,7 +16682,7 @@ impl<'de> serde::Deserialize<'de> for NameRecord {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.NameRecord", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.NameRecord", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for Object {
@@ -16732,7 +16732,7 @@ impl serde::Serialize for Object {
         if self.balance.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Object", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Object", len)?;
         if let Some(v) = self.bcs.as_ref() {
             struct_ser.serialize_field("bcs", v)?;
         }
@@ -16872,7 +16872,7 @@ impl<'de> serde::Deserialize<'de> for Object {
             type Value = Object;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Object")
+                formatter.write_str("struct haneul.rpc.v2.Object")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Object, V::Error>
@@ -17000,7 +17000,7 @@ impl<'de> serde::Deserialize<'de> for Object {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Object", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Object", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ObjectReference {
@@ -17020,7 +17020,7 @@ impl serde::Serialize for ObjectReference {
         if self.digest.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ObjectReference", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ObjectReference", len)?;
         if let Some(v) = self.object_id.as_ref() {
             struct_ser.serialize_field("objectId", v)?;
         }
@@ -17092,7 +17092,7 @@ impl<'de> serde::Deserialize<'de> for ObjectReference {
             type Value = ObjectReference;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ObjectReference")
+                formatter.write_str("struct haneul.rpc.v2.ObjectReference")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ObjectReference, V::Error>
@@ -17136,7 +17136,7 @@ impl<'de> serde::Deserialize<'de> for ObjectReference {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ObjectReference", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ObjectReference", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ObjectSet {
@@ -17150,7 +17150,7 @@ impl serde::Serialize for ObjectSet {
         if !self.objects.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ObjectSet", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ObjectSet", len)?;
         if !self.objects.is_empty() {
             struct_ser.serialize_field("objects", &self.objects)?;
         }
@@ -17207,7 +17207,7 @@ impl<'de> serde::Deserialize<'de> for ObjectSet {
             type Value = ObjectSet;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ObjectSet")
+                formatter.write_str("struct haneul.rpc.v2.ObjectSet")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ObjectSet, V::Error>
@@ -17233,7 +17233,7 @@ impl<'de> serde::Deserialize<'de> for ObjectSet {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ObjectSet", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ObjectSet", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for OpenSignature {
@@ -17250,7 +17250,7 @@ impl serde::Serialize for OpenSignature {
         if self.body.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.OpenSignature", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.OpenSignature", len)?;
         if let Some(v) = self.reference.as_ref() {
             let v = open_signature::Reference::try_from(*v)
                 .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", *v)))?;
@@ -17315,7 +17315,7 @@ impl<'de> serde::Deserialize<'de> for OpenSignature {
             type Value = OpenSignature;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.OpenSignature")
+                formatter.write_str("struct haneul.rpc.v2.OpenSignature")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<OpenSignature, V::Error>
@@ -17349,7 +17349,7 @@ impl<'de> serde::Deserialize<'de> for OpenSignature {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.OpenSignature", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.OpenSignature", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for open_signature::Reference {
@@ -17446,7 +17446,7 @@ impl serde::Serialize for OpenSignatureBody {
         if self.type_parameter.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.OpenSignatureBody", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.OpenSignatureBody", len)?;
         if let Some(v) = self.r#type.as_ref() {
             let v = open_signature_body::Type::try_from(*v)
                 .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", *v)))?;
@@ -17526,7 +17526,7 @@ impl<'de> serde::Deserialize<'de> for OpenSignatureBody {
             type Value = OpenSignatureBody;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.OpenSignatureBody")
+                formatter.write_str("struct haneul.rpc.v2.OpenSignatureBody")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<OpenSignatureBody, V::Error>
@@ -17578,7 +17578,7 @@ impl<'de> serde::Deserialize<'de> for OpenSignatureBody {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.OpenSignatureBody", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.OpenSignatureBody", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for open_signature_body::Type {
@@ -17699,7 +17699,7 @@ impl serde::Serialize for Owner {
         if self.version.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Owner", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Owner", len)?;
         if let Some(v) = self.kind.as_ref() {
             let v = owner::OwnerKind::try_from(*v)
                 .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", *v)))?;
@@ -17772,7 +17772,7 @@ impl<'de> serde::Deserialize<'de> for Owner {
             type Value = Owner;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Owner")
+                formatter.write_str("struct haneul.rpc.v2.Owner")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Owner, V::Error>
@@ -17816,7 +17816,7 @@ impl<'de> serde::Deserialize<'de> for Owner {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Owner", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Owner", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for owner::OwnerKind {
@@ -17928,7 +17928,7 @@ impl serde::Serialize for Package {
         if !self.linkage.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Package", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Package", len)?;
         if let Some(v) = self.storage_id.as_ref() {
             struct_ser.serialize_field("storageId", v)?;
         }
@@ -18020,7 +18020,7 @@ impl<'de> serde::Deserialize<'de> for Package {
             type Value = Package;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Package")
+                formatter.write_str("struct haneul.rpc.v2.Package")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Package, V::Error>
@@ -18088,7 +18088,7 @@ impl<'de> serde::Deserialize<'de> for Package {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Package", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Package", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for PackageUpgradeError {
@@ -18114,7 +18114,7 @@ impl serde::Serialize for PackageUpgradeError {
         if self.ticket_id.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.PackageUpgradeError", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.PackageUpgradeError", len)?;
         if let Some(v) = self.kind.as_ref() {
             let v = package_upgrade_error::PackageUpgradeErrorKind::try_from(*v)
                 .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", *v)))?;
@@ -18199,7 +18199,7 @@ impl<'de> serde::Deserialize<'de> for PackageUpgradeError {
             type Value = PackageUpgradeError;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.PackageUpgradeError")
+                formatter.write_str("struct haneul.rpc.v2.PackageUpgradeError")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<PackageUpgradeError, V::Error>
@@ -18259,7 +18259,7 @@ impl<'de> serde::Deserialize<'de> for PackageUpgradeError {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.PackageUpgradeError", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.PackageUpgradeError", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for package_upgrade_error::PackageUpgradeErrorKind {
@@ -18362,7 +18362,7 @@ impl serde::Serialize for PackageVersion {
         if self.version.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.PackageVersion", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.PackageVersion", len)?;
         if let Some(v) = self.package_id.as_ref() {
             struct_ser.serialize_field("packageId", v)?;
         }
@@ -18428,7 +18428,7 @@ impl<'de> serde::Deserialize<'de> for PackageVersion {
             type Value = PackageVersion;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.PackageVersion")
+                formatter.write_str("struct haneul.rpc.v2.PackageVersion")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<PackageVersion, V::Error>
@@ -18464,7 +18464,7 @@ impl<'de> serde::Deserialize<'de> for PackageVersion {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.PackageVersion", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.PackageVersion", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for PasskeyAuthenticator {
@@ -18484,7 +18484,7 @@ impl serde::Serialize for PasskeyAuthenticator {
         if self.signature.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.PasskeyAuthenticator", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.PasskeyAuthenticator", len)?;
         if let Some(v) = self.authenticator_data.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -18557,7 +18557,7 @@ impl<'de> serde::Deserialize<'de> for PasskeyAuthenticator {
             type Value = PasskeyAuthenticator;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.PasskeyAuthenticator")
+                formatter.write_str("struct haneul.rpc.v2.PasskeyAuthenticator")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<PasskeyAuthenticator, V::Error>
@@ -18601,7 +18601,7 @@ impl<'de> serde::Deserialize<'de> for PasskeyAuthenticator {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.PasskeyAuthenticator", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.PasskeyAuthenticator", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ProgrammableTransaction {
@@ -18618,7 +18618,7 @@ impl serde::Serialize for ProgrammableTransaction {
         if !self.commands.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ProgrammableTransaction", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ProgrammableTransaction", len)?;
         if !self.inputs.is_empty() {
             struct_ser.serialize_field("inputs", &self.inputs)?;
         }
@@ -18681,7 +18681,7 @@ impl<'de> serde::Deserialize<'de> for ProgrammableTransaction {
             type Value = ProgrammableTransaction;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ProgrammableTransaction")
+                formatter.write_str("struct haneul.rpc.v2.ProgrammableTransaction")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ProgrammableTransaction, V::Error>
@@ -18715,7 +18715,7 @@ impl<'de> serde::Deserialize<'de> for ProgrammableTransaction {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ProgrammableTransaction", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ProgrammableTransaction", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ProtocolConfig {
@@ -18735,7 +18735,7 @@ impl serde::Serialize for ProtocolConfig {
         if !self.attributes.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ProtocolConfig", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ProtocolConfig", len)?;
         if let Some(v) = self.protocol_version.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -18808,7 +18808,7 @@ impl<'de> serde::Deserialize<'de> for ProtocolConfig {
             type Value = ProtocolConfig;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ProtocolConfig")
+                formatter.write_str("struct haneul.rpc.v2.ProtocolConfig")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ProtocolConfig, V::Error>
@@ -18856,7 +18856,7 @@ impl<'de> serde::Deserialize<'de> for ProtocolConfig {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ProtocolConfig", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ProtocolConfig", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for Publish {
@@ -18873,7 +18873,7 @@ impl serde::Serialize for Publish {
         if !self.dependencies.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Publish", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Publish", len)?;
         if !self.modules.is_empty() {
             struct_ser.serialize_field("modules", &self.modules.iter().map(crate::_serde::base64::encode).collect::<Vec<_>>())?;
         }
@@ -18936,7 +18936,7 @@ impl<'de> serde::Deserialize<'de> for Publish {
             type Value = Publish;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Publish")
+                formatter.write_str("struct haneul.rpc.v2.Publish")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Publish, V::Error>
@@ -18973,7 +18973,7 @@ impl<'de> serde::Deserialize<'de> for Publish {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Publish", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Publish", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for RandomnessStateUpdate {
@@ -18996,7 +18996,7 @@ impl serde::Serialize for RandomnessStateUpdate {
         if self.randomness_object_initial_shared_version.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.RandomnessStateUpdate", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.RandomnessStateUpdate", len)?;
         if let Some(v) = self.epoch.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -19082,7 +19082,7 @@ impl<'de> serde::Deserialize<'de> for RandomnessStateUpdate {
             type Value = RandomnessStateUpdate;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.RandomnessStateUpdate")
+                formatter.write_str("struct haneul.rpc.v2.RandomnessStateUpdate")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<RandomnessStateUpdate, V::Error>
@@ -19140,7 +19140,7 @@ impl<'de> serde::Deserialize<'de> for RandomnessStateUpdate {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.RandomnessStateUpdate", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.RandomnessStateUpdate", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for RegulatedCoinMetadata {
@@ -19169,7 +19169,7 @@ impl serde::Serialize for RegulatedCoinMetadata {
         if self.coin_regulated_state.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.RegulatedCoinMetadata", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.RegulatedCoinMetadata", len)?;
         if let Some(v) = self.id.as_ref() {
             struct_ser.serialize_field("id", v)?;
         }
@@ -19262,7 +19262,7 @@ impl<'de> serde::Deserialize<'de> for RegulatedCoinMetadata {
             type Value = RegulatedCoinMetadata;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.RegulatedCoinMetadata")
+                formatter.write_str("struct haneul.rpc.v2.RegulatedCoinMetadata")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<RegulatedCoinMetadata, V::Error>
@@ -19330,7 +19330,7 @@ impl<'de> serde::Deserialize<'de> for RegulatedCoinMetadata {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.RegulatedCoinMetadata", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.RegulatedCoinMetadata", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for regulated_coin_metadata::CoinRegulatedState {
@@ -19418,7 +19418,7 @@ impl serde::Serialize for ReverseLookupNameRequest {
         if self.address.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ReverseLookupNameRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ReverseLookupNameRequest", len)?;
         if let Some(v) = self.address.as_ref() {
             struct_ser.serialize_field("address", v)?;
         }
@@ -19475,7 +19475,7 @@ impl<'de> serde::Deserialize<'de> for ReverseLookupNameRequest {
             type Value = ReverseLookupNameRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ReverseLookupNameRequest")
+                formatter.write_str("struct haneul.rpc.v2.ReverseLookupNameRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ReverseLookupNameRequest, V::Error>
@@ -19501,7 +19501,7 @@ impl<'de> serde::Deserialize<'de> for ReverseLookupNameRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ReverseLookupNameRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ReverseLookupNameRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ReverseLookupNameResponse {
@@ -19515,7 +19515,7 @@ impl serde::Serialize for ReverseLookupNameResponse {
         if self.record.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ReverseLookupNameResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ReverseLookupNameResponse", len)?;
         if let Some(v) = self.record.as_ref() {
             struct_ser.serialize_field("record", v)?;
         }
@@ -19572,7 +19572,7 @@ impl<'de> serde::Deserialize<'de> for ReverseLookupNameResponse {
             type Value = ReverseLookupNameResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ReverseLookupNameResponse")
+                formatter.write_str("struct haneul.rpc.v2.ReverseLookupNameResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ReverseLookupNameResponse, V::Error>
@@ -19598,7 +19598,7 @@ impl<'de> serde::Deserialize<'de> for ReverseLookupNameResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ReverseLookupNameResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ReverseLookupNameResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for SignatureScheme {
@@ -19704,7 +19704,7 @@ impl serde::Serialize for SimpleSignature {
         if self.public_key.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.SimpleSignature", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.SimpleSignature", len)?;
         if let Some(v) = self.scheme.as_ref() {
             let v = SignatureScheme::try_from(*v)
                 .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", *v)))?;
@@ -19780,7 +19780,7 @@ impl<'de> serde::Deserialize<'de> for SimpleSignature {
             type Value = SimpleSignature;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.SimpleSignature")
+                formatter.write_str("struct haneul.rpc.v2.SimpleSignature")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<SimpleSignature, V::Error>
@@ -19826,7 +19826,7 @@ impl<'de> serde::Deserialize<'de> for SimpleSignature {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.SimpleSignature", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.SimpleSignature", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for SimulateTransactionRequest {
@@ -19849,7 +19849,7 @@ impl serde::Serialize for SimulateTransactionRequest {
         if self.do_gas_selection.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.SimulateTransactionRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.SimulateTransactionRequest", len)?;
         if let Some(v) = self.transaction.as_ref() {
             struct_ser.serialize_field("transaction", v)?;
         }
@@ -19928,7 +19928,7 @@ impl<'de> serde::Deserialize<'de> for SimulateTransactionRequest {
             type Value = SimulateTransactionRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.SimulateTransactionRequest")
+                formatter.write_str("struct haneul.rpc.v2.SimulateTransactionRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<SimulateTransactionRequest, V::Error>
@@ -19978,7 +19978,7 @@ impl<'de> serde::Deserialize<'de> for SimulateTransactionRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.SimulateTransactionRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.SimulateTransactionRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for simulate_transaction_request::TransactionChecks {
@@ -20066,7 +20066,7 @@ impl serde::Serialize for SimulateTransactionResponse {
         if !self.command_outputs.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.SimulateTransactionResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.SimulateTransactionResponse", len)?;
         if let Some(v) = self.transaction.as_ref() {
             struct_ser.serialize_field("transaction", v)?;
         }
@@ -20130,7 +20130,7 @@ impl<'de> serde::Deserialize<'de> for SimulateTransactionResponse {
             type Value = SimulateTransactionResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.SimulateTransactionResponse")
+                formatter.write_str("struct haneul.rpc.v2.SimulateTransactionResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<SimulateTransactionResponse, V::Error>
@@ -20164,7 +20164,7 @@ impl<'de> serde::Deserialize<'de> for SimulateTransactionResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.SimulateTransactionResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.SimulateTransactionResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for SizeError {
@@ -20181,7 +20181,7 @@ impl serde::Serialize for SizeError {
         if self.max_size.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.SizeError", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.SizeError", len)?;
         if let Some(v) = self.size.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -20249,7 +20249,7 @@ impl<'de> serde::Deserialize<'de> for SizeError {
             type Value = SizeError;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.SizeError")
+                formatter.write_str("struct haneul.rpc.v2.SizeError")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<SizeError, V::Error>
@@ -20287,7 +20287,7 @@ impl<'de> serde::Deserialize<'de> for SizeError {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.SizeError", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.SizeError", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for SplitCoins {
@@ -20304,7 +20304,7 @@ impl serde::Serialize for SplitCoins {
         if !self.amounts.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.SplitCoins", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.SplitCoins", len)?;
         if let Some(v) = self.coin.as_ref() {
             struct_ser.serialize_field("coin", v)?;
         }
@@ -20367,7 +20367,7 @@ impl<'de> serde::Deserialize<'de> for SplitCoins {
             type Value = SplitCoins;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.SplitCoins")
+                formatter.write_str("struct haneul.rpc.v2.SplitCoins")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<SplitCoins, V::Error>
@@ -20401,7 +20401,7 @@ impl<'de> serde::Deserialize<'de> for SplitCoins {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.SplitCoins", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.SplitCoins", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for StakeSubsidy {
@@ -20430,7 +20430,7 @@ impl serde::Serialize for StakeSubsidy {
         if self.extra_fields.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.StakeSubsidy", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.StakeSubsidy", len)?;
         if let Some(v) = self.balance.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -20530,7 +20530,7 @@ impl<'de> serde::Deserialize<'de> for StakeSubsidy {
             type Value = StakeSubsidy;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.StakeSubsidy")
+                formatter.write_str("struct haneul.rpc.v2.StakeSubsidy")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<StakeSubsidy, V::Error>
@@ -20606,7 +20606,7 @@ impl<'de> serde::Deserialize<'de> for StakeSubsidy {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.StakeSubsidy", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.StakeSubsidy", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for StakingPool {
@@ -20650,7 +20650,7 @@ impl serde::Serialize for StakingPool {
         if self.extra_fields.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.StakingPool", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.StakingPool", len)?;
         if let Some(v) = self.id.as_ref() {
             struct_ser.serialize_field("id", v)?;
         }
@@ -20793,7 +20793,7 @@ impl<'de> serde::Deserialize<'de> for StakingPool {
             type Value = StakingPool;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.StakingPool")
+                formatter.write_str("struct haneul.rpc.v2.StakingPool")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<StakingPool, V::Error>
@@ -20915,7 +20915,7 @@ impl<'de> serde::Deserialize<'de> for StakingPool {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.StakingPool", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.StakingPool", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for StorageFund {
@@ -20932,7 +20932,7 @@ impl serde::Serialize for StorageFund {
         if self.non_refundable_balance.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.StorageFund", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.StorageFund", len)?;
         if let Some(v) = self.total_object_storage_rebates.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -21001,7 +21001,7 @@ impl<'de> serde::Deserialize<'de> for StorageFund {
             type Value = StorageFund;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.StorageFund")
+                formatter.write_str("struct haneul.rpc.v2.StorageFund")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<StorageFund, V::Error>
@@ -21039,7 +21039,7 @@ impl<'de> serde::Deserialize<'de> for StorageFund {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.StorageFund", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.StorageFund", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for SubscribeCheckpointsRequest {
@@ -21053,7 +21053,7 @@ impl serde::Serialize for SubscribeCheckpointsRequest {
         if self.read_mask.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.SubscribeCheckpointsRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.SubscribeCheckpointsRequest", len)?;
         if let Some(v) = self.read_mask.as_ref() {
             struct_ser.serialize_field("readMask", &crate::_serde::FieldMaskSerializer(v))?;
         }
@@ -21111,7 +21111,7 @@ impl<'de> serde::Deserialize<'de> for SubscribeCheckpointsRequest {
             type Value = SubscribeCheckpointsRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.SubscribeCheckpointsRequest")
+                formatter.write_str("struct haneul.rpc.v2.SubscribeCheckpointsRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<SubscribeCheckpointsRequest, V::Error>
@@ -21137,7 +21137,7 @@ impl<'de> serde::Deserialize<'de> for SubscribeCheckpointsRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.SubscribeCheckpointsRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.SubscribeCheckpointsRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for SubscribeCheckpointsResponse {
@@ -21154,7 +21154,7 @@ impl serde::Serialize for SubscribeCheckpointsResponse {
         if self.checkpoint.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.SubscribeCheckpointsResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.SubscribeCheckpointsResponse", len)?;
         if let Some(v) = self.cursor.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -21219,7 +21219,7 @@ impl<'de> serde::Deserialize<'de> for SubscribeCheckpointsResponse {
             type Value = SubscribeCheckpointsResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.SubscribeCheckpointsResponse")
+                formatter.write_str("struct haneul.rpc.v2.SubscribeCheckpointsResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<SubscribeCheckpointsResponse, V::Error>
@@ -21255,7 +21255,7 @@ impl<'de> serde::Deserialize<'de> for SubscribeCheckpointsResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.SubscribeCheckpointsResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.SubscribeCheckpointsResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for SystemPackage {
@@ -21275,7 +21275,7 @@ impl serde::Serialize for SystemPackage {
         if !self.dependencies.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.SystemPackage", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.SystemPackage", len)?;
         if let Some(v) = self.version.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -21346,7 +21346,7 @@ impl<'de> serde::Deserialize<'de> for SystemPackage {
             type Value = SystemPackage;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.SystemPackage")
+                formatter.write_str("struct haneul.rpc.v2.SystemPackage")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<SystemPackage, V::Error>
@@ -21393,7 +21393,7 @@ impl<'de> serde::Deserialize<'de> for SystemPackage {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.SystemPackage", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.SystemPackage", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for SystemParameters {
@@ -21431,7 +21431,7 @@ impl serde::Serialize for SystemParameters {
         if self.extra_fields.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.SystemParameters", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.SystemParameters", len)?;
         if let Some(v) = self.epoch_duration_ms.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -21561,7 +21561,7 @@ impl<'de> serde::Deserialize<'de> for SystemParameters {
             type Value = SystemParameters;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.SystemParameters")
+                formatter.write_str("struct haneul.rpc.v2.SystemParameters")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<SystemParameters, V::Error>
@@ -21667,7 +21667,7 @@ impl<'de> serde::Deserialize<'de> for SystemParameters {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.SystemParameters", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.SystemParameters", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for SystemState {
@@ -21726,7 +21726,7 @@ impl serde::Serialize for SystemState {
         if self.extra_fields.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.SystemState", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.SystemState", len)?;
         if let Some(v) = self.version.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -21903,7 +21903,7 @@ impl<'de> serde::Deserialize<'de> for SystemState {
             type Value = SystemState;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.SystemState")
+                formatter.write_str("struct haneul.rpc.v2.SystemState")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<SystemState, V::Error>
@@ -22067,7 +22067,7 @@ impl<'de> serde::Deserialize<'de> for SystemState {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.SystemState", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.SystemState", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for Transaction {
@@ -22099,7 +22099,7 @@ impl serde::Serialize for Transaction {
         if self.expiration.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Transaction", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Transaction", len)?;
         if let Some(v) = self.bcs.as_ref() {
             struct_ser.serialize_field("bcs", v)?;
         }
@@ -22193,7 +22193,7 @@ impl<'de> serde::Deserialize<'de> for Transaction {
             type Value = Transaction;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Transaction")
+                formatter.write_str("struct haneul.rpc.v2.Transaction")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Transaction, V::Error>
@@ -22269,7 +22269,7 @@ impl<'de> serde::Deserialize<'de> for Transaction {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Transaction", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Transaction", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for TransactionEffects {
@@ -22325,7 +22325,7 @@ impl serde::Serialize for TransactionEffects {
         if !self.unchanged_loaded_runtime_objects.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.TransactionEffects", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.TransactionEffects", len)?;
         if let Some(v) = self.bcs.as_ref() {
             struct_ser.serialize_field("bcs", v)?;
         }
@@ -22479,7 +22479,7 @@ impl<'de> serde::Deserialize<'de> for TransactionEffects {
             type Value = TransactionEffects;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.TransactionEffects")
+                formatter.write_str("struct haneul.rpc.v2.TransactionEffects")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<TransactionEffects, V::Error>
@@ -22623,7 +22623,7 @@ impl<'de> serde::Deserialize<'de> for TransactionEffects {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.TransactionEffects", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.TransactionEffects", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for TransactionEvents {
@@ -22643,7 +22643,7 @@ impl serde::Serialize for TransactionEvents {
         if !self.events.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.TransactionEvents", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.TransactionEvents", len)?;
         if let Some(v) = self.bcs.as_ref() {
             struct_ser.serialize_field("bcs", v)?;
         }
@@ -22712,7 +22712,7 @@ impl<'de> serde::Deserialize<'de> for TransactionEvents {
             type Value = TransactionEvents;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.TransactionEvents")
+                formatter.write_str("struct haneul.rpc.v2.TransactionEvents")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<TransactionEvents, V::Error>
@@ -22754,7 +22754,7 @@ impl<'de> serde::Deserialize<'de> for TransactionEvents {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.TransactionEvents", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.TransactionEvents", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for TransactionExpiration {
@@ -22786,7 +22786,7 @@ impl serde::Serialize for TransactionExpiration {
         if self.nonce.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.TransactionExpiration", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.TransactionExpiration", len)?;
         if let Some(v) = self.kind.as_ref() {
             let v = transaction_expiration::TransactionExpirationKind::try_from(*v)
                 .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", *v)))?;
@@ -22888,7 +22888,7 @@ impl<'de> serde::Deserialize<'de> for TransactionExpiration {
             type Value = TransactionExpiration;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.TransactionExpiration")
+                formatter.write_str("struct haneul.rpc.v2.TransactionExpiration")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<TransactionExpiration, V::Error>
@@ -22968,7 +22968,7 @@ impl<'de> serde::Deserialize<'de> for TransactionExpiration {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.TransactionExpiration", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.TransactionExpiration", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for transaction_expiration::TransactionExpirationKind {
@@ -23062,7 +23062,7 @@ impl serde::Serialize for TransactionKind {
         if self.data.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.TransactionKind", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.TransactionKind", len)?;
         if let Some(v) = self.kind.as_ref() {
             let v = transaction_kind::Kind::try_from(*v)
                 .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", *v)))?;
@@ -23173,7 +23173,7 @@ impl<'de> serde::Deserialize<'de> for TransactionKind {
             type Value = TransactionKind;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.TransactionKind")
+                formatter.write_str("struct haneul.rpc.v2.TransactionKind")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<TransactionKind, V::Error>
@@ -23250,7 +23250,7 @@ impl<'de> serde::Deserialize<'de> for TransactionKind {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.TransactionKind", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.TransactionKind", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for transaction_kind::Kind {
@@ -23365,7 +23365,7 @@ impl serde::Serialize for TransferObjects {
         if self.address.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.TransferObjects", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.TransferObjects", len)?;
         if !self.objects.is_empty() {
             struct_ser.serialize_field("objects", &self.objects)?;
         }
@@ -23428,7 +23428,7 @@ impl<'de> serde::Deserialize<'de> for TransferObjects {
             type Value = TransferObjects;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.TransferObjects")
+                formatter.write_str("struct haneul.rpc.v2.TransferObjects")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<TransferObjects, V::Error>
@@ -23462,7 +23462,7 @@ impl<'de> serde::Deserialize<'de> for TransferObjects {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.TransferObjects", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.TransferObjects", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for TypeArgumentError {
@@ -23479,7 +23479,7 @@ impl serde::Serialize for TypeArgumentError {
         if self.kind.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.TypeArgumentError", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.TypeArgumentError", len)?;
         if let Some(v) = self.type_argument.as_ref() {
             struct_ser.serialize_field("typeArgument", v)?;
         }
@@ -23545,7 +23545,7 @@ impl<'de> serde::Deserialize<'de> for TypeArgumentError {
             type Value = TypeArgumentError;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.TypeArgumentError")
+                formatter.write_str("struct haneul.rpc.v2.TypeArgumentError")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<TypeArgumentError, V::Error>
@@ -23581,7 +23581,7 @@ impl<'de> serde::Deserialize<'de> for TypeArgumentError {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.TypeArgumentError", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.TypeArgumentError", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for type_argument_error::TypeArgumentErrorKind {
@@ -23675,7 +23675,7 @@ impl serde::Serialize for TypeOrigin {
         if self.package_id.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.TypeOrigin", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.TypeOrigin", len)?;
         if let Some(v) = self.module_name.as_ref() {
             struct_ser.serialize_field("moduleName", v)?;
         }
@@ -23747,7 +23747,7 @@ impl<'de> serde::Deserialize<'de> for TypeOrigin {
             type Value = TypeOrigin;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.TypeOrigin")
+                formatter.write_str("struct haneul.rpc.v2.TypeOrigin")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<TypeOrigin, V::Error>
@@ -23789,7 +23789,7 @@ impl<'de> serde::Deserialize<'de> for TypeOrigin {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.TypeOrigin", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.TypeOrigin", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for TypeParameter {
@@ -23806,7 +23806,7 @@ impl serde::Serialize for TypeParameter {
         if self.is_phantom.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.TypeParameter", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.TypeParameter", len)?;
         if !self.constraints.is_empty() {
             let v = self.constraints.iter().cloned().map(|v| {
                 Ability::try_from(v)
@@ -23874,7 +23874,7 @@ impl<'de> serde::Deserialize<'de> for TypeParameter {
             type Value = TypeParameter;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.TypeParameter")
+                formatter.write_str("struct haneul.rpc.v2.TypeParameter")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<TypeParameter, V::Error>
@@ -23908,7 +23908,7 @@ impl<'de> serde::Deserialize<'de> for TypeParameter {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.TypeParameter", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.TypeParameter", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for UnchangedConsensusObject {
@@ -23934,7 +23934,7 @@ impl serde::Serialize for UnchangedConsensusObject {
         if self.object_type.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.UnchangedConsensusObject", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.UnchangedConsensusObject", len)?;
         if let Some(v) = self.kind.as_ref() {
             let v = unchanged_consensus_object::UnchangedConsensusObjectKind::try_from(*v)
                 .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", *v)))?;
@@ -24021,7 +24021,7 @@ impl<'de> serde::Deserialize<'de> for UnchangedConsensusObject {
             type Value = UnchangedConsensusObject;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.UnchangedConsensusObject")
+                formatter.write_str("struct haneul.rpc.v2.UnchangedConsensusObject")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<UnchangedConsensusObject, V::Error>
@@ -24081,7 +24081,7 @@ impl<'de> serde::Deserialize<'de> for UnchangedConsensusObject {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.UnchangedConsensusObject", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.UnchangedConsensusObject", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for unchanged_consensus_object::UnchangedConsensusObjectKind {
@@ -24187,7 +24187,7 @@ impl serde::Serialize for Upgrade {
         if self.ticket.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Upgrade", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Upgrade", len)?;
         if !self.modules.is_empty() {
             struct_ser.serialize_field("modules", &self.modules.iter().map(crate::_serde::base64::encode).collect::<Vec<_>>())?;
         }
@@ -24262,7 +24262,7 @@ impl<'de> serde::Deserialize<'de> for Upgrade {
             type Value = Upgrade;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Upgrade")
+                formatter.write_str("struct haneul.rpc.v2.Upgrade")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Upgrade, V::Error>
@@ -24315,7 +24315,7 @@ impl<'de> serde::Deserialize<'de> for Upgrade {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Upgrade", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Upgrade", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for UserSignature {
@@ -24335,7 +24335,7 @@ impl serde::Serialize for UserSignature {
         if self.signature.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.UserSignature", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.UserSignature", len)?;
         if let Some(v) = self.bcs.as_ref() {
             struct_ser.serialize_field("bcs", v)?;
         }
@@ -24428,7 +24428,7 @@ impl<'de> serde::Deserialize<'de> for UserSignature {
             type Value = UserSignature;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.UserSignature")
+                formatter.write_str("struct haneul.rpc.v2.UserSignature")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<UserSignature, V::Error>
@@ -24492,7 +24492,7 @@ impl<'de> serde::Deserialize<'de> for UserSignature {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.UserSignature", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.UserSignature", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for Validator {
@@ -24596,7 +24596,7 @@ impl serde::Serialize for Validator {
         if self.extra_fields.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.Validator", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Validator", len)?;
         if let Some(v) = self.name.as_ref() {
             struct_ser.serialize_field("name", v)?;
         }
@@ -24889,7 +24889,7 @@ impl<'de> serde::Deserialize<'de> for Validator {
             type Value = Validator;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.Validator")
+                formatter.write_str("struct haneul.rpc.v2.Validator")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<Validator, V::Error>
@@ -25183,7 +25183,7 @@ impl<'de> serde::Deserialize<'de> for Validator {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.Validator", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.Validator", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ValidatorAggregatedSignature {
@@ -25203,7 +25203,7 @@ impl serde::Serialize for ValidatorAggregatedSignature {
         if self.bitmap.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ValidatorAggregatedSignature", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ValidatorAggregatedSignature", len)?;
         if let Some(v) = self.epoch.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -25278,7 +25278,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorAggregatedSignature {
             type Value = ValidatorAggregatedSignature;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ValidatorAggregatedSignature")
+                formatter.write_str("struct haneul.rpc.v2.ValidatorAggregatedSignature")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ValidatorAggregatedSignature, V::Error>
@@ -25326,7 +25326,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorAggregatedSignature {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ValidatorAggregatedSignature", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ValidatorAggregatedSignature", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ValidatorCommittee {
@@ -25343,7 +25343,7 @@ impl serde::Serialize for ValidatorCommittee {
         if !self.members.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ValidatorCommittee", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ValidatorCommittee", len)?;
         if let Some(v) = self.epoch.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -25408,7 +25408,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorCommittee {
             type Value = ValidatorCommittee;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ValidatorCommittee")
+                formatter.write_str("struct haneul.rpc.v2.ValidatorCommittee")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ValidatorCommittee, V::Error>
@@ -25444,7 +25444,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorCommittee {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ValidatorCommittee", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ValidatorCommittee", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ValidatorCommitteeMember {
@@ -25461,7 +25461,7 @@ impl serde::Serialize for ValidatorCommitteeMember {
         if self.weight.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ValidatorCommitteeMember", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ValidatorCommitteeMember", len)?;
         if let Some(v) = self.public_key.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -25529,7 +25529,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorCommitteeMember {
             type Value = ValidatorCommitteeMember;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ValidatorCommitteeMember")
+                formatter.write_str("struct haneul.rpc.v2.ValidatorCommitteeMember")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ValidatorCommitteeMember, V::Error>
@@ -25567,7 +25567,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorCommitteeMember {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ValidatorCommitteeMember", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ValidatorCommitteeMember", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ValidatorExecutionTimeObservation {
@@ -25584,7 +25584,7 @@ impl serde::Serialize for ValidatorExecutionTimeObservation {
         if self.duration.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ValidatorExecutionTimeObservation", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ValidatorExecutionTimeObservation", len)?;
         if let Some(v) = self.validator.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -25649,7 +25649,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorExecutionTimeObservation {
             type Value = ValidatorExecutionTimeObservation;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ValidatorExecutionTimeObservation")
+                formatter.write_str("struct haneul.rpc.v2.ValidatorExecutionTimeObservation")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ValidatorExecutionTimeObservation, V::Error>
@@ -25685,7 +25685,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorExecutionTimeObservation {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ValidatorExecutionTimeObservation", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ValidatorExecutionTimeObservation", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ValidatorReportRecord {
@@ -25702,7 +25702,7 @@ impl serde::Serialize for ValidatorReportRecord {
         if !self.reporters.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ValidatorReportRecord", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ValidatorReportRecord", len)?;
         if let Some(v) = self.reported.as_ref() {
             struct_ser.serialize_field("reported", v)?;
         }
@@ -25765,7 +25765,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorReportRecord {
             type Value = ValidatorReportRecord;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ValidatorReportRecord")
+                formatter.write_str("struct haneul.rpc.v2.ValidatorReportRecord")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ValidatorReportRecord, V::Error>
@@ -25799,7 +25799,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorReportRecord {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ValidatorReportRecord", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ValidatorReportRecord", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ValidatorSet {
@@ -25837,7 +25837,7 @@ impl serde::Serialize for ValidatorSet {
         if self.extra_fields.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ValidatorSet", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ValidatorSet", len)?;
         if let Some(v) = self.total_stake.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -25955,7 +25955,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorSet {
             type Value = ValidatorSet;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ValidatorSet")
+                formatter.write_str("struct haneul.rpc.v2.ValidatorSet")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ValidatorSet, V::Error>
@@ -26053,7 +26053,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorSet {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ValidatorSet", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ValidatorSet", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for VariantDescriptor {
@@ -26073,7 +26073,7 @@ impl serde::Serialize for VariantDescriptor {
         if !self.fields.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.VariantDescriptor", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.VariantDescriptor", len)?;
         if let Some(v) = self.name.as_ref() {
             struct_ser.serialize_field("name", v)?;
         }
@@ -26142,7 +26142,7 @@ impl<'de> serde::Deserialize<'de> for VariantDescriptor {
             type Value = VariantDescriptor;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.VariantDescriptor")
+                formatter.write_str("struct haneul.rpc.v2.VariantDescriptor")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<VariantDescriptor, V::Error>
@@ -26186,7 +26186,7 @@ impl<'de> serde::Deserialize<'de> for VariantDescriptor {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.VariantDescriptor", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.VariantDescriptor", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for VerifySignatureRequest {
@@ -26209,7 +26209,7 @@ impl serde::Serialize for VerifySignatureRequest {
         if !self.jwks.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.VerifySignatureRequest", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.VerifySignatureRequest", len)?;
         if let Some(v) = self.message.as_ref() {
             struct_ser.serialize_field("message", v)?;
         }
@@ -26284,7 +26284,7 @@ impl<'de> serde::Deserialize<'de> for VerifySignatureRequest {
             type Value = VerifySignatureRequest;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.VerifySignatureRequest")
+                formatter.write_str("struct haneul.rpc.v2.VerifySignatureRequest")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<VerifySignatureRequest, V::Error>
@@ -26334,7 +26334,7 @@ impl<'de> serde::Deserialize<'de> for VerifySignatureRequest {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.VerifySignatureRequest", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.VerifySignatureRequest", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for VerifySignatureResponse {
@@ -26351,7 +26351,7 @@ impl serde::Serialize for VerifySignatureResponse {
         if self.reason.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.VerifySignatureResponse", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.VerifySignatureResponse", len)?;
         if let Some(v) = self.is_valid.as_ref() {
             struct_ser.serialize_field("isValid", v)?;
         }
@@ -26415,7 +26415,7 @@ impl<'de> serde::Deserialize<'de> for VerifySignatureResponse {
             type Value = VerifySignatureResponse;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.VerifySignatureResponse")
+                formatter.write_str("struct haneul.rpc.v2.VerifySignatureResponse")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<VerifySignatureResponse, V::Error>
@@ -26449,7 +26449,7 @@ impl<'de> serde::Deserialize<'de> for VerifySignatureResponse {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.VerifySignatureResponse", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.VerifySignatureResponse", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for VersionAssignment {
@@ -26469,7 +26469,7 @@ impl serde::Serialize for VersionAssignment {
         if self.version.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.VersionAssignment", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.VersionAssignment", len)?;
         if let Some(v) = self.object_id.as_ref() {
             struct_ser.serialize_field("objectId", v)?;
         }
@@ -26544,7 +26544,7 @@ impl<'de> serde::Deserialize<'de> for VersionAssignment {
             type Value = VersionAssignment;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.VersionAssignment")
+                formatter.write_str("struct haneul.rpc.v2.VersionAssignment")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<VersionAssignment, V::Error>
@@ -26590,7 +26590,7 @@ impl<'de> serde::Deserialize<'de> for VersionAssignment {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.VersionAssignment", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.VersionAssignment", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ZkLoginAuthenticator {
@@ -26616,7 +26616,7 @@ impl serde::Serialize for ZkLoginAuthenticator {
         if self.jwk_id.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ZkLoginAuthenticator", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ZkLoginAuthenticator", len)?;
         if let Some(v) = self.inputs.as_ref() {
             struct_ser.serialize_field("inputs", v)?;
         }
@@ -26702,7 +26702,7 @@ impl<'de> serde::Deserialize<'de> for ZkLoginAuthenticator {
             type Value = ZkLoginAuthenticator;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ZkLoginAuthenticator")
+                formatter.write_str("struct haneul.rpc.v2.ZkLoginAuthenticator")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ZkLoginAuthenticator, V::Error>
@@ -26762,7 +26762,7 @@ impl<'de> serde::Deserialize<'de> for ZkLoginAuthenticator {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ZkLoginAuthenticator", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ZkLoginAuthenticator", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ZkLoginClaim {
@@ -26779,7 +26779,7 @@ impl serde::Serialize for ZkLoginClaim {
         if self.index_mod_4.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ZkLoginClaim", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ZkLoginClaim", len)?;
         if let Some(v) = self.value.as_ref() {
             struct_ser.serialize_field("value", v)?;
         }
@@ -26843,7 +26843,7 @@ impl<'de> serde::Deserialize<'de> for ZkLoginClaim {
             type Value = ZkLoginClaim;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ZkLoginClaim")
+                formatter.write_str("struct haneul.rpc.v2.ZkLoginClaim")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ZkLoginClaim, V::Error>
@@ -26879,7 +26879,7 @@ impl<'de> serde::Deserialize<'de> for ZkLoginClaim {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ZkLoginClaim", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ZkLoginClaim", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ZkLoginInputs {
@@ -26902,7 +26902,7 @@ impl serde::Serialize for ZkLoginInputs {
         if self.address_seed.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ZkLoginInputs", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ZkLoginInputs", len)?;
         if let Some(v) = self.proof_points.as_ref() {
             struct_ser.serialize_field("proofPoints", v)?;
         }
@@ -26981,7 +26981,7 @@ impl<'de> serde::Deserialize<'de> for ZkLoginInputs {
             type Value = ZkLoginInputs;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ZkLoginInputs")
+                formatter.write_str("struct haneul.rpc.v2.ZkLoginInputs")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ZkLoginInputs, V::Error>
@@ -27031,7 +27031,7 @@ impl<'de> serde::Deserialize<'de> for ZkLoginInputs {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ZkLoginInputs", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ZkLoginInputs", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ZkLoginProof {
@@ -27051,7 +27051,7 @@ impl serde::Serialize for ZkLoginProof {
         if self.c.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ZkLoginProof", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ZkLoginProof", len)?;
         if let Some(v) = self.a.as_ref() {
             struct_ser.serialize_field("a", v)?;
         }
@@ -27120,7 +27120,7 @@ impl<'de> serde::Deserialize<'de> for ZkLoginProof {
             type Value = ZkLoginProof;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ZkLoginProof")
+                formatter.write_str("struct haneul.rpc.v2.ZkLoginProof")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ZkLoginProof, V::Error>
@@ -27162,7 +27162,7 @@ impl<'de> serde::Deserialize<'de> for ZkLoginProof {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ZkLoginProof", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ZkLoginProof", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ZkLoginPublicIdentifier {
@@ -27179,7 +27179,7 @@ impl serde::Serialize for ZkLoginPublicIdentifier {
         if self.address_seed.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("sui.rpc.v2.ZkLoginPublicIdentifier", len)?;
+        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ZkLoginPublicIdentifier", len)?;
         if let Some(v) = self.iss.as_ref() {
             struct_ser.serialize_field("iss", v)?;
         }
@@ -27243,7 +27243,7 @@ impl<'de> serde::Deserialize<'de> for ZkLoginPublicIdentifier {
             type Value = ZkLoginPublicIdentifier;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                formatter.write_str("struct sui.rpc.v2.ZkLoginPublicIdentifier")
+                formatter.write_str("struct haneul.rpc.v2.ZkLoginPublicIdentifier")
             }
 
             fn visit_map<V>(self, mut map_: V) -> std::result::Result<ZkLoginPublicIdentifier, V::Error>
@@ -27277,6 +27277,6 @@ impl<'de> serde::Deserialize<'de> for ZkLoginPublicIdentifier {
                 })
             }
         }
-        deserializer.deserialize_struct("sui.rpc.v2.ZkLoginPublicIdentifier", FIELDS, GeneratedVisitor)
+        deserializer.deserialize_struct("haneul.rpc.v2.ZkLoginPublicIdentifier", FIELDS, GeneratedVisitor)
     }
 }

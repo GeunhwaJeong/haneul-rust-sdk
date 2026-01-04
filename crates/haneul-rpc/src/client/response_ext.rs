@@ -14,47 +14,47 @@ pub trait ResponseExt: sealed::Sealed {
 
 impl ResponseExt for http::header::HeaderMap {
     fn chain_id(&self) -> Option<Digest> {
-        self.get(crate::headers::X_SUI_CHAIN_ID)
+        self.get(crate::headers::X_HANEUL_CHAIN_ID)
             .map(http::header::HeaderValue::as_bytes)
             .and_then(|s| Digest::from_base58(s).ok())
     }
 
     fn chain(&self) -> Option<&str> {
-        self.get(crate::headers::X_SUI_CHAIN)
+        self.get(crate::headers::X_HANEUL_CHAIN)
             .and_then(|h| h.to_str().ok())
     }
 
     fn epoch(&self) -> Option<u64> {
-        self.get(crate::headers::X_SUI_EPOCH)
+        self.get(crate::headers::X_HANEUL_EPOCH)
             .and_then(|h| h.to_str().ok())
             .and_then(|s| s.parse().ok())
     }
 
     fn checkpoint_height(&self) -> Option<u64> {
-        self.get(crate::headers::X_SUI_CHECKPOINT_HEIGHT)
+        self.get(crate::headers::X_HANEUL_CHECKPOINT_HEIGHT)
             .and_then(|h| h.to_str().ok())
             .and_then(|s| s.parse().ok())
     }
 
     fn timestamp_ms(&self) -> Option<u64> {
-        self.get(crate::headers::X_SUI_TIMESTAMP_MS)
+        self.get(crate::headers::X_HANEUL_TIMESTAMP_MS)
             .and_then(|h| h.to_str().ok())
             .and_then(|s| s.parse().ok())
     }
 
     fn timestamp(&self) -> Option<&str> {
-        self.get(crate::headers::X_SUI_TIMESTAMP)
+        self.get(crate::headers::X_HANEUL_TIMESTAMP)
             .and_then(|h| h.to_str().ok())
     }
 
     fn lowest_available_checkpoint(&self) -> Option<u64> {
-        self.get(crate::headers::X_SUI_LOWEST_AVAILABLE_CHECKPOINT)
+        self.get(crate::headers::X_HANEUL_LOWEST_AVAILABLE_CHECKPOINT)
             .and_then(|h| h.to_str().ok())
             .and_then(|s| s.parse().ok())
     }
 
     fn lowest_available_checkpoint_objects(&self) -> Option<u64> {
-        self.get(crate::headers::X_SUI_LOWEST_AVAILABLE_CHECKPOINT_OBJECTS)
+        self.get(crate::headers::X_HANEUL_LOWEST_AVAILABLE_CHECKPOINT_OBJECTS)
             .and_then(|h| h.to_str().ok())
             .and_then(|s| s.parse().ok())
     }

@@ -168,7 +168,7 @@ pub enum ExecutionError {
     PublishErrorNonZeroAddress,
 
     /// Haneul Move Bytecode Verification Error.
-    SuiMoveVerificationError,
+    HaneulMoveVerificationError,
 
     //
     // MoveVm Errors
@@ -245,7 +245,7 @@ pub enum ExecutionError {
     CertificateDenied,
 
     /// Haneul Move Bytecode verification timed out.
-    SuiMoveVerificationTimedout,
+    HaneulMoveVerificationTimedout,
 
     /// The requested consensus object operation is not allowed
     ConsensusObjectOperationNotAllowed,

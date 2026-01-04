@@ -270,8 +270,8 @@ impl Verifier<UserSignature> for Secp256r1Verifier {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::SuiSigner;
-    use crate::SuiVerifier;
+    use crate::HaneulSigner;
+    use crate::HaneulVerifier;
     use haneul_sdk_types::PersonalMessage;
     use test_strategy::proptest;
 

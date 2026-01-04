@@ -2,7 +2,7 @@ use signature::Signer;
 use haneul_sdk_types::PersonalMessage;
 use haneul_sdk_types::ZkLoginInputs;
 
-use crate::SuiVerifier;
+use crate::HaneulVerifier;
 use crate::ed25519::Ed25519PrivateKey;
 
 use super::*;

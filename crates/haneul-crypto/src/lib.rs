@@ -88,11 +88,11 @@ pub use multisig::UserSignatureVerifier;
 ///
 /// # Note
 ///
-/// There is a blanket implementation of `SuiSigner` for all `T` where `T:
+/// There is a blanket implementation of `HaneulSigner` for all `T` where `T:
 /// `[`Signer`]`<`[`UserSignature`]`>` so it is generally recommended for a signer to implement
 /// `Signer<UserSignature>` and rely on the blanket implementation which handles the proper
 /// construction of the signing message.
-pub trait SuiSigner {
+pub trait HaneulSigner {
     fn sign_transaction(&self, transaction: &Transaction) -> Result<UserSignature, SignatureError>;
     fn sign_personal_message(
         &self,
@@ -100,7 +100,7 @@ pub trait SuiSigner {
     ) -> Result<UserSignature, SignatureError>;
 }
 
-impl<T: Signer<UserSignature>> SuiSigner for T {
+impl<T: Signer<UserSignature>> HaneulSigner for T {
     fn sign_transaction(&self, transaction: &Transaction) -> Result<UserSignature, SignatureError> {
         let msg = transaction.signing_digest();
         self.try_sign(&msg)
@@ -119,11 +119,11 @@ impl<T: Signer<UserSignature>> SuiSigner for T {
 ///
 /// # Note
 ///
-/// There is a blanket implementation of `SuiVerifier` for all `T` where `T:
+/// There is a blanket implementation of `HaneulVerifier` for all `T` where `T:
 /// `[`Verifier`]`<`[`UserSignature`]`>` so it is generally recommended for a signer to implement
 /// `Verifier<UserSignature>` and rely on the blanket implementation which handles the proper
 /// construction of the signing message.
-pub trait SuiVerifier {
+pub trait HaneulVerifier {
     fn verify_transaction(
         &self,
         transaction: &Transaction,
@@ -136,7 +136,7 @@ pub trait SuiVerifier {
     ) -> Result<(), SignatureError>;
 }
 
-impl<T: Verifier<UserSignature>> SuiVerifier for T {
+impl<T: Verifier<UserSignature>> HaneulVerifier for T {
     fn verify_transaction(
         &self,
         transaction: &Transaction,

@@ -8431,7 +8431,7 @@ impl serde::Serialize for execution_error::ExecutionErrorKind {
             Self::InsufficientCoinBalance => "INSUFFICIENT_COIN_BALANCE",
             Self::CoinBalanceOverflow => "COIN_BALANCE_OVERFLOW",
             Self::PublishErrorNonZeroAddress => "PUBLISH_ERROR_NON_ZERO_ADDRESS",
-            Self::SuiMoveVerificationError => "SUI_MOVE_VERIFICATION_ERROR",
+            Self::HaneulMoveVerificationError => "SUI_MOVE_VERIFICATION_ERROR",
             Self::MovePrimitiveRuntimeError => "MOVE_PRIMITIVE_RUNTIME_ERROR",
             Self::MoveAbort => "MOVE_ABORT",
             Self::VmVerificationOrDeserializationError => "VM_VERIFICATION_OR_DESERIALIZATION_ERROR",
@@ -8451,7 +8451,7 @@ impl serde::Serialize for execution_error::ExecutionErrorKind {
             Self::PackageUpgradeError => "PACKAGE_UPGRADE_ERROR",
             Self::WrittenObjectsTooLarge => "WRITTEN_OBJECTS_TOO_LARGE",
             Self::CertificateDenied => "CERTIFICATE_DENIED",
-            Self::SuiMoveVerificationTimedout => "SUI_MOVE_VERIFICATION_TIMEDOUT",
+            Self::HaneulMoveVerificationTimedout => "SUI_MOVE_VERIFICATION_TIMEDOUT",
             Self::ConsensusObjectOperationNotAllowed => "CONSENSUS_OBJECT_OPERATION_NOT_ALLOWED",
             Self::InputObjectDeleted => "INPUT_OBJECT_DELETED",
             Self::ExecutionCanceledDueToConsensusObjectCongestion => "EXECUTION_CANCELED_DUE_TO_CONSENSUS_OBJECT_CONGESTION",
@@ -8568,7 +8568,7 @@ impl<'de> serde::Deserialize<'de> for execution_error::ExecutionErrorKind {
                     "INSUFFICIENT_COIN_BALANCE" => Ok(execution_error::ExecutionErrorKind::InsufficientCoinBalance),
                     "COIN_BALANCE_OVERFLOW" => Ok(execution_error::ExecutionErrorKind::CoinBalanceOverflow),
                     "PUBLISH_ERROR_NON_ZERO_ADDRESS" => Ok(execution_error::ExecutionErrorKind::PublishErrorNonZeroAddress),
-                    "SUI_MOVE_VERIFICATION_ERROR" => Ok(execution_error::ExecutionErrorKind::SuiMoveVerificationError),
+                    "SUI_MOVE_VERIFICATION_ERROR" => Ok(execution_error::ExecutionErrorKind::HaneulMoveVerificationError),
                     "MOVE_PRIMITIVE_RUNTIME_ERROR" => Ok(execution_error::ExecutionErrorKind::MovePrimitiveRuntimeError),
                     "MOVE_ABORT" => Ok(execution_error::ExecutionErrorKind::MoveAbort),
                     "VM_VERIFICATION_OR_DESERIALIZATION_ERROR" => Ok(execution_error::ExecutionErrorKind::VmVerificationOrDeserializationError),
@@ -8588,7 +8588,7 @@ impl<'de> serde::Deserialize<'de> for execution_error::ExecutionErrorKind {
                     "PACKAGE_UPGRADE_ERROR" => Ok(execution_error::ExecutionErrorKind::PackageUpgradeError),
                     "WRITTEN_OBJECTS_TOO_LARGE" => Ok(execution_error::ExecutionErrorKind::WrittenObjectsTooLarge),
                     "CERTIFICATE_DENIED" => Ok(execution_error::ExecutionErrorKind::CertificateDenied),
-                    "SUI_MOVE_VERIFICATION_TIMEDOUT" => Ok(execution_error::ExecutionErrorKind::SuiMoveVerificationTimedout),
+                    "SUI_MOVE_VERIFICATION_TIMEDOUT" => Ok(execution_error::ExecutionErrorKind::HaneulMoveVerificationTimedout),
                     "CONSENSUS_OBJECT_OPERATION_NOT_ALLOWED" => Ok(execution_error::ExecutionErrorKind::ConsensusObjectOperationNotAllowed),
                     "INPUT_OBJECT_DELETED" => Ok(execution_error::ExecutionErrorKind::InputObjectDeleted),
                     "EXECUTION_CANCELED_DUE_TO_CONSENSUS_OBJECT_CONGESTION" => Ok(execution_error::ExecutionErrorKind::ExecutionCanceledDueToConsensusObjectCongestion),
@@ -20690,7 +20690,7 @@ impl serde::Serialize for StakingPool {
         if let Some(v) = self.pending_total_haneul_withdraw.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
-            struct_ser.serialize_field("pendingTotalSuiWithdraw", ToString::to_string(&v).as_str())?;
+            struct_ser.serialize_field("pendingTotalHaneulWithdraw", ToString::to_string(&v).as_str())?;
         }
         if let Some(v) = self.pending_pool_token_withdraw.as_ref() {
             #[allow(clippy::needless_borrow)]
@@ -20726,7 +20726,7 @@ impl<'de> serde::Deserialize<'de> for StakingPool {
             "pending_stake",
             "pendingStake",
             "pending_total_haneul_withdraw",
-            "pendingTotalSuiWithdraw",
+            "pendingTotalHaneulWithdraw",
             "pending_pool_token_withdraw",
             "pendingPoolTokenWithdraw",
             "extra_fields",
@@ -20738,12 +20738,12 @@ impl<'de> serde::Deserialize<'de> for StakingPool {
             Id,
             ActivationEpoch,
             DeactivationEpoch,
-            SuiBalance,
+            HaneulBalance,
             RewardsPool,
             PoolTokenBalance,
             ExchangeRates,
             PendingStake,
-            PendingTotalSuiWithdraw,
+            PendingTotalHaneulWithdraw,
             PendingPoolTokenWithdraw,
             ExtraFields,
             __SkipField__,
@@ -20771,12 +20771,12 @@ impl<'de> serde::Deserialize<'de> for StakingPool {
                             "id" => Ok(GeneratedField::Id),
                             "activationEpoch" | "activation_epoch" => Ok(GeneratedField::ActivationEpoch),
                             "deactivationEpoch" | "deactivation_epoch" => Ok(GeneratedField::DeactivationEpoch),
-                            "suiBalance" | "haneul_balance" => Ok(GeneratedField::SuiBalance),
+                            "suiBalance" | "haneul_balance" => Ok(GeneratedField::HaneulBalance),
                             "rewardsPool" | "rewards_pool" => Ok(GeneratedField::RewardsPool),
                             "poolTokenBalance" | "pool_token_balance" => Ok(GeneratedField::PoolTokenBalance),
                             "exchangeRates" | "exchange_rates" => Ok(GeneratedField::ExchangeRates),
                             "pendingStake" | "pending_stake" => Ok(GeneratedField::PendingStake),
-                            "pendingTotalSuiWithdraw" | "pending_total_haneul_withdraw" => Ok(GeneratedField::PendingTotalSuiWithdraw),
+                            "pendingTotalHaneulWithdraw" | "pending_total_haneul_withdraw" => Ok(GeneratedField::PendingTotalHaneulWithdraw),
                             "pendingPoolTokenWithdraw" | "pending_pool_token_withdraw" => Ok(GeneratedField::PendingPoolTokenWithdraw),
                             "extraFields" | "extra_fields" => Ok(GeneratedField::ExtraFields),
                             _ => Ok(GeneratedField::__SkipField__),
@@ -20835,7 +20835,7 @@ impl<'de> serde::Deserialize<'de> for StakingPool {
                                 map_.next_value::<::std::option::Option<crate::_serde::NumberDeserialize<_>>>()?.map(|x| x.0)
                             ;
                         }
-                        GeneratedField::SuiBalance => {
+                        GeneratedField::HaneulBalance => {
                             if haneul_balance__.is_some() {
                                 return Err(serde::de::Error::duplicate_field("suiBalance"));
                             }
@@ -20873,9 +20873,9 @@ impl<'de> serde::Deserialize<'de> for StakingPool {
                                 map_.next_value::<::std::option::Option<crate::_serde::NumberDeserialize<_>>>()?.map(|x| x.0)
                             ;
                         }
-                        GeneratedField::PendingTotalSuiWithdraw => {
+                        GeneratedField::PendingTotalHaneulWithdraw => {
                             if pending_total_haneul_withdraw__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("pendingTotalSuiWithdraw"));
+                                return Err(serde::de::Error::duplicate_field("pendingTotalHaneulWithdraw"));
                             }
                             pending_total_haneul_withdraw__ = 
                                 map_.next_value::<::std::option::Option<crate::_serde::NumberDeserialize<_>>>()?.map(|x| x.0)

@@ -15,11 +15,11 @@ mod message_graph;
 fn main() {
     let root_dir = PathBuf::from(std::env!("CARGO_MANIFEST_DIR"));
     let proto_dir = root_dir
-        .join("../sui-rpc/vendored/proto")
+        .join("../haneul-rpc/vendored/proto")
         .canonicalize()
         .unwrap();
     let out_dir = root_dir
-        .join("../sui-rpc/src/proto/generated")
+        .join("../haneul-rpc/src/proto/generated")
         .canonicalize()
         .unwrap();
 

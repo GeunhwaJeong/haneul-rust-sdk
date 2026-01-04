@@ -432,7 +432,7 @@ fn try_from_unresolved_input_arg(value: unresolved::Input) -> Result<Input, Erro
 //     use serde::Deserializer;
 
 //     use haneul_crypto::ed25519::Ed25519PrivateKey;
-//     use haneul_crypto::SuiSigner;
+//     use haneul_crypto::HaneulSigner;
 //     use haneul_graphql_client::faucet::FaucetClient;
 //     use haneul_graphql_client::Client;
 //     use haneul_graphql_client::PaginationFilter;

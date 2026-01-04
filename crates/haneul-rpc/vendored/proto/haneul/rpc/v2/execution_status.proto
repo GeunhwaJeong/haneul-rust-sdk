@@ -64,8 +64,8 @@ message ExecutionError {
     // The modules in the package must have their self-addresses set to zero.
     PUBLISH_ERROR_NON_ZERO_ADDRESS = 10;
 
-    // Sui Move bytecode verification error.
-    SUI_MOVE_VERIFICATION_ERROR = 11;
+    // Haneul Move bytecode verification error.
+    HANEUL_MOVE_VERIFICATION_ERROR = 11;
 
     //
     // MoveVm errors.
@@ -145,8 +145,8 @@ message ExecutionError {
     // Certificate is on the deny list.
     CERTIFICATE_DENIED = 30;
 
-    // Sui Move bytecode verification timed out.
-    SUI_MOVE_VERIFICATION_TIMEDOUT = 31;
+    // Haneul Move bytecode verification timed out.
+    HANEUL_MOVE_VERIFICATION_TIMEDOUT = 31;
 
     // The requested consensus object operation is not allowed.
     CONSENSUS_OBJECT_OPERATION_NOT_ALLOWED = 32;

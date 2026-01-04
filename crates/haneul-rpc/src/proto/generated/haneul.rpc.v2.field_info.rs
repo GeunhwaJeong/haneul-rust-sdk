@@ -8882,7 +8882,7 @@ mod _field_impls {
             message_fields: None,
         };
         pub const SUI_BALANCE_FIELD: &'static MessageField = &MessageField {
-            name: "haneul_balance",
+            name: "sui_balance",
             json_name: "suiBalance",
             number: 4i32,
             message_fields: None,
@@ -8912,7 +8912,7 @@ mod _field_impls {
             message_fields: None,
         };
         pub const PENDING_TOTAL_SUI_WITHDRAW_FIELD: &'static MessageField = &MessageField {
-            name: "pending_total_haneul_withdraw",
+            name: "pending_total_sui_withdraw",
             json_name: "pendingTotalSuiWithdraw",
             number: 9i32,
             message_fields: None,
@@ -8977,7 +8977,7 @@ mod _field_impls {
             self.path.push(StakingPool::DEACTIVATION_EPOCH_FIELD.name);
             self.finish()
         }
-        pub fn haneul_balance(mut self) -> String {
+        pub fn sui_balance(mut self) -> String {
             self.path.push(StakingPool::SUI_BALANCE_FIELD.name);
             self.finish()
         }
@@ -8997,7 +8997,7 @@ mod _field_impls {
             self.path.push(StakingPool::PENDING_STAKE_FIELD.name);
             self.finish()
         }
-        pub fn pending_total_haneul_withdraw(mut self) -> String {
+        pub fn pending_total_sui_withdraw(mut self) -> String {
             self.path.push(StakingPool::PENDING_TOTAL_SUI_WITHDRAW_FIELD.name);
             self.finish()
         }

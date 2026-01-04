@@ -10,7 +10,7 @@ import "haneul/rpc/v2/bcs.proto";
 import "haneul/rpc/v2/move_package.proto";
 import "haneul/rpc/v2/owner.proto";
 
-// An object on the Sui blockchain.
+// An object on the Haneul blockchain.
 message Object {
   // This Object serialized as BCS.
   optional Bcs bcs = 1;
@@ -49,7 +49,7 @@ message Object {
   // The digest of the transaction that created or last mutated this object
   optional string previous_transaction = 10;
 
-  // The amount of SUI to rebate if this object gets deleted.
+  // The amount of HANEUL to rebate if this object gets deleted.
   // This number is re-calculated each time the object is mutated based on
   // the present storage gas price.
   optional uint64 storage_rebate = 11;

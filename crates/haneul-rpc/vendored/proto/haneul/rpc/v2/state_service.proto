@@ -133,10 +133,10 @@ message RegulatedCoinMetadata {
 
 // Request message for `LiveDataService.GetBalance`.
 message GetBalanceRequest {
-  // Required. The owner's Sui address.
+  // Required. The owner's Haneul address.
   optional string owner = 1;
 
-  // Required. The type names for the coin (e.g., 0x2::haneul::SUI).
+  // Required. The type names for the coin (e.g., 0x2::haneul::HANEUL).
   optional string coin_type = 2;
 }
 
@@ -149,7 +149,7 @@ message GetBalanceResponse {
 
 // Request message for `LiveDataService.ListBalances`.
 message ListBalancesRequest {
-  // Required. The owner's Sui address.
+  // Required. The owner's Haneul address.
   optional string owner = 1;
 
   // The maximum number of balance entries to return. The service may return fewer than this value.
@@ -178,7 +178,7 @@ message ListBalancesResponse {
 
 // Balance information for a specific coin type.
 message Balance {
-  // The type of the coin (e.g., 0x2::haneul::SUI).
+  // The type of the coin (e.g., 0x2::haneul::HANEUL).
   optional string coin_type = 1;
 
   // Shows the total balance of the coin in its smallest unit.
@@ -286,7 +286,7 @@ message ListOwnedObjectsRequest {
   // `Coin<T>` objects regardless of the type parameter `T`. Providing a type
   // with a type param will restrict the returned objects to only those objects
   // that match the provided type parameters, e.g.
-  // `0x2::coin::Coin<0x2::haneul::SUI>` will only return `Coin<SUI>` objects.
+  // `0x2::coin::Coin<0x2::haneul::HANEUL>` will only return `Coin<HANEUL>` objects.
   optional string object_type = 5;
 }
 

@@ -10,10 +10,10 @@ import "haneul/rpc/v2/bcs.proto";
 import "haneul/rpc/v2/gas_cost_summary.proto";
 import "haneul/rpc/v2/signature.proto";
 
-// A header for a checkpoint on the Sui blockchain.
+// A header for a checkpoint on the Haneul blockchain.
 //
-// On the Sui network, checkpoints define the history of the blockchain. They are quite similar to
-// the concept of blocks used by other blockchains like Bitcoin or Ethereum. The Sui blockchain,
+// On the Haneul network, checkpoints define the history of the blockchain. They are quite similar to
+// the concept of blocks used by other blockchains like Bitcoin or Ethereum. The Haneul blockchain,
 // however, forms checkpoints after transaction execution has already happened to provide a
 // certified history of the chain, instead of being formed before execution.
 //
@@ -92,7 +92,7 @@ message CheckpointCommitment {
     CHECKPOINT_COMMITMENT_KIND_UNKNOWN = 0;
 
     // An elliptic curve multiset hash attesting to the set of objects that
-    // comprise the live state of the Sui blockchain.
+    // comprise the live state of the Haneul blockchain.
     ECMH_LIVE_OBJECT_SET = 1;
 
     // Digest of the checkpoint artifacts.

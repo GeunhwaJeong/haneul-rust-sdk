@@ -8881,9 +8881,9 @@ mod _field_impls {
             number: 3i32,
             message_fields: None,
         };
-        pub const SUI_BALANCE_FIELD: &'static MessageField = &MessageField {
-            name: "sui_balance",
-            json_name: "suiBalance",
+        pub const HANEUL_BALANCE_FIELD: &'static MessageField = &MessageField {
+            name: "haneul_balance",
+            json_name: "haneulBalance",
             number: 4i32,
             message_fields: None,
         };
@@ -8911,9 +8911,9 @@ mod _field_impls {
             number: 8i32,
             message_fields: None,
         };
-        pub const PENDING_TOTAL_SUI_WITHDRAW_FIELD: &'static MessageField = &MessageField {
-            name: "pending_total_sui_withdraw",
-            json_name: "pendingTotalSuiWithdraw",
+        pub const PENDING_TOTAL_HANEUL_WITHDRAW_FIELD: &'static MessageField = &MessageField {
+            name: "pending_total_haneul_withdraw",
+            json_name: "pendingTotalHaneulWithdraw",
             number: 9i32,
             message_fields: None,
         };
@@ -8935,12 +8935,12 @@ mod _field_impls {
             Self::ID_FIELD,
             Self::ACTIVATION_EPOCH_FIELD,
             Self::DEACTIVATION_EPOCH_FIELD,
-            Self::SUI_BALANCE_FIELD,
+            Self::HANEUL_BALANCE_FIELD,
             Self::REWARDS_POOL_FIELD,
             Self::POOL_TOKEN_BALANCE_FIELD,
             Self::EXCHANGE_RATES_FIELD,
             Self::PENDING_STAKE_FIELD,
-            Self::PENDING_TOTAL_SUI_WITHDRAW_FIELD,
+            Self::PENDING_TOTAL_HANEUL_WITHDRAW_FIELD,
             Self::PENDING_POOL_TOKEN_WITHDRAW_FIELD,
             Self::EXTRA_FIELDS_FIELD,
         ];
@@ -8977,8 +8977,8 @@ mod _field_impls {
             self.path.push(StakingPool::DEACTIVATION_EPOCH_FIELD.name);
             self.finish()
         }
-        pub fn sui_balance(mut self) -> String {
-            self.path.push(StakingPool::SUI_BALANCE_FIELD.name);
+        pub fn haneul_balance(mut self) -> String {
+            self.path.push(StakingPool::HANEUL_BALANCE_FIELD.name);
             self.finish()
         }
         pub fn rewards_pool(mut self) -> String {
@@ -8997,8 +8997,8 @@ mod _field_impls {
             self.path.push(StakingPool::PENDING_STAKE_FIELD.name);
             self.finish()
         }
-        pub fn pending_total_sui_withdraw(mut self) -> String {
-            self.path.push(StakingPool::PENDING_TOTAL_SUI_WITHDRAW_FIELD.name);
+        pub fn pending_total_haneul_withdraw(mut self) -> String {
+            self.path.push(StakingPool::PENDING_TOTAL_HANEUL_WITHDRAW_FIELD.name);
             self.finish()
         }
         pub fn pending_pool_token_withdraw(mut self) -> String {

@@ -159,10 +159,10 @@ pub struct AddressAliasesVersion {
     #[prost(uint64, optional, tag = "1")]
     pub version: ::core::option::Option<u64>,
 }
-/// A header for a checkpoint on the Sui blockchain.
+/// A header for a checkpoint on the Haneul blockchain.
 ///
-/// On the Sui network, checkpoints define the history of the blockchain. They are quite similar to
-/// the concept of blocks used by other blockchains like Bitcoin or Ethereum. The Sui blockchain,
+/// On the Haneul network, checkpoints define the history of the blockchain. They are quite similar to
+/// the concept of blocks used by other blockchains like Bitcoin or Ethereum. The Haneul blockchain,
 /// however, forms checkpoints after transaction execution has already happened to provide a
 /// certified history of the chain, instead of being formed before execution.
 ///
@@ -269,7 +269,7 @@ pub mod checkpoint_commitment {
     pub enum CheckpointCommitmentKind {
         Unknown = 0,
         /// An elliptic curve multiset hash attesting to the set of objects that
-        /// comprise the live state of the Sui blockchain.
+        /// comprise the live state of the Haneul blockchain.
         EcmhLiveObjectSet = 1,
         /// Digest of the checkpoint artifacts.
         CheckpointArtifacts = 2,
@@ -667,7 +667,7 @@ pub struct Epoch {
     /// The committee governing this epoch.
     #[prost(message, optional, tag = "2")]
     pub committee: ::core::option::Option<ValidatorCommittee>,
-    /// Snapshot of Sui's SystemState (`0x3::sui_system::SystemState`) at the
+    /// Snapshot of Haneul's SystemState (`0x3::sui_system::SystemState`) at the
     /// beginning of the epoch, for past epochs, or the current state for the
     /// current epoch.
     #[prost(message, optional, tag = "3")]
@@ -2680,7 +2680,7 @@ pub mod ledger_service_server {
 pub struct Package {
     /// The PackageId of this package
     ///
-    /// A package's `storage_id` is the Sui ObjectId of the package on-chain.
+    /// A package's `storage_id` is the Haneul ObjectId of the package on-chain.
     /// Outside of system packages the `storage_id` for every package version is
     /// different.
     #[prost(string, optional, tag = "1")]
@@ -3740,7 +3740,7 @@ pub mod move_package_service_server {
 }
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct LookupNameRequest {
-    /// Required. The SuiNS name to lookup.
+    /// Required. The HaneulNS name to lookup.
     ///
     /// Supports both `@name` as well as `name.haneul` formats.
     #[prost(string, optional, tag = "1")]
@@ -3760,7 +3760,7 @@ pub struct ReverseLookupNameRequest {
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ReverseLookupNameResponse {
-    /// The record for the SuiNS name linked to the requested address
+    /// The record for the HaneulNS name linked to the requested address
     #[prost(message, optional, tag = "1")]
     pub record: ::core::option::Option<NameRecord>,
 }
@@ -3772,7 +3772,7 @@ pub struct NameRecord {
     /// `Field<Domain,NameRecord>`.
     #[prost(string, optional, tag = "1")]
     pub id: ::core::option::Option<::prost::alloc::string::String>,
-    /// The SuiNS name of this record
+    /// The HaneulNS name of this record
     #[prost(string, optional, tag = "2")]
     pub name: ::core::option::Option<::prost::alloc::string::String>,
     /// The ID of the `RegistrationNFT` assigned to this record.
@@ -4178,7 +4178,7 @@ pub mod name_service_server {
         const NAME: &'static str = SERVICE_NAME;
     }
 }
-/// An object on the Sui blockchain.
+/// An object on the Haneul blockchain.
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Object {
     /// This Object serialized as BCS.
@@ -4218,7 +4218,7 @@ pub struct Object {
     /// The digest of the transaction that created or last mutated this object
     #[prost(string, optional, tag = "10")]
     pub previous_transaction: ::core::option::Option<::prost::alloc::string::String>,
-    /// The amount of SUI to rebate if this object gets deleted.
+    /// The amount of HANEUL to rebate if this object gets deleted.
     /// This number is re-calculated each time the object is mutated based on
     /// the present storage gas price.
     #[prost(uint64, optional, tag = "11")]
@@ -4599,7 +4599,7 @@ pub struct ValidatorAggregatedSignature {
     #[prost(bytes = "bytes", optional, tag = "3")]
     pub bitmap: ::core::option::Option<::prost::bytes::Bytes>,
 }
-/// Flag use to disambiguate the signature schemes supported by Sui.
+/// Flag use to disambiguate the signature schemes supported by Haneul.
 ///
 /// Note: the enum values defined by this proto message exactly match their
 /// expected BCS serialized values when serialized as a u8. See
@@ -5245,10 +5245,10 @@ pub mod regulated_coin_metadata {
 /// Request message for `LiveDataService.GetBalance`.
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct GetBalanceRequest {
-    /// Required. The owner's Sui address.
+    /// Required. The owner's Haneul address.
     #[prost(string, optional, tag = "1")]
     pub owner: ::core::option::Option<::prost::alloc::string::String>,
-    /// Required. The type names for the coin (e.g., 0x2::haneul::SUI).
+    /// Required. The type names for the coin (e.g., 0x2::haneul::HANEUL).
     #[prost(string, optional, tag = "2")]
     pub coin_type: ::core::option::Option<::prost::alloc::string::String>,
 }
@@ -5263,7 +5263,7 @@ pub struct GetBalanceResponse {
 /// Request message for `LiveDataService.ListBalances`.
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ListBalancesRequest {
-    /// Required. The owner's Sui address.
+    /// Required. The owner's Haneul address.
     #[prost(string, optional, tag = "1")]
     pub owner: ::core::option::Option<::prost::alloc::string::String>,
     /// The maximum number of balance entries to return. The service may return fewer than this value.
@@ -5294,7 +5294,7 @@ pub struct ListBalancesResponse {
 /// Balance information for a specific coin type.
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Balance {
-    /// The type of the coin (e.g., 0x2::haneul::SUI).
+    /// The type of the coin (e.g., 0x2::haneul::HANEUL).
     #[prost(string, optional, tag = "1")]
     pub coin_type: ::core::option::Option<::prost::alloc::string::String>,
     /// Shows the total balance of the coin in its smallest unit.
@@ -5442,7 +5442,7 @@ pub struct ListOwnedObjectsRequest {
     /// `Coin<T>` objects regardless of the type parameter `T`. Providing a type
     /// with a type param will restrict the returned objects to only those objects
     /// that match the provided type parameters, e.g.
-    /// `0x2::coin::Coin<0x2::haneul::SUI>` will only return `Coin<SUI>` objects.
+    /// `0x2::coin::Coin<0x2::haneul::HANEUL>` will only return `Coin<HANEUL>` objects.
     #[prost(string, optional, tag = "5")]
     pub object_type: ::core::option::Option<::prost::alloc::string::String>,
 }
@@ -6177,7 +6177,7 @@ pub mod subscription_service_client {
         }
         /// Subscribe to the stream of checkpoints.
         ///
-        /// This API provides a subscription to the checkpoint stream for the Sui
+        /// This API provides a subscription to the checkpoint stream for the Haneul
         /// blockchain. When a subscription is initialized the stream will begin with
         /// the latest executed checkpoint as seen by the server. Responses are
         /// guaranteed to return checkpoints in-order and without gaps. This enables
@@ -6243,7 +6243,7 @@ pub mod subscription_service_server {
             + 'static;
         /// Subscribe to the stream of checkpoints.
         ///
-        /// This API provides a subscription to the checkpoint stream for the Sui
+        /// This API provides a subscription to the checkpoint stream for the Haneul
         /// blockchain. When a subscription is initialized the stream will begin with
         /// the latest executed checkpoint as seen by the server. Responses are
         /// guaranteed to return checkpoints in-order and without gaps. This enables
@@ -6548,7 +6548,7 @@ pub struct MoveTable {
 }
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct StakeSubsidy {
-    /// Balance of SUI set aside for stake subsidies that will be drawn down over time.
+    /// Balance of HANEUL set aside for stake subsidies that will be drawn down over time.
     #[prost(uint64, optional, tag = "1")]
     pub balance: ::core::option::Option<u64>,
     /// Count of the number of times stake subsidies have been distributed.
@@ -6642,7 +6642,7 @@ pub struct Validator {
     /// A unique human-readable name of this validator.
     #[prost(string, optional, tag = "1")]
     pub name: ::core::option::Option<::prost::alloc::string::String>,
-    /// The Sui Address of the validator. This is the sender that created the Validator object,
+    /// The Haneul Address of the validator. This is the sender that created the Validator object,
     /// and also the address to send validator/coins to during withdraws.
     #[prost(string, optional, tag = "2")]
     pub address: ::core::option::Option<::prost::alloc::string::String>,
@@ -6746,10 +6746,10 @@ pub struct StakingPool {
     /// `Some(<epoch_number>)` if in-active, and it was de-activated at epoch `<epoch_number>`.
     #[prost(uint64, optional, tag = "3")]
     pub deactivation_epoch: ::core::option::Option<u64>,
-    /// The total number of SUI tokens in this pool, including the SUI in the rewards_pool, as well as in all the principal
-    /// in the `StakedSui` object, updated at epoch boundaries.
+    /// The total number of HANEUL tokens in this pool, including the HANEUL in the rewards_pool, as well as in all the principal
+    /// in the `StakedHaneul` object, updated at epoch boundaries.
     #[prost(uint64, optional, tag = "4")]
-    pub sui_balance: ::core::option::Option<u64>,
+    pub haneul_balance: ::core::option::Option<u64>,
     /// The epoch stake rewards will be added here at the end of each epoch.
     #[prost(uint64, optional, tag = "5")]
     pub rewards_pool: ::core::option::Option<u64>,
@@ -6768,9 +6768,9 @@ pub struct StakingPool {
     #[prost(uint64, optional, tag = "8")]
     pub pending_stake: ::core::option::Option<u64>,
     /// Pending stake withdrawn during the current epoch, emptied at epoch boundaries.
-    /// This includes both the principal and rewards SUI withdrawn.
+    /// This includes both the principal and rewards HANEUL withdrawn.
     #[prost(uint64, optional, tag = "9")]
-    pub pending_total_sui_withdraw: ::core::option::Option<u64>,
+    pub pending_total_haneul_withdraw: ::core::option::Option<u64>,
     /// Pending pool token withdrawn during the current epoch, emptied at epoch boundaries.
     #[prost(uint64, optional, tag = "10")]
     pub pending_pool_token_withdraw: ::core::option::Option<u64>,

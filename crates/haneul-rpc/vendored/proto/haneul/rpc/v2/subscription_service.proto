@@ -11,7 +11,7 @@ import "haneul/rpc/v2/checkpoint.proto";
 service SubscriptionService {
   // Subscribe to the stream of checkpoints.
   //
-  // This API provides a subscription to the checkpoint stream for the Sui
+  // This API provides a subscription to the checkpoint stream for the Haneul
   // blockchain. When a subscription is initialized the stream will begin with
   // the latest executed checkpoint as seen by the server. Responses are
   // guaranteed to return checkpoints in-order and without gaps. This enables

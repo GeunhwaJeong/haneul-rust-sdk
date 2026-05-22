@@ -1071,7 +1071,9 @@ pub mod execution_error {
                 Self::PackageUpgradeError => "PACKAGE_UPGRADE_ERROR",
                 Self::WrittenObjectsTooLarge => "WRITTEN_OBJECTS_TOO_LARGE",
                 Self::CertificateDenied => "CERTIFICATE_DENIED",
-                Self::HaneulMoveVerificationTimedout => "HANEUL_MOVE_VERIFICATION_TIMEDOUT",
+                Self::HaneulMoveVerificationTimedout => {
+                    "HANEUL_MOVE_VERIFICATION_TIMEDOUT"
+                }
                 Self::ConsensusObjectOperationNotAllowed => {
                     "CONSENSUS_OBJECT_OPERATION_NOT_ALLOWED"
                 }
@@ -1109,7 +1111,9 @@ pub mod execution_error {
                 "PUBLISH_ERROR_NON_ZERO_ADDRESS" => {
                     Some(Self::PublishErrorNonZeroAddress)
                 }
-                "HANEUL_MOVE_VERIFICATION_ERROR" => Some(Self::HaneulMoveVerificationError),
+                "HANEUL_MOVE_VERIFICATION_ERROR" => {
+                    Some(Self::HaneulMoveVerificationError)
+                }
                 "MOVE_PRIMITIVE_RUNTIME_ERROR" => Some(Self::MovePrimitiveRuntimeError),
                 "MOVE_ABORT" => Some(Self::MoveAbort),
                 "VM_VERIFICATION_OR_DESERIALIZATION_ERROR" => {
@@ -2149,7 +2153,9 @@ pub mod ledger_service_client {
             );
             let mut req = request.into_request();
             req.extensions_mut()
-                .insert(GrpcMethod::new("haneul.rpc.v2.LedgerService", "GetServiceInfo"));
+                .insert(
+                    GrpcMethod::new("haneul.rpc.v2.LedgerService", "GetServiceInfo"),
+                );
             self.inner.unary(req, path, codec).await
         }
         pub async fn get_object(
@@ -2197,7 +2203,9 @@ pub mod ledger_service_client {
             );
             let mut req = request.into_request();
             req.extensions_mut()
-                .insert(GrpcMethod::new("haneul.rpc.v2.LedgerService", "BatchGetObjects"));
+                .insert(
+                    GrpcMethod::new("haneul.rpc.v2.LedgerService", "BatchGetObjects"),
+                );
             self.inner.unary(req, path, codec).await
         }
         pub async fn get_transaction(
@@ -2221,7 +2229,9 @@ pub mod ledger_service_client {
             );
             let mut req = request.into_request();
             req.extensions_mut()
-                .insert(GrpcMethod::new("haneul.rpc.v2.LedgerService", "GetTransaction"));
+                .insert(
+                    GrpcMethod::new("haneul.rpc.v2.LedgerService", "GetTransaction"),
+                );
             self.inner.unary(req, path, codec).await
         }
         pub async fn batch_get_transactions(
@@ -2246,7 +2256,10 @@ pub mod ledger_service_client {
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(
-                    GrpcMethod::new("haneul.rpc.v2.LedgerService", "BatchGetTransactions"),
+                    GrpcMethod::new(
+                        "haneul.rpc.v2.LedgerService",
+                        "BatchGetTransactions",
+                    ),
                 );
             self.inner.unary(req, path, codec).await
         }
@@ -3470,7 +3483,9 @@ pub mod move_package_service_client {
             );
             let mut req = request.into_request();
             req.extensions_mut()
-                .insert(GrpcMethod::new("haneul.rpc.v2.MovePackageService", "GetPackage"));
+                .insert(
+                    GrpcMethod::new("haneul.rpc.v2.MovePackageService", "GetPackage"),
+                );
             self.inner.unary(req, path, codec).await
         }
         pub async fn get_datatype(
@@ -3494,7 +3509,9 @@ pub mod move_package_service_client {
             );
             let mut req = request.into_request();
             req.extensions_mut()
-                .insert(GrpcMethod::new("haneul.rpc.v2.MovePackageService", "GetDatatype"));
+                .insert(
+                    GrpcMethod::new("haneul.rpc.v2.MovePackageService", "GetDatatype"),
+                );
             self.inner.unary(req, path, codec).await
         }
         pub async fn get_function(
@@ -3518,7 +3535,9 @@ pub mod move_package_service_client {
             );
             let mut req = request.into_request();
             req.extensions_mut()
-                .insert(GrpcMethod::new("haneul.rpc.v2.MovePackageService", "GetFunction"));
+                .insert(
+                    GrpcMethod::new("haneul.rpc.v2.MovePackageService", "GetFunction"),
+                );
             self.inner.unary(req, path, codec).await
         }
         pub async fn list_package_versions(
@@ -4108,7 +4127,9 @@ pub mod name_service_client {
             );
             let mut req = request.into_request();
             req.extensions_mut()
-                .insert(GrpcMethod::new("haneul.rpc.v2.NameService", "ReverseLookupName"));
+                .insert(
+                    GrpcMethod::new("haneul.rpc.v2.NameService", "ReverseLookupName"),
+                );
             self.inner.unary(req, path, codec).await
         }
     }
@@ -5825,7 +5846,9 @@ pub mod state_service_client {
             );
             let mut req = request.into_request();
             req.extensions_mut()
-                .insert(GrpcMethod::new("haneul.rpc.v2.StateService", "ListDynamicFields"));
+                .insert(
+                    GrpcMethod::new("haneul.rpc.v2.StateService", "ListDynamicFields"),
+                );
             self.inner.unary(req, path, codec).await
         }
         pub async fn list_owned_objects(
@@ -5849,7 +5872,9 @@ pub mod state_service_client {
             );
             let mut req = request.into_request();
             req.extensions_mut()
-                .insert(GrpcMethod::new("haneul.rpc.v2.StateService", "ListOwnedObjects"));
+                .insert(
+                    GrpcMethod::new("haneul.rpc.v2.StateService", "ListOwnedObjects"),
+                );
             self.inner.unary(req, path, codec).await
         }
         pub async fn get_coin_info(

@@ -552,7 +552,11 @@ impl<'de> serde::Deserialize<'de> for EventFilter {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2alpha.EventFilter", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2alpha.EventFilter",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for EventItem {
@@ -898,7 +902,11 @@ impl<'de> serde::Deserialize<'de> for EventLiteral {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2alpha.EventLiteral", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2alpha.EventLiteral",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for EventPredicate {
@@ -1405,7 +1413,10 @@ impl serde::Serialize for GetCheckpointObjectProofRequest {
             len += 1;
         }
         let mut struct_ser = serializer
-            .serialize_struct("haneul.rpc.v2alpha.GetCheckpointObjectProofRequest", len)?;
+            .serialize_struct(
+                "haneul.rpc.v2alpha.GetCheckpointObjectProofRequest",
+                len,
+            )?;
         if let Some(v) = self.object_id.as_ref() {
             struct_ser.serialize_field("objectId", v)?;
         }
@@ -1474,7 +1485,9 @@ impl<'de> serde::Deserialize<'de> for GetCheckpointObjectProofRequest {
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
                 formatter
-                    .write_str("struct haneul.rpc.v2alpha.GetCheckpointObjectProofRequest")
+                    .write_str(
+                        "struct haneul.rpc.v2alpha.GetCheckpointObjectProofRequest",
+                    )
             }
             fn visit_map<V>(
                 self,
@@ -1537,7 +1550,10 @@ impl serde::Serialize for GetCheckpointObjectProofResponse {
             len += 1;
         }
         let mut struct_ser = serializer
-            .serialize_struct("haneul.rpc.v2alpha.GetCheckpointObjectProofResponse", len)?;
+            .serialize_struct(
+                "haneul.rpc.v2alpha.GetCheckpointObjectProofResponse",
+                len,
+            )?;
         if let Some(v) = self.checkpoint_summary.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -1629,7 +1645,9 @@ impl<'de> serde::Deserialize<'de> for GetCheckpointObjectProofResponse {
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
                 formatter
-                    .write_str("struct haneul.rpc.v2alpha.GetCheckpointObjectProofResponse")
+                    .write_str(
+                        "struct haneul.rpc.v2alpha.GetCheckpointObjectProofResponse",
+                    )
             }
             fn visit_map<V>(
                 self,
@@ -3004,7 +3022,11 @@ impl<'de> serde::Deserialize<'de> for MerkleNode {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2alpha.MerkleNode", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2alpha.MerkleNode",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for MerkleNonInclusionProof {
@@ -3262,7 +3284,11 @@ impl<'de> serde::Deserialize<'de> for MerkleProof {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2alpha.MerkleProof", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2alpha.MerkleProof",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for MoveCallFilter {
@@ -4179,7 +4205,11 @@ impl<'de> serde::Deserialize<'de> for QueryOptions {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2alpha.QueryOptions", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2alpha.QueryOptions",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for SenderFilter {
@@ -4282,7 +4312,11 @@ impl<'de> serde::Deserialize<'de> for SenderFilter {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2alpha.SenderFilter", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2alpha.SenderFilter",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for TransactionFilter {

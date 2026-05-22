@@ -341,7 +341,11 @@ impl<'de> serde::Deserialize<'de> for AccumulatorWrite {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.AccumulatorWrite", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.AccumulatorWrite",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for accumulator_write::AccumulatorOperation {
@@ -522,7 +526,8 @@ impl serde::Serialize for ActiveJwk {
         if self.epoch.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ActiveJwk", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.ActiveJwk", len)?;
         if let Some(v) = self.id.as_ref() {
             struct_ser.serialize_field("id", v)?;
         }
@@ -643,7 +648,8 @@ impl<'de> serde::Deserialize<'de> for ActiveJwk {
                 })
             }
         }
-        deserializer.deserialize_struct("haneul.rpc.v2.ActiveJwk", FIELDS, GeneratedVisitor)
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.ActiveJwk", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for AddressAliasesVersion {
@@ -926,7 +932,8 @@ impl<'de> serde::Deserialize<'de> for Argument {
                 })
             }
         }
-        deserializer.deserialize_struct("haneul.rpc.v2.Argument", FIELDS, GeneratedVisitor)
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.Argument", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for argument::ArgumentKind {
@@ -1534,7 +1541,8 @@ impl<'de> serde::Deserialize<'de> for Balance {
                 })
             }
         }
-        deserializer.deserialize_struct("haneul.rpc.v2.Balance", FIELDS, GeneratedVisitor)
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.Balance", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for BalanceChange {
@@ -2438,7 +2446,8 @@ impl serde::Serialize for ChangeEpoch {
         if !self.system_packages.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ChangeEpoch", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.ChangeEpoch", len)?;
         if let Some(v) = self.epoch.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -3380,7 +3389,8 @@ impl serde::Serialize for Checkpoint {
         if self.objects.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Checkpoint", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.Checkpoint", len)?;
         if let Some(v) = self.sequence_number.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -4329,7 +4339,11 @@ impl<'de> serde::Deserialize<'de> for CheckpointSummary {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.CheckpointSummary", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.CheckpointSummary",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for CheckpointedTransactionInfo {
@@ -4635,7 +4649,8 @@ impl<'de> serde::Deserialize<'de> for CircomG1 {
                 })
             }
         }
-        deserializer.deserialize_struct("haneul.rpc.v2.CircomG1", FIELDS, GeneratedVisitor)
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.CircomG1", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for CircomG2 {
@@ -4815,7 +4830,8 @@ impl<'de> serde::Deserialize<'de> for CircomG2 {
                 })
             }
         }
-        deserializer.deserialize_struct("haneul.rpc.v2.CircomG2", FIELDS, GeneratedVisitor)
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.CircomG2", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for CleverError {
@@ -4841,7 +4857,8 @@ impl serde::Serialize for CleverError {
         if self.value.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.CleverError", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.CleverError", len)?;
         if let Some(v) = self.error_code.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -5164,7 +5181,11 @@ impl<'de> serde::Deserialize<'de> for CoinDenyListError {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.CoinDenyListError", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.CoinDenyListError",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for CoinMetadata {
@@ -5942,7 +5963,8 @@ impl<'de> serde::Deserialize<'de> for Command {
                 Ok(Command { command: command__ })
             }
         }
-        deserializer.deserialize_struct("haneul.rpc.v2.Command", FIELDS, GeneratedVisitor)
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.Command", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for CommandArgumentError {
@@ -6691,7 +6713,11 @@ impl<'de> serde::Deserialize<'de> for CongestedObjects {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.CongestedObjects", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.CongestedObjects",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for ConsensusCommitPrologue {
@@ -6977,7 +7003,10 @@ impl serde::Serialize for ConsensusDeterminedVersionAssignments {
             len += 1;
         }
         let mut struct_ser = serializer
-            .serialize_struct("haneul.rpc.v2.ConsensusDeterminedVersionAssignments", len)?;
+            .serialize_struct(
+                "haneul.rpc.v2.ConsensusDeterminedVersionAssignments",
+                len,
+            )?;
         if let Some(v) = self.version.as_ref() {
             struct_ser.serialize_field("version", v)?;
         }
@@ -7051,7 +7080,9 @@ impl<'de> serde::Deserialize<'de> for ConsensusDeterminedVersionAssignments {
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
                 formatter
-                    .write_str("struct haneul.rpc.v2.ConsensusDeterminedVersionAssignments")
+                    .write_str(
+                        "struct haneul.rpc.v2.ConsensusDeterminedVersionAssignments",
+                    )
             }
             fn visit_map<V>(
                 self,
@@ -7578,7 +7609,8 @@ impl<'de> serde::Deserialize<'de> for Display {
                 })
             }
         }
-        deserializer.deserialize_struct("haneul.rpc.v2.Display", FIELDS, GeneratedVisitor)
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.Display", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for DynamicField {
@@ -9306,7 +9338,11 @@ impl<'de> serde::Deserialize<'de> for EventDigestEntry {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.EventDigestEntry", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.EventDigestEntry",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for ExecuteTransactionRequest {
@@ -10352,7 +10388,9 @@ impl<'de> serde::Deserialize<'de> for execution_error::ExecutionErrorKind {
                         )
                     }
                     "HANEUL_MOVE_VERIFICATION_ERROR" => {
-                        Ok(execution_error::ExecutionErrorKind::HaneulMoveVerificationError)
+                        Ok(
+                            execution_error::ExecutionErrorKind::HaneulMoveVerificationError,
+                        )
                     }
                     "MOVE_PRIMITIVE_RUNTIME_ERROR" => {
                         Ok(
@@ -10592,7 +10630,11 @@ impl<'de> serde::Deserialize<'de> for ExecutionStatus {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.ExecutionStatus", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.ExecutionStatus",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for ExecutionTimeObservation {
@@ -11157,7 +11199,11 @@ impl<'de> serde::Deserialize<'de> for FieldDescriptor {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.FieldDescriptor", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.FieldDescriptor",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for FunctionDescriptor {
@@ -11593,7 +11639,11 @@ impl<'de> serde::Deserialize<'de> for FundsWithdrawal {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.FundsWithdrawal", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.FundsWithdrawal",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for funds_withdrawal::Source {
@@ -11897,7 +11947,8 @@ impl serde::Serialize for GasPayment {
         if self.budget.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.GasPayment", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.GasPayment", len)?;
         if !self.objects.is_empty() {
             struct_ser.serialize_field("objects", &self.objects)?;
         }
@@ -12268,7 +12319,11 @@ impl<'de> serde::Deserialize<'de> for GetBalanceRequest {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.GetBalanceRequest", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.GetBalanceRequest",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for GetBalanceResponse {
@@ -13322,7 +13377,11 @@ impl<'de> serde::Deserialize<'de> for GetEpochRequest {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.GetEpochRequest", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.GetEpochRequest",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for GetEpochResponse {
@@ -13425,7 +13484,11 @@ impl<'de> serde::Deserialize<'de> for GetEpochResponse {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.GetEpochResponse", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.GetEpochResponse",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for GetFunctionRequest {
@@ -13837,7 +13900,11 @@ impl<'de> serde::Deserialize<'de> for GetObjectRequest {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.GetObjectRequest", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.GetObjectRequest",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for GetObjectResponse {
@@ -13942,7 +14009,11 @@ impl<'de> serde::Deserialize<'de> for GetObjectResponse {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.GetObjectResponse", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.GetObjectResponse",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for GetObjectResult {
@@ -14066,7 +14137,11 @@ impl<'de> serde::Deserialize<'de> for GetObjectResult {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.GetObjectResult", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.GetObjectResult",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for GetPackageRequest {
@@ -14171,7 +14246,11 @@ impl<'de> serde::Deserialize<'de> for GetPackageRequest {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.GetPackageRequest", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.GetPackageRequest",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for GetPackageResponse {
@@ -15044,7 +15123,8 @@ impl serde::Serialize for IndexError {
         if self.subresult.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.IndexError", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.IndexError", len)?;
         if let Some(v) = self.index.as_ref() {
             struct_ser.serialize_field("index", v)?;
         }
@@ -16009,7 +16089,8 @@ impl<'de> serde::Deserialize<'de> for Linkage {
                 })
             }
         }
-        deserializer.deserialize_struct("haneul.rpc.v2.Linkage", FIELDS, GeneratedVisitor)
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.Linkage", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ListBalancesRequest {
@@ -17388,7 +17469,11 @@ impl<'de> serde::Deserialize<'de> for LookupNameRequest {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.LookupNameRequest", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.LookupNameRequest",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for LookupNameResponse {
@@ -17639,7 +17724,8 @@ impl serde::Serialize for MergeCoins {
         if !self.coins_to_merge.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.MergeCoins", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.MergeCoins", len)?;
         if let Some(v) = self.coin.as_ref() {
             struct_ser.serialize_field("coin", v)?;
         }
@@ -17924,7 +18010,8 @@ impl serde::Serialize for MoveAbort {
         if self.clever_error.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.MoveAbort", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.MoveAbort", len)?;
         if let Some(v) = self.abort_code.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -18055,7 +18142,8 @@ impl<'de> serde::Deserialize<'de> for MoveAbort {
                 })
             }
         }
-        deserializer.deserialize_struct("haneul.rpc.v2.MoveAbort", FIELDS, GeneratedVisitor)
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.MoveAbort", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for MoveCall {
@@ -18230,7 +18318,8 @@ impl<'de> serde::Deserialize<'de> for MoveCall {
                 })
             }
         }
-        deserializer.deserialize_struct("haneul.rpc.v2.MoveCall", FIELDS, GeneratedVisitor)
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.MoveCall", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for MoveLocation {
@@ -18437,7 +18526,8 @@ impl serde::Serialize for MoveTable {
         if self.size.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.MoveTable", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.MoveTable", len)?;
         if let Some(v) = self.id.as_ref() {
             struct_ser.serialize_field("id", v)?;
         }
@@ -18545,7 +18635,8 @@ impl<'de> serde::Deserialize<'de> for MoveTable {
                 })
             }
         }
-        deserializer.deserialize_struct("haneul.rpc.v2.MoveTable", FIELDS, GeneratedVisitor)
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.MoveTable", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for MultisigAggregatedSignature {
@@ -18851,7 +18942,11 @@ impl<'de> serde::Deserialize<'de> for MultisigCommittee {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.MultisigCommittee", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.MultisigCommittee",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for MultisigMember {
@@ -19335,7 +19430,8 @@ impl serde::Serialize for NameRecord {
         if !self.data.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.NameRecord", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.NameRecord", len)?;
         if let Some(v) = self.id.as_ref() {
             struct_ser.serialize_field("id", v)?;
         }
@@ -20030,7 +20126,11 @@ impl<'de> serde::Deserialize<'de> for ObjectReference {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.ObjectReference", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.ObjectReference",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for ObjectSet {
@@ -20044,7 +20144,8 @@ impl serde::Serialize for ObjectSet {
         if !self.objects.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.ObjectSet", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.ObjectSet", len)?;
         if !self.objects.is_empty() {
             struct_ser.serialize_field("objects", &self.objects)?;
         }
@@ -20133,7 +20234,8 @@ impl<'de> serde::Deserialize<'de> for ObjectSet {
                 })
             }
         }
-        deserializer.deserialize_struct("haneul.rpc.v2.ObjectSet", FIELDS, GeneratedVisitor)
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.ObjectSet", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for OpenSignature {
@@ -20524,7 +20626,11 @@ impl<'de> serde::Deserialize<'de> for OpenSignatureBody {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.OpenSignatureBody", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.OpenSignatureBody",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for open_signature_body::Type {
@@ -21060,7 +21166,8 @@ impl<'de> serde::Deserialize<'de> for Package {
                 })
             }
         }
-        deserializer.deserialize_struct("haneul.rpc.v2.Package", FIELDS, GeneratedVisitor)
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.Package", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for PackageUpgradeError {
@@ -22112,7 +22219,8 @@ impl<'de> serde::Deserialize<'de> for Publish {
                 })
             }
         }
-        deserializer.deserialize_struct("haneul.rpc.v2.Publish", FIELDS, GeneratedVisitor)
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.Publish", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for RandomnessStateUpdate {
@@ -23108,7 +23216,11 @@ impl<'de> serde::Deserialize<'de> for SimpleSignature {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.SimpleSignature", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.SimpleSignature",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for SimulateTransactionRequest {
@@ -23549,7 +23661,8 @@ impl serde::Serialize for SizeError {
         if self.max_size.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.SizeError", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.SizeError", len)?;
         if let Some(v) = self.size.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -23663,7 +23776,8 @@ impl<'de> serde::Deserialize<'de> for SizeError {
                 })
             }
         }
-        deserializer.deserialize_struct("haneul.rpc.v2.SizeError", FIELDS, GeneratedVisitor)
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.SizeError", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for SplitCoins {
@@ -23680,7 +23794,8 @@ impl serde::Serialize for SplitCoins {
         if !self.amounts.is_empty() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.SplitCoins", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.SplitCoins", len)?;
         if let Some(v) = self.coin.as_ref() {
             struct_ser.serialize_field("coin", v)?;
         }
@@ -24093,7 +24208,8 @@ impl serde::Serialize for StakingPool {
         if self.extra_fields.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.StakingPool", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.StakingPool", len)?;
         if let Some(v) = self.id.as_ref() {
             struct_ser.serialize_field("id", v)?;
         }
@@ -24112,7 +24228,8 @@ impl serde::Serialize for StakingPool {
         if let Some(v) = self.haneul_balance.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
-            struct_ser.serialize_field("haneulBalance", ToString::to_string(&v).as_str())?;
+            struct_ser
+                .serialize_field("haneulBalance", ToString::to_string(&v).as_str())?;
         }
         if let Some(v) = self.rewards_pool.as_ref() {
             #[allow(clippy::needless_borrow)]
@@ -24249,7 +24366,8 @@ impl<'de> serde::Deserialize<'de> for StakingPool {
                             "pendingStake" | "pending_stake" => {
                                 Ok(GeneratedField::PendingStake)
                             }
-                            "pendingTotalHaneulWithdraw" | "pending_total_haneul_withdraw" => {
+                            "pendingTotalHaneulWithdraw"
+                            | "pending_total_haneul_withdraw" => {
                                 Ok(GeneratedField::PendingTotalHaneulWithdraw)
                             }
                             "pendingPoolTokenWithdraw"
@@ -24329,7 +24447,9 @@ impl<'de> serde::Deserialize<'de> for StakingPool {
                         }
                         GeneratedField::HaneulBalance => {
                             if haneul_balance__.is_some() {
-                                return Err(serde::de::Error::duplicate_field("haneulBalance"));
+                                return Err(
+                                    serde::de::Error::duplicate_field("haneulBalance"),
+                                );
                             }
                             haneul_balance__ = map_
                                 .next_value::<
@@ -24384,7 +24504,9 @@ impl<'de> serde::Deserialize<'de> for StakingPool {
                         GeneratedField::PendingTotalHaneulWithdraw => {
                             if pending_total_haneul_withdraw__.is_some() {
                                 return Err(
-                                    serde::de::Error::duplicate_field("pendingTotalHaneulWithdraw"),
+                                    serde::de::Error::duplicate_field(
+                                        "pendingTotalHaneulWithdraw",
+                                    ),
                                 );
                             }
                             pending_total_haneul_withdraw__ = map_
@@ -24453,7 +24575,8 @@ impl serde::Serialize for StorageFund {
         if self.non_refundable_balance.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.StorageFund", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.StorageFund", len)?;
         if let Some(v) = self.total_object_storage_rebates.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -25367,7 +25490,11 @@ impl<'de> serde::Deserialize<'de> for SystemParameters {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.SystemParameters", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.SystemParameters",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for SystemState {
@@ -25426,7 +25553,8 @@ impl serde::Serialize for SystemState {
         if self.extra_fields.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.SystemState", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.SystemState", len)?;
         if let Some(v) = self.version.as_ref() {
             #[allow(clippy::needless_borrow)]
             #[allow(clippy::needless_borrows_for_generic_args)]
@@ -25903,7 +26031,8 @@ impl serde::Serialize for Transaction {
         if self.expiration.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Transaction", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.Transaction", len)?;
         if let Some(v) = self.bcs.as_ref() {
             struct_ser.serialize_field("bcs", v)?;
         }
@@ -26646,7 +26775,11 @@ impl<'de> serde::Deserialize<'de> for TransactionEvents {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.TransactionEvents", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.TransactionEvents",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for TransactionExpiration {
@@ -27252,7 +27385,11 @@ impl<'de> serde::Deserialize<'de> for TransactionKind {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.TransactionKind", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.TransactionKind",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for transaction_kind::Kind {
@@ -27493,7 +27630,11 @@ impl<'de> serde::Deserialize<'de> for TransferObjects {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.TransferObjects", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.TransferObjects",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for TypeArgumentError {
@@ -27632,7 +27773,11 @@ impl<'de> serde::Deserialize<'de> for TypeArgumentError {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.TypeArgumentError", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.TypeArgumentError",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for type_argument_error::TypeArgumentErrorKind {
@@ -27737,7 +27882,8 @@ impl serde::Serialize for TypeOrigin {
         if self.package_id.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.TypeOrigin", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.TypeOrigin", len)?;
         if let Some(v) = self.module_name.as_ref() {
             struct_ser.serialize_field("moduleName", v)?;
         }
@@ -28482,7 +28628,8 @@ impl<'de> serde::Deserialize<'de> for Upgrade {
                 })
             }
         }
-        deserializer.deserialize_struct("haneul.rpc.v2.Upgrade", FIELDS, GeneratedVisitor)
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.Upgrade", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for UserSignature {
@@ -28781,7 +28928,8 @@ impl serde::Serialize for Validator {
         if self.extra_fields.is_some() {
             len += 1;
         }
-        let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Validator", len)?;
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.Validator", len)?;
         if let Some(v) = self.name.as_ref() {
             struct_ser.serialize_field("name", v)?;
         }
@@ -29557,7 +29705,8 @@ impl<'de> serde::Deserialize<'de> for Validator {
                 })
             }
         }
-        deserializer.deserialize_struct("haneul.rpc.v2.Validator", FIELDS, GeneratedVisitor)
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.Validator", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for ValidatorAggregatedSignature {
@@ -30722,7 +30871,11 @@ impl<'de> serde::Deserialize<'de> for VariantDescriptor {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.VariantDescriptor", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.VariantDescriptor",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for VerifySignatureRequest {
@@ -31164,7 +31317,11 @@ impl<'de> serde::Deserialize<'de> for VersionAssignment {
             }
         }
         deserializer
-            .deserialize_struct("haneul.rpc.v2.VersionAssignment", FIELDS, GeneratedVisitor)
+            .deserialize_struct(
+                "haneul.rpc.v2.VersionAssignment",
+                FIELDS,
+                GeneratedVisitor,
+            )
     }
 }
 impl serde::Serialize for ZkLoginAuthenticator {

@@ -566,7 +566,10 @@ pub mod ledger_service_client {
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(
-                    GrpcMethod::new("haneul.rpc.v2alpha.LedgerService", "ListCheckpoints"),
+                    GrpcMethod::new(
+                        "haneul.rpc.v2alpha.LedgerService",
+                        "ListCheckpoints",
+                    ),
                 );
             self.inner.server_streaming(req, path, codec).await
         }
@@ -596,7 +599,10 @@ pub mod ledger_service_client {
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(
-                    GrpcMethod::new("haneul.rpc.v2alpha.LedgerService", "ListTransactions"),
+                    GrpcMethod::new(
+                        "haneul.rpc.v2alpha.LedgerService",
+                        "ListTransactions",
+                    ),
                 );
             self.inner.server_streaming(req, path, codec).await
         }
@@ -625,7 +631,9 @@ pub mod ledger_service_client {
             );
             let mut req = request.into_request();
             req.extensions_mut()
-                .insert(GrpcMethod::new("haneul.rpc.v2alpha.LedgerService", "ListEvents"));
+                .insert(
+                    GrpcMethod::new("haneul.rpc.v2alpha.LedgerService", "ListEvents"),
+                );
             self.inner.server_streaming(req, path, codec).await
         }
     }

@@ -1,22 +1,22 @@
 use anyhow::Result;
-use integration_tests::SuiNetworkBuilder;
+use haneul_crypto::HaneulSigner;
+use haneul_rpc::field::FieldMask;
+use haneul_rpc::field::FieldMaskUtil;
+use haneul_rpc::proto::haneul::rpc::v2::ExecuteTransactionRequest;
+use haneul_sdk_types::Address;
+use haneul_sdk_types::ObjectReference;
+use haneul_sdk_types::StructTag;
+use haneul_sdk_types::TypeTag;
+use haneul_transaction_builder::Function;
+use haneul_transaction_builder::ObjectInput;
+use haneul_transaction_builder::TransactionBuilder;
+use integration_tests::HaneulNetworkBuilder;
 use std::str::FromStr;
-use sui_crypto::SuiSigner;
-use sui_rpc::field::FieldMask;
-use sui_rpc::field::FieldMaskUtil;
-use sui_rpc::proto::sui::rpc::v2::ExecuteTransactionRequest;
-use sui_sdk_types::Address;
-use sui_sdk_types::ObjectReference;
-use sui_sdk_types::StructTag;
-use sui_sdk_types::TypeTag;
-use sui_transaction_builder::Function;
-use sui_transaction_builder::ObjectInput;
-use sui_transaction_builder::TransactionBuilder;
 
 #[tokio::test]
 async fn test_move_call() -> Result<()> {
-    let mut sui = SuiNetworkBuilder::default().build().await?;
-    let private_key = sui.user_keys.first().unwrap();
+    let mut haneul = HaneulNetworkBuilder::default().build().await?;
+    let private_key = haneul.user_keys.first().unwrap();
     let sender = private_key.public_key().derive_address();
 
     // Check that `0x1::option::is_none` move call works when passing `1`
@@ -33,10 +33,10 @@ async fn test_move_call() -> Result<()> {
     let input = builder.pure(&Some(1u64));
     builder.move_call(function, vec![input]);
 
-    let tx = builder.build(&mut sui.client).await.unwrap();
+    let tx = builder.build(&mut haneul.client).await.unwrap();
     let signature = private_key.sign_transaction(&tx).unwrap();
 
-    let response = sui
+    let response = haneul
         .client
         .execute_transaction_and_wait_for_checkpoint(
             ExecuteTransactionRequest::new(tx.into())
@@ -57,7 +57,7 @@ async fn test_move_call() -> Result<()> {
 //     let mut tx = TransactionBuilder::new();
 //     let (_, pk, _) = helper_setup(&mut tx, &client).await;
 
-//     // transfer 1 SUI from Gas coin
+//     // transfer 1 HANEUL from Gas coin
 //     let amount = tx.input(Serialized(&1_000_000_000u64));
 //     let result = tx.split_coins(tx.gas(), vec![amount]);
 //     let recipient_address = Address::generate(rand::thread_rng());
@@ -88,7 +88,7 @@ async fn test_move_call() -> Result<()> {
 //     let coin_obj: Input = (&client.object(*coin, None).await.unwrap().unwrap()).into();
 //     let coin_input = tx.input(coin_obj.with_owned_kind());
 
-//     // transfer 1 SUI
+//     // transfer 1 HANEUL
 //     let amount = tx.input(Serialized(&1_000_000_000u64));
 //     tx.split_coins(coin_input, vec![amount]);
 
@@ -162,23 +162,23 @@ async fn test_move_call() -> Result<()> {
 
 #[tokio::test]
 async fn test_publish() {
-    let mut sui = SuiNetworkBuilder::default().build().await.unwrap();
-    let private_key = sui.user_keys.first().unwrap();
+    let mut haneul = HaneulNetworkBuilder::default().build().await.unwrap();
+    let private_key = haneul.user_keys.first().unwrap();
     let sender = private_key.public_key().derive_address();
 
     let mut builder = TransactionBuilder::new();
     builder.set_sender(sender);
 
     let package_dir = concat!(env!("CARGO_MANIFEST_DIR"), "/", "packages/test_publish_v1");
-    let (bytecode, _package_digest) = sui.build_package(package_dir.as_ref()).unwrap();
+    let (bytecode, _package_digest) = haneul.build_package(package_dir.as_ref()).unwrap();
     let upgrade_cap = builder.publish(bytecode.modules, bytecode.dependencies);
     let sender_arg = builder.pure(&sender);
     builder.transfer_objects(vec![upgrade_cap], sender_arg);
 
-    let tx = builder.build(&mut sui.client).await.unwrap();
+    let tx = builder.build(&mut haneul.client).await.unwrap();
     let signature = private_key.sign_transaction(&tx).unwrap();
 
-    let response = sui
+    let response = haneul
         .client
         .execute_transaction_and_wait_for_checkpoint(
             ExecuteTransactionRequest::new(tx.into())
@@ -195,23 +195,23 @@ async fn test_publish() {
 
 #[tokio::test]
 async fn test_upgrade() -> Result<()> {
-    let mut sui = SuiNetworkBuilder::default().build().await.unwrap();
-    let private_key = sui.user_keys.first().unwrap();
+    let mut haneul = HaneulNetworkBuilder::default().build().await.unwrap();
+    let private_key = haneul.user_keys.first().unwrap();
     let sender = private_key.public_key().derive_address();
 
     let mut builder = TransactionBuilder::new();
     builder.set_sender(sender);
 
     let package_dir = concat!(env!("CARGO_MANIFEST_DIR"), "/", "packages/test_publish_v2");
-    let (bytecode, _package_digest) = sui.build_package(package_dir.as_ref()).unwrap();
+    let (bytecode, _package_digest) = haneul.build_package(package_dir.as_ref()).unwrap();
     let upgrade_cap = builder.publish(bytecode.modules, bytecode.dependencies);
     let sender_arg = builder.pure(&sender);
     builder.transfer_objects(vec![upgrade_cap], sender_arg);
 
-    let tx = builder.build(&mut sui.client).await.unwrap();
+    let tx = builder.build(&mut haneul.client).await.unwrap();
     let signature = private_key.sign_transaction(&tx).unwrap();
 
-    let response = sui
+    let response = haneul
         .client
         .execute_transaction_and_wait_for_checkpoint(
             ExecuteTransactionRequest::new(tx.into())
@@ -255,7 +255,7 @@ async fn test_upgrade() -> Result<()> {
     builder.set_sender(sender);
 
     let package_dir = concat!(env!("CARGO_MANIFEST_DIR"), "/", "packages/test_publish_v2");
-    let (bytecode, package_digest) = sui.build_package(package_dir.as_ref()).unwrap();
+    let (bytecode, package_digest) = haneul.build_package(package_dir.as_ref()).unwrap();
     let upgrade_cap = builder.object(ObjectInput::new(*upgrade_cap.object_id()));
     let policy = builder.pure(&0u8);
     let package_digest = builder.pure(&package_digest);
@@ -287,10 +287,10 @@ async fn test_upgrade() -> Result<()> {
         vec![upgrade_cap, upgrade_receipt],
     );
 
-    let tx = builder.build(&mut sui.client).await.unwrap();
+    let tx = builder.build(&mut haneul.client).await.unwrap();
     let signature = private_key.sign_transaction(&tx).unwrap();
 
-    let response = sui
+    let response = haneul
         .client
         .execute_transaction_and_wait_for_checkpoint(
             ExecuteTransactionRequest::new(tx.into())

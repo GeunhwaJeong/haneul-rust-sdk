@@ -16,7 +16,7 @@ futures = "0.3.31"
 serde_json = "1.0.148"
 
 rand_core = { version = "0.6.4", features = ["getrandom"] }
-sui-crypto = { path = "../sui-crypto", features = ["ed25519"] }
-sui-rpc = { path = "../sui-rpc", features = [] }
-sui-sdk-types = { path = "../sui-sdk-types", features = [] }
-sui-transaction-builder = { path = "../sui-transaction-builder", features = [] }
+haneul-crypto = { path = "../haneul-crypto", features = ["ed25519"] }
+haneul-rpc = { path = "../haneul-rpc", features = [] }
+haneul-sdk-types = { path = "../haneul-sdk-types", features = [] }
+haneul-transaction-builder = { path = "../haneul-transaction-builder", features = [] }

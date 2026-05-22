@@ -206,7 +206,7 @@ impl Builder {
 
     /// Set the module path prefix for serde helper types.
     ///
-    /// Defaults to `crate::_serde`. Set to e.g. `sui_rpc::_serde` when generating
+    /// Defaults to `crate::_serde`. Set to e.g. `haneul_rpc::_serde` when generating
     /// code that lives in a different crate from the `_serde` helpers module.
     pub fn serde_path(&mut self, path: impl Into<String>) -> &mut Self {
         self.serde_path = Some(path.into());
@@ -248,9 +248,8 @@ impl Builder {
     /// code for that package.
     pub fn generate<S: AsRef<str>>(&self, prefixes: &[S]) -> Vec<(Package, String)> {
         let serde_path_str = self.serde_path.as_deref().unwrap_or("crate::_serde");
-        let serde_path: proc_macro2::TokenStream = serde_path_str
-            .parse()
-            .expect("invalid serde_path");
+        let serde_path: proc_macro2::TokenStream =
+            serde_path_str.parse().expect("invalid serde_path");
 
         let iter = self.descriptors.iter().filter(move |(t, _)| {
             let exclude = self

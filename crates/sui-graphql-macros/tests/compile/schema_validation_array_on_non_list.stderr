@@ -1,5 +1,0 @@
-error: Cannot use '[]' on non-list field 'address' (type 'SuiAddress')
- --> tests/compile/schema_validation_array_on_non_list.rs:7:20
-  |
-7 |     #[field(path = "object.address[]")]
-  |                    ^^^^^^^^^^^^^^^^^^

@@ -557,9 +557,7 @@ fn deserialize_regular_field_value(
 ) -> TokenStream {
     let serde_path = resolver.serde_path();
     match &field.field_type {
-        FieldType::Scalar(scalar) => {
-            encode_scalar_field(*scalar, field.field_modifier, serde_path)
-        }
+        FieldType::Scalar(scalar) => encode_scalar_field(*scalar, field.field_modifier, serde_path),
         FieldType::Enum(path) => {
             let enum_type = resolver.rust_type_token(path);
             match field.field_modifier {
@@ -628,11 +626,9 @@ fn deserialize_map_field(
                 quote!(v.0),
             )
         }
-        FieldType::Scalar(ScalarType::Bytes) => (
-            quote!(#serde_path::BytesDeserialize<_>),
-            true,
-            quote!(v.0),
-        ),
+        FieldType::Scalar(ScalarType::Bytes) => {
+            (quote!(#serde_path::BytesDeserialize<_>), true, quote!(v.0))
+        }
         FieldType::Enum(path) => {
             let enum_type = resolver.rust_type_token(path);
             (quote!(#enum_type), true, quote!(v as i32))

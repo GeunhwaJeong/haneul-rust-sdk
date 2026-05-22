@@ -1,0 +1,76 @@
+# Minimal test schema for haneul-graphql-macros tests.
+# This schema is intentionally small to make tests fast and self-contained.
+
+type Query {
+    chainIdentifier: String
+    object(id: HaneulAddress!): Object
+    epoch: Epoch
+    checkpoint: Checkpoint
+    checkpoints: CheckpointConnection
+    epochs: EpochConnection
+    items: [Item]
+    groups: [Group]
+}
+
+type Object {
+    address: HaneulAddress
+    version: Int
+}
+
+type Checkpoint {
+    sequenceNumber: Int
+    digest: String
+}
+
+type CheckpointConnection {
+    nodes: [Checkpoint]
+}
+
+type Epoch {
+    epochId: Int
+    checkpoints: CheckpointConnection
+}
+
+type EpochConnection {
+    nodes: [Epoch]
+}
+
+type Item {
+    name: String
+    nickname: String
+    tags: [String]
+}
+
+type Group {
+    members: [Item]
+    info: GroupInfo
+}
+
+type GroupInfo {
+    details: GroupDetails
+}
+
+type GroupDetails {
+    leaders: [Item]
+}
+
+type MoveType {
+    repr: String
+}
+
+type MoveValue {
+    type: MoveType
+    json: JSON
+}
+
+type MoveObject {
+    contents: MoveValue
+    address: HaneulAddress
+}
+
+union DynamicFieldValue = MoveObject | MoveValue
+
+scalar HaneulAddress
+scalar Int
+scalar String
+scalar JSON

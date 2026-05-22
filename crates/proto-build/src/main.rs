@@ -15,12 +15,12 @@ mod message_graph;
 fn main() {
     let root_dir = PathBuf::from(std::env!("CARGO_MANIFEST_DIR"));
     let vendored_proto_dir = root_dir
-        .join("../sui-rpc/vendored/proto")
+        .join("../haneul-rpc/vendored/proto")
         .canonicalize()
         .unwrap();
-    let local_proto_dir = root_dir.join("../sui-rpc/proto").canonicalize().unwrap();
+    let local_proto_dir = root_dir.join("../haneul-rpc/proto").canonicalize().unwrap();
     let out_dir = root_dir
-        .join("../sui-rpc/src/proto/generated")
+        .join("../haneul-rpc/src/proto/generated")
         .canonicalize()
         .unwrap();
 
@@ -66,12 +66,12 @@ fn main() {
         .build_client(true)
         .build_server(true)
         .bytes(".")
-        .boxed(".sui.rpc.v2.Input.literal")
-        .boxed(".sui.rpc.v2.Epoch.system_state")
+        .boxed(".haneul.rpc.v2.Input.literal")
+        .boxed(".haneul.rpc.v2.Epoch.system_state")
         .boxed("json")
-        .boxed(".sui.rpc.v2.Object.display")
-        .message_attribute(".sui.rpc", "#[non_exhaustive]")
-        .enum_attribute(".sui.rpc", "#[non_exhaustive]")
+        .boxed(".haneul.rpc.v2.Object.display")
+        .message_attribute(".haneul.rpc", "#[non_exhaustive]")
+        .enum_attribute(".haneul.rpc", "#[non_exhaustive]")
         .btree_map(".")
         .generate_default_stubs(true)
         .out_dir(&out_dir)
@@ -111,7 +111,7 @@ fn main() {
         .out_dir(&out_dir)
         .ignore_unknown_fields()
         .btree_map(["."])
-        .build(&[".google.rpc", ".sui"])
+        .build(&[".google.rpc", ".haneul"])
         .unwrap();
 
     for (package, fds) in packages {

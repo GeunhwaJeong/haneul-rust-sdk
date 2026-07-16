@@ -18,26 +18,16 @@ use super::state::fold_and_reconcile;
 use crate::light_client::CheckpointObjectProof;
 use crate::light_client::LightClient;
 use crate::light_client::error::LightClientError;
-use crate::proto::haneul::rpc::v2alpha::AffectedObjectFilter;
 use crate::proto::haneul::rpc::v2alpha::EventFilter;
-use crate::proto::haneul::rpc::v2alpha::EventLiteral;
-use crate::proto::haneul::rpc::v2alpha::EventPredicate;
-use crate::proto::haneul::rpc::v2alpha::EventStreamHeadFilter;
-use crate::proto::haneul::rpc::v2alpha::EventTerm;
 use crate::proto::haneul::rpc::v2alpha::ListEventsRequest;
 use crate::proto::haneul::rpc::v2alpha::ListTransactionsRequest;
 use crate::proto::haneul::rpc::v2alpha::QueryEndReason;
 use crate::proto::haneul::rpc::v2alpha::QueryOptions;
 use crate::proto::haneul::rpc::v2alpha::TransactionFilter;
-use crate::proto::haneul::rpc::v2alpha::TransactionLiteral;
-use crate::proto::haneul::rpc::v2alpha::TransactionPredicate;
-use crate::proto::haneul::rpc::v2alpha::TransactionTerm;
-use crate::proto::haneul::rpc::v2alpha::event_literal;
-use crate::proto::haneul::rpc::v2alpha::event_predicate;
+use crate::proto::haneul::rpc::v2alpha::filter::event;
+use crate::proto::haneul::rpc::v2alpha::filter::transaction;
 use crate::proto::haneul::rpc::v2alpha::list_events_response;
 use crate::proto::haneul::rpc::v2alpha::list_transactions_response;
-use crate::proto::haneul::rpc::v2alpha::transaction_literal;
-use crate::proto::haneul::rpc::v2alpha::transaction_predicate;
 
 /// A streaming verifier for a single authenticated event stream.
 ///
@@ -119,7 +109,7 @@ async fn run_stream_task(
     let mut last_head_check = std::time::Instant::now();
 
     let stream_head_object_id = derive_event_stream_head_object_id(config.stream_id);
-    let filter = build_filter(&config.stream_id.to_string());
+    let filter = build_filter(config.stream_id);
 
     loop {
         // Decide whether to fetch the next page or reconcile.
@@ -164,10 +154,10 @@ async fn run_stream_task(
             end_checkpoint: None,
             filter: Some(filter.clone()),
             options: Some(QueryOptions {
-                limit_items: Some(config.page_size),
+                limit: Some(config.page_size),
                 after: next_cursor.clone(),
                 before: None,
-                ordering: 0, // ascending (default)
+                ordering: None, // ascending (default)
             }),
         };
 
@@ -177,11 +167,11 @@ async fn run_stream_task(
                     events,
                     end_cursor,
                     end_reason,
-                    watermark_hi,
+                    watermark,
                     partial_error,
                 } = page;
 
-                buffer_response_batch(&mut state, events, watermark_hi);
+                buffer_response_batch(&mut state, events, watermark);
 
                 // Mid-stream transport error: commit whatever items we
                 // got into the buffer (done above), advance
@@ -331,11 +321,11 @@ struct PageResult {
     /// the server no longer carries a cursor on `QueryEnd`.
     end_cursor: Option<prost::bytes::Bytes>,
     end_reason: Option<QueryEndReason>,
-    /// Most recent `Watermark.checkpoint_hi` observed in this page,
+    /// Most recent `Watermark.checkpoint` observed in this page,
     /// across both standalone watermarks and per-item watermarks. The
     /// streaming state uses this as the "events scanned through" floor
     /// when picking the settlement-fetch range.
-    watermark_hi: Option<u64>,
+    watermark: Option<u64>,
     /// Mid-stream transport error that interrupted page accumulation.
     /// When present, `events` and `end_cursor` reflect what was
     /// received before the error. The caller advances `next_cursor` to
@@ -360,7 +350,7 @@ async fn fetch_one_page(
     let mut events = Vec::new();
     let mut end_cursor: Option<prost::bytes::Bytes> = None;
     let mut end_reason = None;
-    let mut watermark_hi: Option<u64> = None;
+    let mut watermark: Option<u64> = None;
     let mut partial_error: Option<LightClientError> = None;
 
     while let Some(frame) = stream.next().await {
@@ -377,8 +367,8 @@ async fn fetch_one_page(
                     if let Some(c) = w.cursor.clone() {
                         end_cursor = Some(c);
                     }
-                    if let Some(hi) = w.checkpoint_hi {
-                        watermark_hi = Some(watermark_hi.map_or(hi, |prev| prev.max(hi)));
+                    if let Some(hi) = w.checkpoint {
+                        watermark = Some(watermark.map_or(hi, |prev| prev.max(hi)));
                     }
                 }
                 let ev = AuthenticatedEvent::try_from(&item)?;
@@ -388,12 +378,12 @@ async fn fetch_one_page(
                 if let Some(c) = w.cursor {
                     end_cursor = Some(c);
                 }
-                if let Some(hi) = w.checkpoint_hi {
-                    watermark_hi = Some(watermark_hi.map_or(hi, |prev| prev.max(hi)));
+                if let Some(hi) = w.checkpoint {
+                    watermark = Some(watermark.map_or(hi, |prev| prev.max(hi)));
                 }
             }
             Some(list_events_response::Response::End(end)) => {
-                end_reason = QueryEndReason::try_from(end.reason).ok();
+                end_reason = end.reason.and_then(|r| QueryEndReason::try_from(r).ok());
                 break;
             }
             None => break,
@@ -404,7 +394,7 @@ async fn fetch_one_page(
         events,
         end_cursor,
         end_reason,
-        watermark_hi,
+        watermark,
         partial_error,
     })
 }
@@ -483,7 +473,7 @@ async fn reconcile_once(
 
 /// Page through `ListTransactions` filtered on `affected_object =
 /// stream_head_object_id` and return the ascending `(checkpoint,
-/// transaction_offset)` settlement boundaries for `[start, end)`.
+/// transaction_index)` settlement boundaries for `[start, end)`.
 ///
 /// Each `settle_events` transaction mutates the stream's head object,
 /// so this filter returns exactly the per-stream settlement boundaries.
@@ -512,10 +502,10 @@ async fn fetch_settlements_for_range(
             end_checkpoint: Some(end_checkpoint_exclusive),
             filter: Some(filter.clone()),
             options: Some(QueryOptions {
-                limit_items: Some(page_size),
+                limit: Some(page_size),
                 after: cursor.clone(),
                 before: None,
-                ordering: 0, // ascending
+                ordering: None, // ascending
             }),
         };
 
@@ -572,18 +562,23 @@ async fn fetch_settlements_page(
                 if let Some(c) = item.watermark.as_ref().and_then(|w| w.cursor.clone()) {
                     end_cursor = Some(c);
                 }
-                let checkpoint = item
-                    .transaction
-                    .as_ref()
-                    .and_then(|tx| tx.checkpoint)
-                    .ok_or(LightClientError::UnexpectedObjectShape {
-                        reason: "settlement transaction missing checkpoint",
-                    })?;
-                let tx_offset =
-                    item.transaction_offset
+                let transaction =
+                    item.transaction
+                        .as_ref()
                         .ok_or(LightClientError::UnexpectedObjectShape {
-                            reason: "settlement transaction missing transaction_offset",
+                            reason: "settlement item missing transaction",
                         })?;
+                let checkpoint =
+                    transaction
+                        .checkpoint
+                        .ok_or(LightClientError::UnexpectedObjectShape {
+                            reason: "settlement transaction missing checkpoint",
+                        })?;
+                let tx_offset = transaction.transaction_index.ok_or(
+                    LightClientError::UnexpectedObjectShape {
+                        reason: "settlement transaction missing transaction_index",
+                    },
+                )?;
                 entries.push((checkpoint, tx_offset));
             }
             Some(list_transactions_response::Response::Watermark(w)) => {
@@ -592,7 +587,7 @@ async fn fetch_settlements_page(
                 }
             }
             Some(list_transactions_response::Response::End(end)) => {
-                end_reason = QueryEndReason::try_from(end.reason).ok();
+                end_reason = end.reason.and_then(|r| QueryEndReason::try_from(r).ok());
                 break;
             }
             None => break,
@@ -606,38 +601,12 @@ async fn fetch_settlements_page(
     })
 }
 
-fn build_filter(stream_id_hex: &str) -> EventFilter {
-    EventFilter {
-        terms: vec![EventTerm {
-            literals: vec![EventLiteral {
-                polarity: Some(event_literal::Polarity::Include(EventPredicate {
-                    predicate: Some(event_predicate::Predicate::EventStreamHead(
-                        EventStreamHeadFilter {
-                            stream_id: Some(stream_id_hex.to_string()),
-                        },
-                    )),
-                })),
-            }],
-        }],
-    }
+fn build_filter(stream_id: haneul_sdk_types::Address) -> EventFilter {
+    EventFilter::matching(event::event_stream_head(stream_id))
 }
 
 fn build_affected_object_filter(object_id: &haneul_sdk_types::Address) -> TransactionFilter {
-    TransactionFilter {
-        terms: vec![TransactionTerm {
-            literals: vec![TransactionLiteral {
-                polarity: Some(transaction_literal::Polarity::Include(
-                    TransactionPredicate {
-                        predicate: Some(transaction_predicate::Predicate::AffectedObject(
-                            AffectedObjectFilter {
-                                object_id: Some(object_id.to_string()),
-                            },
-                        )),
-                    },
-                )),
-            }],
-        }],
-    }
+    TransactionFilter::matching(transaction::affected_object(*object_id))
 }
 
 /// True if buffered events were already scanned up through `next_checkpoint`,

@@ -9045,6 +9045,18 @@ impl serde::Serialize for Event {
         if self.json.is_some() {
             len += 1;
         }
+        if self.checkpoint.is_some() {
+            len += 1;
+        }
+        if self.transaction_digest.is_some() {
+            len += 1;
+        }
+        if self.transaction_index.is_some() {
+            len += 1;
+        }
+        if self.event_index.is_some() {
+            len += 1;
+        }
         let mut struct_ser = serializer.serialize_struct("haneul.rpc.v2.Event", len)?;
         if let Some(v) = self.package_id.as_ref() {
             struct_ser.serialize_field("packageId", v)?;
@@ -9064,6 +9076,23 @@ impl serde::Serialize for Event {
         if let Some(v) = self.json.as_ref() {
             struct_ser.serialize_field("json", &crate::_serde::ValueSerializer(v))?;
         }
+        if let Some(v) = self.checkpoint.as_ref() {
+            #[allow(clippy::needless_borrow)]
+            #[allow(clippy::needless_borrows_for_generic_args)]
+            struct_ser.serialize_field("checkpoint", ToString::to_string(&v).as_str())?;
+        }
+        if let Some(v) = self.transaction_digest.as_ref() {
+            struct_ser.serialize_field("transactionDigest", v)?;
+        }
+        if let Some(v) = self.transaction_index.as_ref() {
+            #[allow(clippy::needless_borrow)]
+            #[allow(clippy::needless_borrows_for_generic_args)]
+            struct_ser
+                .serialize_field("transactionIndex", ToString::to_string(&v).as_str())?;
+        }
+        if let Some(v) = self.event_index.as_ref() {
+            struct_ser.serialize_field("eventIndex", v)?;
+        }
         struct_ser.end()
     }
 }
@@ -9082,6 +9111,13 @@ impl<'de> serde::Deserialize<'de> for Event {
             "eventType",
             "contents",
             "json",
+            "checkpoint",
+            "transaction_digest",
+            "transactionDigest",
+            "transaction_index",
+            "transactionIndex",
+            "event_index",
+            "eventIndex",
         ];
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
@@ -9091,6 +9127,10 @@ impl<'de> serde::Deserialize<'de> for Event {
             EventType,
             Contents,
             Json,
+            Checkpoint,
+            TransactionDigest,
+            TransactionIndex,
+            EventIndex,
             __SkipField__,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
@@ -9124,6 +9164,16 @@ impl<'de> serde::Deserialize<'de> for Event {
                             "eventType" | "event_type" => Ok(GeneratedField::EventType),
                             "contents" => Ok(GeneratedField::Contents),
                             "json" => Ok(GeneratedField::Json),
+                            "checkpoint" => Ok(GeneratedField::Checkpoint),
+                            "transactionDigest" | "transaction_digest" => {
+                                Ok(GeneratedField::TransactionDigest)
+                            }
+                            "transactionIndex" | "transaction_index" => {
+                                Ok(GeneratedField::TransactionIndex)
+                            }
+                            "eventIndex" | "event_index" => {
+                                Ok(GeneratedField::EventIndex)
+                            }
                             _ => Ok(GeneratedField::__SkipField__),
                         }
                     }
@@ -9152,6 +9202,10 @@ impl<'de> serde::Deserialize<'de> for Event {
                 let mut event_type__ = None;
                 let mut contents__ = None;
                 let mut json__ = None;
+                let mut checkpoint__ = None;
+                let mut transaction_digest__ = None;
+                let mut transaction_index__ = None;
+                let mut event_index__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
                         GeneratedField::PackageId => {
@@ -9194,6 +9248,46 @@ impl<'de> serde::Deserialize<'de> for Event {
                                 >()?
                                 .map(|x| x.0.into());
                         }
+                        GeneratedField::Checkpoint => {
+                            if checkpoint__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("checkpoint"));
+                            }
+                            checkpoint__ = map_
+                                .next_value::<
+                                    ::std::option::Option<crate::_serde::NumberDeserialize<_>>,
+                                >()?
+                                .map(|x| x.0);
+                        }
+                        GeneratedField::TransactionDigest => {
+                            if transaction_digest__.is_some() {
+                                return Err(
+                                    serde::de::Error::duplicate_field("transactionDigest"),
+                                );
+                            }
+                            transaction_digest__ = map_.next_value()?;
+                        }
+                        GeneratedField::TransactionIndex => {
+                            if transaction_index__.is_some() {
+                                return Err(
+                                    serde::de::Error::duplicate_field("transactionIndex"),
+                                );
+                            }
+                            transaction_index__ = map_
+                                .next_value::<
+                                    ::std::option::Option<crate::_serde::NumberDeserialize<_>>,
+                                >()?
+                                .map(|x| x.0);
+                        }
+                        GeneratedField::EventIndex => {
+                            if event_index__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("eventIndex"));
+                            }
+                            event_index__ = map_
+                                .next_value::<
+                                    ::std::option::Option<crate::_serde::NumberDeserialize<_>>,
+                                >()?
+                                .map(|x| x.0);
+                        }
                         GeneratedField::__SkipField__ => {
                             let _ = map_.next_value::<serde::de::IgnoredAny>()?;
                         }
@@ -9206,6 +9300,10 @@ impl<'de> serde::Deserialize<'de> for Event {
                     event_type: event_type__,
                     contents: contents__,
                     json: json__,
+                    checkpoint: checkpoint__,
+                    transaction_digest: transaction_digest__,
+                    transaction_index: transaction_index__,
+                    event_index: event_index__,
                 })
             }
         }
@@ -9639,6 +9737,9 @@ impl serde::Serialize for ExecutedTransaction {
         if self.objects.is_some() {
             len += 1;
         }
+        if self.transaction_index.is_some() {
+            len += 1;
+        }
         let mut struct_ser = serializer
             .serialize_struct("haneul.rpc.v2.ExecutedTransaction", len)?;
         if let Some(v) = self.digest.as_ref() {
@@ -9671,6 +9772,12 @@ impl serde::Serialize for ExecutedTransaction {
         if let Some(v) = self.objects.as_ref() {
             struct_ser.serialize_field("objects", v)?;
         }
+        if let Some(v) = self.transaction_index.as_ref() {
+            #[allow(clippy::needless_borrow)]
+            #[allow(clippy::needless_borrows_for_generic_args)]
+            struct_ser
+                .serialize_field("transactionIndex", ToString::to_string(&v).as_str())?;
+        }
         struct_ser.end()
     }
 }
@@ -9691,6 +9798,8 @@ impl<'de> serde::Deserialize<'de> for ExecutedTransaction {
             "balance_changes",
             "balanceChanges",
             "objects",
+            "transaction_index",
+            "transactionIndex",
         ];
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
@@ -9703,6 +9812,7 @@ impl<'de> serde::Deserialize<'de> for ExecutedTransaction {
             Timestamp,
             BalanceChanges,
             Objects,
+            TransactionIndex,
             __SkipField__,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
@@ -9741,6 +9851,9 @@ impl<'de> serde::Deserialize<'de> for ExecutedTransaction {
                                 Ok(GeneratedField::BalanceChanges)
                             }
                             "objects" => Ok(GeneratedField::Objects),
+                            "transactionIndex" | "transaction_index" => {
+                                Ok(GeneratedField::TransactionIndex)
+                            }
                             _ => Ok(GeneratedField::__SkipField__),
                         }
                     }
@@ -9775,6 +9888,7 @@ impl<'de> serde::Deserialize<'de> for ExecutedTransaction {
                 let mut timestamp__ = None;
                 let mut balance_changes__ = None;
                 let mut objects__ = None;
+                let mut transaction_index__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
                         GeneratedField::Digest => {
@@ -9843,6 +9957,18 @@ impl<'de> serde::Deserialize<'de> for ExecutedTransaction {
                             }
                             objects__ = map_.next_value()?;
                         }
+                        GeneratedField::TransactionIndex => {
+                            if transaction_index__.is_some() {
+                                return Err(
+                                    serde::de::Error::duplicate_field("transactionIndex"),
+                                );
+                            }
+                            transaction_index__ = map_
+                                .next_value::<
+                                    ::std::option::Option<crate::_serde::NumberDeserialize<_>>,
+                                >()?
+                                .map(|x| x.0);
+                        }
                         GeneratedField::__SkipField__ => {
                             let _ = map_.next_value::<serde::de::IgnoredAny>()?;
                         }
@@ -9858,6 +9984,7 @@ impl<'de> serde::Deserialize<'de> for ExecutedTransaction {
                     timestamp: timestamp__,
                     balance_changes: balance_changes__.unwrap_or_default(),
                     objects: objects__,
+                    transaction_index: transaction_index__,
                 })
             }
         }

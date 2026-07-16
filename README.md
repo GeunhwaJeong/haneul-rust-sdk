@@ -33,6 +33,10 @@ In an effort to be modular, functionality is split between a number of crates.
     [![haneul-transaction-builder on crates.io](https://img.shields.io/crates/v/haneul-transaction-builder)](https://crates.io/crates/haneul-transaction-builder)
     [![Documentation (latest release)](https://img.shields.io/badge/docs-latest-brightgreen)](https://docs.rs/haneul-transaction-builder)
     [![Documentation (master)](https://img.shields.io/badge/docs-master-59f)](https://haneullabs.github.io/haneul-rust-sdk/haneul_transaction_builder/)
+* [`haneul-graphql`](crates/haneul-graphql)
+    [![haneul-graphql on crates.io](https://img.shields.io/crates/v/haneul-graphql)](https://crates.io/crates/haneul-graphql)
+    [![Documentation (latest release)](https://img.shields.io/badge/docs-latest-brightgreen)](https://docs.rs/haneul-graphql)
+    [![Documentation (master)](https://img.shields.io/badge/docs-master-59f)](https://haneullabs.github.io/haneul-rust-sdk/haneul_graphql/)
 
 ## License
 

@@ -206,113 +206,14 @@ mod _accessor_impls {
     impl super::EventItem {
         pub const fn const_default() -> Self {
             Self {
-                watermark: None,
-                checkpoint: None,
-                event_index: None,
-                transaction_digest: None,
                 event: None,
-                transaction_offset: None,
+                watermark: None,
             }
         }
         #[doc(hidden)]
         pub fn default_instance() -> &'static Self {
             static DEFAULT: super::EventItem = super::EventItem::const_default();
             &DEFAULT
-        }
-        ///Returns the value of `watermark`, or the default value if `watermark` is unset.
-        pub fn watermark(&self) -> &super::Watermark {
-            self.watermark
-                .as_ref()
-                .map(|field| field as _)
-                .unwrap_or_else(|| super::Watermark::default_instance() as _)
-        }
-        ///If `watermark` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
-        pub fn watermark_opt_mut(&mut self) -> Option<&mut super::Watermark> {
-            self.watermark.as_mut().map(|field| field as _)
-        }
-        ///Returns a mutable reference to `watermark`.
-        ///If the field is unset, it is first initialized with the default value.
-        pub fn watermark_mut(&mut self) -> &mut super::Watermark {
-            self.watermark.get_or_insert_default()
-        }
-        ///If `watermark` is set, returns [`Some`] with the value; otherwise returns [`None`].
-        pub fn watermark_opt(&self) -> Option<&super::Watermark> {
-            self.watermark.as_ref().map(|field| field as _)
-        }
-        ///Sets `watermark` with the provided value.
-        pub fn set_watermark<T: Into<super::Watermark>>(&mut self, field: T) {
-            self.watermark = Some(field.into().into());
-        }
-        ///Sets `watermark` with the provided value.
-        pub fn with_watermark<T: Into<super::Watermark>>(mut self, field: T) -> Self {
-            self.set_watermark(field.into());
-            self
-        }
-        ///If `checkpoint` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
-        pub fn checkpoint_opt_mut(&mut self) -> Option<&mut u64> {
-            self.checkpoint.as_mut().map(|field| field as _)
-        }
-        ///Returns a mutable reference to `checkpoint`.
-        ///If the field is unset, it is first initialized with the default value.
-        pub fn checkpoint_mut(&mut self) -> &mut u64 {
-            self.checkpoint.get_or_insert_default()
-        }
-        ///If `checkpoint` is set, returns [`Some`] with the value; otherwise returns [`None`].
-        pub fn checkpoint_opt(&self) -> Option<u64> {
-            self.checkpoint.as_ref().map(|field| *field)
-        }
-        ///Sets `checkpoint` with the provided value.
-        pub fn set_checkpoint(&mut self, field: u64) {
-            self.checkpoint = Some(field);
-        }
-        ///Sets `checkpoint` with the provided value.
-        pub fn with_checkpoint(mut self, field: u64) -> Self {
-            self.set_checkpoint(field);
-            self
-        }
-        ///If `event_index` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
-        pub fn event_index_opt_mut(&mut self) -> Option<&mut u32> {
-            self.event_index.as_mut().map(|field| field as _)
-        }
-        ///Returns a mutable reference to `event_index`.
-        ///If the field is unset, it is first initialized with the default value.
-        pub fn event_index_mut(&mut self) -> &mut u32 {
-            self.event_index.get_or_insert_default()
-        }
-        ///If `event_index` is set, returns [`Some`] with the value; otherwise returns [`None`].
-        pub fn event_index_opt(&self) -> Option<u32> {
-            self.event_index.as_ref().map(|field| *field)
-        }
-        ///Sets `event_index` with the provided value.
-        pub fn set_event_index(&mut self, field: u32) {
-            self.event_index = Some(field);
-        }
-        ///Sets `event_index` with the provided value.
-        pub fn with_event_index(mut self, field: u32) -> Self {
-            self.set_event_index(field);
-            self
-        }
-        ///If `transaction_digest` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
-        pub fn transaction_digest_opt_mut(&mut self) -> Option<&mut String> {
-            self.transaction_digest.as_mut().map(|field| field as _)
-        }
-        ///Returns a mutable reference to `transaction_digest`.
-        ///If the field is unset, it is first initialized with the default value.
-        pub fn transaction_digest_mut(&mut self) -> &mut String {
-            self.transaction_digest.get_or_insert_default()
-        }
-        ///If `transaction_digest` is set, returns [`Some`] with the value; otherwise returns [`None`].
-        pub fn transaction_digest_opt(&self) -> Option<&str> {
-            self.transaction_digest.as_ref().map(|field| field as _)
-        }
-        ///Sets `transaction_digest` with the provided value.
-        pub fn set_transaction_digest<T: Into<String>>(&mut self, field: T) {
-            self.transaction_digest = Some(field.into().into());
-        }
-        ///Sets `transaction_digest` with the provided value.
-        pub fn with_transaction_digest<T: Into<String>>(mut self, field: T) -> Self {
-            self.set_transaction_digest(field.into());
-            self
         }
         ///Returns the value of `event`, or the default value if `event` is unset.
         pub fn event(&self) -> &super::super::v2::Event {
@@ -343,26 +244,33 @@ mod _accessor_impls {
             self.set_event(field.into());
             self
         }
-        ///If `transaction_offset` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
-        pub fn transaction_offset_opt_mut(&mut self) -> Option<&mut u64> {
-            self.transaction_offset.as_mut().map(|field| field as _)
+        ///Returns the value of `watermark`, or the default value if `watermark` is unset.
+        pub fn watermark(&self) -> &super::Watermark {
+            self.watermark
+                .as_ref()
+                .map(|field| field as _)
+                .unwrap_or_else(|| super::Watermark::default_instance() as _)
         }
-        ///Returns a mutable reference to `transaction_offset`.
+        ///If `watermark` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn watermark_opt_mut(&mut self) -> Option<&mut super::Watermark> {
+            self.watermark.as_mut().map(|field| field as _)
+        }
+        ///Returns a mutable reference to `watermark`.
         ///If the field is unset, it is first initialized with the default value.
-        pub fn transaction_offset_mut(&mut self) -> &mut u64 {
-            self.transaction_offset.get_or_insert_default()
+        pub fn watermark_mut(&mut self) -> &mut super::Watermark {
+            self.watermark.get_or_insert_default()
         }
-        ///If `transaction_offset` is set, returns [`Some`] with the value; otherwise returns [`None`].
-        pub fn transaction_offset_opt(&self) -> Option<u64> {
-            self.transaction_offset.as_ref().map(|field| *field)
+        ///If `watermark` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn watermark_opt(&self) -> Option<&super::Watermark> {
+            self.watermark.as_ref().map(|field| field as _)
         }
-        ///Sets `transaction_offset` with the provided value.
-        pub fn set_transaction_offset(&mut self, field: u64) {
-            self.transaction_offset = Some(field);
+        ///Sets `watermark` with the provided value.
+        pub fn set_watermark<T: Into<super::Watermark>>(&mut self, field: T) {
+            self.watermark = Some(field.into().into());
         }
-        ///Sets `transaction_offset` with the provided value.
-        pub fn with_transaction_offset(mut self, field: u64) -> Self {
-            self.set_transaction_offset(field);
+        ///Sets `watermark` with the provided value.
+        pub fn with_watermark<T: Into<super::Watermark>>(mut self, field: T) -> Self {
+            self.set_watermark(field.into());
             self
         }
     }
@@ -794,33 +702,33 @@ mod _accessor_impls {
     }
     impl super::EventTypeFilter {
         pub const fn const_default() -> Self {
-            Self { r#type: None }
+            Self { event_type: None }
         }
         #[doc(hidden)]
         pub fn default_instance() -> &'static Self {
             static DEFAULT: super::EventTypeFilter = super::EventTypeFilter::const_default();
             &DEFAULT
         }
-        ///If `r#type` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
-        pub fn type_opt_mut(&mut self) -> Option<&mut String> {
-            self.r#type.as_mut().map(|field| field as _)
+        ///If `event_type` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn event_type_opt_mut(&mut self) -> Option<&mut String> {
+            self.event_type.as_mut().map(|field| field as _)
         }
-        ///Returns a mutable reference to `r#type`.
+        ///Returns a mutable reference to `event_type`.
         ///If the field is unset, it is first initialized with the default value.
-        pub fn type_mut(&mut self) -> &mut String {
-            self.r#type.get_or_insert_default()
+        pub fn event_type_mut(&mut self) -> &mut String {
+            self.event_type.get_or_insert_default()
         }
-        ///If `r#type` is set, returns [`Some`] with the value; otherwise returns [`None`].
-        pub fn type_opt(&self) -> Option<&str> {
-            self.r#type.as_ref().map(|field| field as _)
+        ///If `event_type` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn event_type_opt(&self) -> Option<&str> {
+            self.event_type.as_ref().map(|field| field as _)
         }
-        ///Sets `r#type` with the provided value.
-        pub fn set_type<T: Into<String>>(&mut self, field: T) {
-            self.r#type = Some(field.into().into());
+        ///Sets `event_type` with the provided value.
+        pub fn set_event_type<T: Into<String>>(&mut self, field: T) {
+            self.event_type = Some(field.into().into());
         }
-        ///Sets `r#type` with the provided value.
-        pub fn with_type<T: Into<String>>(mut self, field: T) -> Self {
-            self.set_type(field.into());
+        ///Sets `event_type` with the provided value.
+        pub fn with_event_type<T: Into<String>>(mut self, field: T) -> Self {
+            self.set_event_type(field.into());
             self
         }
     }
@@ -2544,21 +2452,26 @@ mod _accessor_impls {
     }
     impl super::QueryEnd {
         pub const fn const_default() -> Self {
-            Self { reason: 0 }
+            Self { reason: None }
         }
         #[doc(hidden)]
         pub fn default_instance() -> &'static Self {
             static DEFAULT: super::QueryEnd = super::QueryEnd::const_default();
             &DEFAULT
         }
+        ///Sets `reason` with the provided value.
+        pub fn with_reason<T: Into<super::QueryEndReason>>(mut self, field: T) -> Self {
+            self.set_reason(field.into());
+            self
+        }
     }
     impl super::QueryOptions {
         pub const fn const_default() -> Self {
             Self {
-                limit_items: None,
+                limit: None,
                 after: None,
                 before: None,
-                ordering: 0,
+                ordering: None,
             }
         }
         #[doc(hidden)]
@@ -2566,26 +2479,26 @@ mod _accessor_impls {
             static DEFAULT: super::QueryOptions = super::QueryOptions::const_default();
             &DEFAULT
         }
-        ///If `limit_items` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
-        pub fn limit_items_opt_mut(&mut self) -> Option<&mut u32> {
-            self.limit_items.as_mut().map(|field| field as _)
+        ///If `limit` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn limit_opt_mut(&mut self) -> Option<&mut u32> {
+            self.limit.as_mut().map(|field| field as _)
         }
-        ///Returns a mutable reference to `limit_items`.
+        ///Returns a mutable reference to `limit`.
         ///If the field is unset, it is first initialized with the default value.
-        pub fn limit_items_mut(&mut self) -> &mut u32 {
-            self.limit_items.get_or_insert_default()
+        pub fn limit_mut(&mut self) -> &mut u32 {
+            self.limit.get_or_insert_default()
         }
-        ///If `limit_items` is set, returns [`Some`] with the value; otherwise returns [`None`].
-        pub fn limit_items_opt(&self) -> Option<u32> {
-            self.limit_items.as_ref().map(|field| *field)
+        ///If `limit` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn limit_opt(&self) -> Option<u32> {
+            self.limit.as_ref().map(|field| *field)
         }
-        ///Sets `limit_items` with the provided value.
-        pub fn set_limit_items(&mut self, field: u32) {
-            self.limit_items = Some(field);
+        ///Sets `limit` with the provided value.
+        pub fn set_limit(&mut self, field: u32) {
+            self.limit = Some(field);
         }
-        ///Sets `limit_items` with the provided value.
-        pub fn with_limit_items(mut self, field: u32) -> Self {
-            self.set_limit_items(field);
+        ///Sets `limit` with the provided value.
+        pub fn with_limit(mut self, field: u32) -> Self {
+            self.set_limit(field);
             self
         }
         ///If `after` is set, returns [`Some`] with the value; otherwise returns [`None`].
@@ -2612,6 +2525,11 @@ mod _accessor_impls {
         ///Sets `before` with the provided value.
         pub fn with_before<T: Into<::prost::bytes::Bytes>>(mut self, field: T) -> Self {
             self.set_before(field.into());
+            self
+        }
+        ///Sets `ordering` with the provided value.
+        pub fn with_ordering<T: Into<super::Ordering>>(mut self, field: T) -> Self {
+            self.set_ordering(field.into());
             self
         }
     }
@@ -2680,7 +2598,6 @@ mod _accessor_impls {
             Self {
                 transaction: None,
                 watermark: None,
-                transaction_offset: None,
             }
         }
         #[doc(hidden)]
@@ -2754,28 +2671,6 @@ mod _accessor_impls {
         ///Sets `watermark` with the provided value.
         pub fn with_watermark<T: Into<super::Watermark>>(mut self, field: T) -> Self {
             self.set_watermark(field.into());
-            self
-        }
-        ///If `transaction_offset` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
-        pub fn transaction_offset_opt_mut(&mut self) -> Option<&mut u64> {
-            self.transaction_offset.as_mut().map(|field| field as _)
-        }
-        ///Returns a mutable reference to `transaction_offset`.
-        ///If the field is unset, it is first initialized with the default value.
-        pub fn transaction_offset_mut(&mut self) -> &mut u64 {
-            self.transaction_offset.get_or_insert_default()
-        }
-        ///If `transaction_offset` is set, returns [`Some`] with the value; otherwise returns [`None`].
-        pub fn transaction_offset_opt(&self) -> Option<u64> {
-            self.transaction_offset.as_ref().map(|field| *field)
-        }
-        ///Sets `transaction_offset` with the provided value.
-        pub fn set_transaction_offset(&mut self, field: u64) {
-            self.transaction_offset = Some(field);
-        }
-        ///Sets `transaction_offset` with the provided value.
-        pub fn with_transaction_offset(mut self, field: u64) -> Self {
-            self.set_transaction_offset(field);
             self
         }
     }
@@ -3455,8 +3350,7 @@ mod _accessor_impls {
         pub const fn const_default() -> Self {
             Self {
                 cursor: None,
-                checkpoint_hi: None,
-                checkpoint_lo: None,
+                checkpoint: None,
             }
         }
         #[doc(hidden)]
@@ -3477,48 +3371,26 @@ mod _accessor_impls {
             self.set_cursor(field.into());
             self
         }
-        ///If `checkpoint_hi` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
-        pub fn checkpoint_hi_opt_mut(&mut self) -> Option<&mut u64> {
-            self.checkpoint_hi.as_mut().map(|field| field as _)
+        ///If `checkpoint` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn checkpoint_opt_mut(&mut self) -> Option<&mut u64> {
+            self.checkpoint.as_mut().map(|field| field as _)
         }
-        ///Returns a mutable reference to `checkpoint_hi`.
+        ///Returns a mutable reference to `checkpoint`.
         ///If the field is unset, it is first initialized with the default value.
-        pub fn checkpoint_hi_mut(&mut self) -> &mut u64 {
-            self.checkpoint_hi.get_or_insert_default()
+        pub fn checkpoint_mut(&mut self) -> &mut u64 {
+            self.checkpoint.get_or_insert_default()
         }
-        ///If `checkpoint_hi` is set, returns [`Some`] with the value; otherwise returns [`None`].
-        pub fn checkpoint_hi_opt(&self) -> Option<u64> {
-            self.checkpoint_hi.as_ref().map(|field| *field)
+        ///If `checkpoint` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn checkpoint_opt(&self) -> Option<u64> {
+            self.checkpoint.as_ref().map(|field| *field)
         }
-        ///Sets `checkpoint_hi` with the provided value.
-        pub fn set_checkpoint_hi(&mut self, field: u64) {
-            self.checkpoint_hi = Some(field);
+        ///Sets `checkpoint` with the provided value.
+        pub fn set_checkpoint(&mut self, field: u64) {
+            self.checkpoint = Some(field);
         }
-        ///Sets `checkpoint_hi` with the provided value.
-        pub fn with_checkpoint_hi(mut self, field: u64) -> Self {
-            self.set_checkpoint_hi(field);
-            self
-        }
-        ///If `checkpoint_lo` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
-        pub fn checkpoint_lo_opt_mut(&mut self) -> Option<&mut u64> {
-            self.checkpoint_lo.as_mut().map(|field| field as _)
-        }
-        ///Returns a mutable reference to `checkpoint_lo`.
-        ///If the field is unset, it is first initialized with the default value.
-        pub fn checkpoint_lo_mut(&mut self) -> &mut u64 {
-            self.checkpoint_lo.get_or_insert_default()
-        }
-        ///If `checkpoint_lo` is set, returns [`Some`] with the value; otherwise returns [`None`].
-        pub fn checkpoint_lo_opt(&self) -> Option<u64> {
-            self.checkpoint_lo.as_ref().map(|field| *field)
-        }
-        ///Sets `checkpoint_lo` with the provided value.
-        pub fn set_checkpoint_lo(&mut self, field: u64) {
-            self.checkpoint_lo = Some(field);
-        }
-        ///Sets `checkpoint_lo` with the provided value.
-        pub fn with_checkpoint_lo(mut self, field: u64) -> Self {
-            self.set_checkpoint_lo(field);
+        ///Sets `checkpoint` with the provided value.
+        pub fn with_checkpoint(mut self, field: u64) -> Self {
+            self.set_checkpoint(field);
             self
         }
     }

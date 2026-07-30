@@ -1,3 +1,4 @@
+use futures::future::try_join_all;
 use haneul_sdk_types::Address;
 use prost_types::FieldMask;
 
@@ -15,6 +16,10 @@ use crate::proto::haneul::rpc::v2::simulate_transaction_request::TransactionChec
 
 use super::Client;
 use super::Result;
+
+// Programmable transaction validation requires the command count to be strictly less than the
+// protocol's 1,024-command limit.
+const MAX_REWARDS_PER_PTB: usize = 1023;
 
 #[derive(Debug)]
 pub struct DelegatedStake {
@@ -143,6 +148,18 @@ impl Client {
         &mut self,
         staked_haneul_ids: &[Address],
     ) -> Result<Vec<(Address, u64)>> {
+        let batches = staked_haneul_ids.chunks(MAX_REWARDS_PER_PTB).map(|batch| {
+            let mut client = self.clone();
+            async move { client.calculate_rewards_batch(batch).await }
+        });
+
+        Ok(try_join_all(batches).await?.into_iter().flatten().collect())
+    }
+
+    async fn calculate_rewards_batch(
+        &mut self,
+        staked_haneul_ids: &[Address],
+    ) -> Result<Vec<(Address, u64)>> {
         let mut ptb = ProgrammableTransaction::default()
             .with_inputs(vec![Input::default().with_object_id("0x5")]);
         let system_object = Argument::new_input(0);
@@ -236,18 +253,22 @@ impl Client {
 
         let transaction = Transaction::default().with_kind(ptb).with_sender("0x0");
 
-        let resp = self
-            .execution_client()
-            .simulate_transaction(
+        // Boxed because this helper is inlined into the futures of
+        // get_delegated_stake and list_delegated_stake: the simulate call
+        // chain is by far the largest part of their state machines, and
+        // keeping it on the heap keeps those futures small for callers.
+        let mut execution_client = self.execution_client();
+        let simulate = Box::pin(
+            execution_client.simulate_transaction(
                 SimulateTransactionRequest::new(transaction)
                     .with_read_mask(FieldMask::from_paths([
                         "command_outputs.return_values.value",
                         "transaction.effects.status",
                     ]))
                     .with_checks(TransactionChecks::Disabled),
-            )
-            .await?
-            .into_inner();
+            ),
+        );
+        let resp = simulate.await?.into_inner();
 
         if !resp.transaction().effects().status().success() {
             return Err(tonic::Status::from_error(

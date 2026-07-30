@@ -1,6 +1,6 @@
 //! Authenticated event stream verification.
 //!
-//! [`AuthenticatedEventsClient`] drives the v2alpha
+//! [`AuthenticatedEventsClient`] drives the v2
 //! `LedgerService.ListEvents` RPC filtered by `EventStreamHeadFilter`,
 //! replays each received event into a local Merkle Mountain Range, and
 //! periodically reconciles that MMR against the on-chain
@@ -10,8 +10,8 @@
 //! authenticated end-to-end.
 //!
 //! [`AuthenticatedEvent`] is the in-memory envelope used both as the
-//! decoded form of an `EventItem` and as the unit of work flowing
-//! through the verifier.
+//! decoded form of a `ListEventsResponse` item and as the unit of work
+//! flowing through the verifier.
 //!
 //! [`EventStreamHead`]: haneul_sdk_types::framework::EventStreamHead
 

@@ -1,0 +1,168 @@
+Haneul SDK Rebranding Script v1.0 — Started at 2026년  7월 30일 목요일 22시 55분 19초 KST
+[22:55:19] Target: /Users/jeong-gh/sui-rust-sdk-d8643443
+[22:55:19] 
+[22:55:19] ========================================
+[22:55:19]   STEP 0: Building file list
+[22:55:19] ========================================
+[22:55:19] Found 329 text files to process
+[22:55:19] 
+[22:55:19] ========================================
+[22:55:19]   STEP 1: Protecting false-positive words
+[22:55:19] ========================================
+[22:55:19] Inserting placeholders...
+[22:55:19] Step 1 complete
+[22:55:19] 
+[22:55:19] ========================================
+[22:55:19]   STEP 2: Domain replacements
+[22:55:19] ========================================
+[22:55:19] Replacing domains...
+[22:55:20] Step 2 complete
+[22:55:20] 
+[22:55:20] ========================================
+[22:55:20]   STEP 3: Company name replacements
+[22:55:20] ========================================
+[22:55:20] Replacing company names...
+[22:55:20] Replacing standalone mysten...
+[22:55:20] Step 3 complete
+[22:55:20] 
+[22:55:20] ========================================
+[22:55:20]   STEP 4: Token unit replacements (MIST → GEUNHWA)
+[22:55:20] ========================================
+[22:55:20] Replacing compound MIST forms...
+[22:55:20] Replacing standalone MIST...
+[22:55:20] Step 4 complete
+[22:55:20] 
+[22:55:20] ========================================
+[22:55:20]   STEP 4b: Derivation path coin_type (784 → 8282)
+[22:55:20] ========================================
+[22:55:20] Replacing derivation path coin_type 784 → 8282...
+[22:55:21] Step 4b complete
+[22:55:21] 
+[22:55:21] ========================================
+[22:55:21]   STEP 5: Main blockchain name replacements (SUI → HANEUL)
+[22:55:21] ========================================
+[22:55:21] Replacing ALL occurrences of SUI/Sui/sui...
+[22:55:21] Step 5 complete
+[22:55:21] 
+[22:55:21] ========================================
+[22:55:21]   STEP 5b: Mixed-case typo cleanup
+[22:55:21] ========================================
+[22:55:21] Catching mixed-case sui variants...
+[22:55:21] Step 5b complete
+[22:55:21] 
+[22:55:21] ========================================
+[22:55:21]   STEP 6: Restoring protected words
+[22:55:21] ========================================
+[22:55:21] Restoring placeholders...
+[22:55:21] Step 6 complete
+[22:55:21] 
+[22:55:21] ========================================
+[22:55:21]   STEP 7: Restoring copyright headers
+[22:55:21] ========================================
+[22:55:21] Restoring Mysten Labs copyright headers...
+[22:55:22] Step 7 complete
+[22:55:22] 
+[22:55:22] ========================================
+[22:55:22]   STEP 8: Fixing GitHub URLs
+[22:55:22] ========================================
+[22:55:22] Redirecting GitHub org URLs to GeunhwaJeong...
+[22:55:22] Fixing repo names that got mangled...
+[22:55:22] Fixing email addresses...
+[22:55:22] Fixing gh api URLs...
+[22:55:22] Step 8 complete
+[22:55:22] 
+[22:55:22] ========================================
+[22:55:22]   STEP 9: Renaming files
+[22:55:22] ========================================
+[22:55:22] Renaming files containing 'mysten'...
+[22:55:22] Renaming files containing 'mist' (token-related only)...
+[22:55:22] Renaming files containing 'sui' (skip false positives)...
+[22:55:22]   File: sui.rpc.v2alpha.serde.rs → haneul.rpc.v2alpha.serde.rs
+[22:55:22]   File: sui.rpc.v2alpha.rs → haneul.rpc.v2alpha.rs
+[22:55:22]   File: sui.rpc.v2alpha.field_info.rs → haneul.rpc.v2alpha.field_info.rs
+[22:55:22]   File: sui.rpc.v2alpha.fds.bin → haneul.rpc.v2alpha.fds.bin
+[22:55:22]   File: sui.rpc.v2alpha.accessors.rs → haneul.rpc.v2alpha.accessors.rs
+[22:55:22]   File: sui.rpc.v2.serde.rs → haneul.rpc.v2.serde.rs
+[22:55:22]   File: sui.rpc.v2.rs → haneul.rpc.v2.rs
+[22:55:22]   File: sui.rpc.v2.field_info.rs → haneul.rpc.v2.field_info.rs
+[22:55:22]   File: sui.rpc.v2.fds.bin → haneul.rpc.v2.fds.bin
+[22:55:22]   File: sui.rpc.v2.accessors.rs → haneul.rpc.v2.accessors.rs
+[22:55:22]   File: sui.graphql → haneul.graphql
+[22:55:22]   File: suipriv.rs → haneulpriv.rs
+[22:55:22] Step 9 complete
+[22:55:22] 
+[22:55:22] ========================================
+[22:55:22]   STEP 10: Renaming directories
+[22:55:22] ========================================
+[22:55:22] Renaming directories containing 'mysten'...
+[22:55:22] Renaming directories containing 'sui' (skip false positives)...
+[22:55:22]   Dir: sui-transaction-builder → haneul-transaction-builder
+[22:55:22]   Dir: sui-sdk-types → haneul-sdk-types
+[22:55:22]   Dir: sui → haneul
+[22:55:22]   Dir: sui → haneul
+[22:55:22]   Dir: sui → haneul
+[22:55:22]   Dir: sui-rpc → haneul-rpc
+[22:55:22]   Dir: sui-graphql → haneul-graphql
+[22:55:23]   Dir: sui-graphql-macros → haneul-graphql-macros
+[22:55:23]   Dir: sui-crypto → haneul-crypto
+[22:55:23] Step 10 complete
+[22:55:23] 
+[22:55:23] ========================================
+[22:55:23]   STEP 11: Post-rename safety passes
+[22:55:23] ========================================
+[22:55:23] Re-restoring copyright headers...
+[22:55:23] Re-fixing GitHub URLs after path renames...
+[22:55:23] Step 11 complete
+[22:55:23] 
+[22:55:23] ========================================
+[22:55:23]   STEP 12: Fixing Bech32 checksums (haneulprivkey)
+[22:55:23] ========================================
+[22:55:23] Scanning for haneulprivkey strings and re-encoding checksums...
+[22:55:23] Step 12 complete
+[22:55:23] 
+[22:55:23] ========================================
+[22:55:23]   STEP 13: Fixing .gitignore
+[22:55:23] ========================================
+[22:55:23] Step 13 complete
+[22:55:23] 
+[22:55:23] ========================================
+[22:55:23]   STEP 14: Validation
+[22:55:23] ========================================
+[22:55:23] Checking for remaining issues...
+[22:55:23] Remaining 'sui' references (excluding English words): 0
+[22:55:23] Mixed-case 'sui' typos: 0
+[22:55:23] Remaining 'mysten' references: 37 (copyright + intentional)
+[22:55:23] Damaged words: 0
+[22:55:23] Leftover placeholders: 0
+[22:55:23] Validating Bech32 checksums...
+[22:55:23] Invalid Bech32 checksums remaining: 1
+[22:55:23] Remaining derivation path 784: 0
+[22:55:23] 
+[22:55:23] ========================================
+[22:55:23]   REBRANDING COMPLETE
+[22:55:23] ========================================
+[22:55:23] 
+[22:55:23] Results:
+[22:55:23]   Remaining 'sui' refs:       0
+[22:55:23]   Mixed-case typos:           0
+[22:55:23]   Remaining 'mysten' refs:    37 (copyright + intentional)
+[22:55:23]   Damaged words:              0
+[22:55:23]   Leftover placeholders:      0
+[22:55:23]   Invalid Bech32 checksums:   1
+[22:55:23]   Remaining deriv path 784:   0
+[22:55:23] 
+[22:55:23] POST-PROCESSING:
+[22:55:23]   1. cd /Users/jeong-gh/sui-rust-sdk-d8643443 && cargo fmt --all
+[22:55:23]   2. cargo check    # Verify compilation
+[22:55:23]   3. Change git remote:
+[22:55:23]      git remote set-url origin https://github.com/GeunhwaJeong/haneul-rust-sdk.git
+[22:55:23]   4. Commit and push to a new branch
+[22:55:23]   5. Update consuming repos to use new commit SHA
+[22:55:23] 
+[22:55:23] ========================================
+[22:55:23]   STEP FINAL: Running cargo fmt
+[22:55:23] ========================================
+[22:55:23] Running cargo fmt --all...
+[22:55:26] cargo fmt complete
+[22:55:26] 
+[22:55:26] Haneul SDK Rebranding Script v1.0 finished!

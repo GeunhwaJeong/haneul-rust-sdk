@@ -40,7 +40,7 @@ pub(super) struct StreamState {
     ///
     /// Items are stored in receipt order — which matches strictly
     /// ascending `(checkpoint, transaction_index, event_index)` per the
-    /// v2alpha contract.
+    /// v2 List API contract.
     pub buffer: VecDeque<AuthenticatedEvent>,
 
     /// The MMR head we've replayed by folding the settlement-partitioned
@@ -55,7 +55,7 @@ pub(super) struct StreamState {
 
     /// Highest checkpoint number whose events `ListEvents` has fully
     /// emitted to us, derived from the latest `Watermark.checkpoint`
-    /// across both standalone watermarks and per-item watermarks.
+    /// observed on response frames.
     ///
     /// Reconciliation uses this as the upper bound when fetching
     /// settlements: settlements at checkpoints we haven't fully scanned
@@ -82,13 +82,13 @@ impl StreamState {
 /// `events` must be in strictly ascending
 /// `(checkpoint, transaction_index, event_index)` order with respect to
 /// each other and to whatever's already at the back of `state.buffer` —
-/// the v2alpha contract guarantees this for `ListEvents` responses, and
+/// the v2 List API contract guarantees this for `ListEvents` responses, and
 /// the fold-time partitioner relies on it. Empty input is a no-op.
 ///
 /// `watermark_hi` is the most recent `Watermark.checkpoint` observed
-/// during this page, including the watermark embedded on the last item.
-/// Pass `None` when the page produced neither a standalone watermark nor
-/// an item-embedded one (e.g., an immediate `End` frame at genesis).
+/// during this page. Pass `None` when no frame in the page carried a
+/// watermark with its `checkpoint` boundary set (e.g., an immediate end
+/// frame at genesis).
 pub(super) fn buffer_response_batch(
     state: &mut StreamState,
     events: Vec<AuthenticatedEvent>,

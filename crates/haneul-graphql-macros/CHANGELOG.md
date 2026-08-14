@@ -1,3 +1,17 @@
+# [0.3.1] - 2026-07-16
+
+## Added
+- [#245] `graphql_query!` function-style macro that validates GraphQL queries
+  and mutations against the embedded Haneul schema at compile time
+
+## Changed
+- [#271] updated the embedded Haneul GraphQL schema; among other changes this
+  removes the `SafeMode`, `StakeSubsidy`, `StorageFund`, `SystemParameters`,
+  and `ValidatorCredentials` types
+
+[#245]: https://github.com/GeunhwaJeong/haneul-rust-sdk/pull/245
+[#271]: https://github.com/GeunhwaJeong/haneul-rust-sdk/pull/271
+
 # [0.3.0] - 2026-03-23
 
 Initial published release.
@@ -23,4 +37,5 @@ Initial published release.
 [#224]: https://github.com/GeunhwaJeong/haneul-rust-sdk/pull/224
 [#230]: https://github.com/GeunhwaJeong/haneul-rust-sdk/pull/230
 
+[0.3.1]: https://github.com/GeunhwaJeong/haneul-rust-sdk/releases/tag/haneul-graphql-macros-0.3.1
 [0.3.0]: https://github.com/GeunhwaJeong/haneul-rust-sdk/releases/tag/haneul-graphql-macros-0.3.0

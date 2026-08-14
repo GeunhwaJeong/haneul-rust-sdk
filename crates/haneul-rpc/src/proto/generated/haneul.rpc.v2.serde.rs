@@ -28,7 +28,7 @@ impl<'de> serde::Deserialize<'de> for Ability {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -194,7 +194,7 @@ impl<'de> serde::Deserialize<'de> for AccumulatorWrite {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -376,7 +376,7 @@ impl<'de> serde::Deserialize<'de> for accumulator_write::AccumulatorOperation {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -457,7 +457,7 @@ impl<'de> serde::Deserialize<'de> for accumulator_write::AccumulatorValue {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -570,7 +570,7 @@ impl<'de> serde::Deserialize<'de> for ActiveJwk {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -699,7 +699,7 @@ impl<'de> serde::Deserialize<'de> for AddressAliasesVersion {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -812,7 +812,7 @@ impl<'de> serde::Deserialize<'de> for AffectedAddressFilter {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -921,7 +921,7 @@ impl<'de> serde::Deserialize<'de> for AffectedObjectFilter {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -1054,7 +1054,7 @@ impl<'de> serde::Deserialize<'de> for Argument {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -1183,7 +1183,7 @@ impl<'de> serde::Deserialize<'de> for argument::ArgumentKind {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -1294,7 +1294,7 @@ impl<'de> serde::Deserialize<'de> for AuthenticatorStateExpire {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -1465,7 +1465,7 @@ impl<'de> serde::Deserialize<'de> for AuthenticatorStateUpdate {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -1659,7 +1659,7 @@ impl<'de> serde::Deserialize<'de> for Balance {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -1822,7 +1822,7 @@ impl<'de> serde::Deserialize<'de> for BalanceChange {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -1953,7 +1953,7 @@ impl<'de> serde::Deserialize<'de> for BatchGetObjectsRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -2075,7 +2075,7 @@ impl<'de> serde::Deserialize<'de> for BatchGetObjectsResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -2192,7 +2192,7 @@ impl<'de> serde::Deserialize<'de> for BatchGetTransactionsRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -2314,7 +2314,7 @@ impl<'de> serde::Deserialize<'de> for BatchGetTransactionsResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -2434,7 +2434,7 @@ impl<'de> serde::Deserialize<'de> for Bcs {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -2555,7 +2555,7 @@ impl<'de> serde::Deserialize<'de> for CanceledTransaction {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -2766,7 +2766,7 @@ impl<'de> serde::Deserialize<'de> for ChangeEpoch {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -3110,7 +3110,7 @@ impl<'de> serde::Deserialize<'de> for ChangedObject {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -3356,7 +3356,7 @@ impl<'de> serde::Deserialize<'de> for changed_object::IdOperation {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -3434,7 +3434,7 @@ impl<'de> serde::Deserialize<'de> for changed_object::InputObjectState {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -3521,7 +3521,7 @@ impl<'de> serde::Deserialize<'de> for changed_object::OutputObjectState {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -3677,7 +3677,7 @@ impl<'de> serde::Deserialize<'de> for Checkpoint {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -3857,7 +3857,7 @@ impl<'de> serde::Deserialize<'de> for CheckpointCommitment {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -3968,7 +3968,7 @@ impl<'de> serde::Deserialize<'de> for checkpoint_commitment::CheckpointCommitmen
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -4089,7 +4089,7 @@ impl<'de> serde::Deserialize<'de> for CheckpointContents {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -4346,7 +4346,7 @@ impl<'de> serde::Deserialize<'de> for CheckpointSummary {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -4640,7 +4640,7 @@ impl<'de> serde::Deserialize<'de> for CheckpointedTransactionInfo {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -4796,7 +4796,7 @@ impl<'de> serde::Deserialize<'de> for CircomG1 {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -4950,7 +4950,7 @@ impl<'de> serde::Deserialize<'de> for CircomG2 {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -5154,7 +5154,7 @@ impl<'de> serde::Deserialize<'de> for CleverError {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -5333,7 +5333,7 @@ impl<'de> serde::Deserialize<'de> for CoinDenyListError {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -5516,7 +5516,7 @@ impl<'de> serde::Deserialize<'de> for CoinMetadata {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -5691,7 +5691,7 @@ impl<'de> serde::Deserialize<'de> for coin_metadata::MetadataCapState {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -5810,7 +5810,7 @@ impl<'de> serde::Deserialize<'de> for CoinTreasury {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -5932,7 +5932,7 @@ impl<'de> serde::Deserialize<'de> for coin_treasury::SupplyState {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -6062,7 +6062,7 @@ impl<'de> serde::Deserialize<'de> for Command {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -6248,7 +6248,7 @@ impl<'de> serde::Deserialize<'de> for CommandArgumentError {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -6414,7 +6414,7 @@ impl<'de> serde::Deserialize<'de> for command_argument_error::CommandArgumentErr
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -6613,7 +6613,7 @@ impl<'de> serde::Deserialize<'de> for CommandOutput {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -6752,7 +6752,7 @@ impl<'de> serde::Deserialize<'de> for CommandResult {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -6874,7 +6874,7 @@ impl<'de> serde::Deserialize<'de> for CongestedObjects {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -7048,7 +7048,7 @@ impl<'de> serde::Deserialize<'de> for ConsensusCommitPrologue {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -7266,7 +7266,7 @@ impl<'de> serde::Deserialize<'de> for ConsensusDeterminedVersionAssignments {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -7479,7 +7479,7 @@ impl<'de> serde::Deserialize<'de> for DatatypeDescriptor {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -7659,7 +7659,7 @@ impl<'de> serde::Deserialize<'de> for datatype_descriptor::DatatypeKind {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -7757,7 +7757,7 @@ impl<'de> serde::Deserialize<'de> for Display {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -7951,7 +7951,7 @@ impl<'de> serde::Deserialize<'de> for DynamicField {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -8123,7 +8123,7 @@ impl<'de> serde::Deserialize<'de> for dynamic_field::DynamicFieldKind {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -8215,7 +8215,7 @@ impl<'de> serde::Deserialize<'de> for EmitModuleFilter {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -8352,7 +8352,7 @@ impl<'de> serde::Deserialize<'de> for EndOfEpochData {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -8494,7 +8494,7 @@ impl<'de> serde::Deserialize<'de> for EndOfEpochTransaction {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -8666,7 +8666,7 @@ impl<'de> serde::Deserialize<'de> for EndOfEpochTransactionKind {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -8852,6 +8852,7 @@ impl serde::Serialize for end_of_epoch_transaction_kind::Kind {
             Self::DisplayRegistryCreate => "DISPLAY_REGISTRY_CREATE",
             Self::AddressAliasStateCreate => "ADDRESS_ALIAS_STATE_CREATE",
             Self::WriteAccumulatorStorageCost => "WRITE_ACCUMULATOR_STORAGE_COST",
+            Self::ForwardingAddressRegistryCreate => "FORWARDING_ADDRESS_REGISTRY_CREATE",
         };
         serializer.serialize_str(variant)
     }
@@ -8877,6 +8878,7 @@ impl<'de> serde::Deserialize<'de> for end_of_epoch_transaction_kind::Kind {
             "DISPLAY_REGISTRY_CREATE",
             "ADDRESS_ALIAS_STATE_CREATE",
             "WRITE_ACCUMULATOR_STORAGE_COST",
+            "FORWARDING_ADDRESS_REGISTRY_CREATE",
         ];
         struct GeneratedVisitor;
         impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
@@ -8885,7 +8887,7 @@ impl<'de> serde::Deserialize<'de> for end_of_epoch_transaction_kind::Kind {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -8962,6 +8964,11 @@ impl<'de> serde::Deserialize<'de> for end_of_epoch_transaction_kind::Kind {
                     "WRITE_ACCUMULATOR_STORAGE_COST" => {
                         Ok(
                             end_of_epoch_transaction_kind::Kind::WriteAccumulatorStorageCost,
+                        )
+                    }
+                    "FORWARDING_ADDRESS_REGISTRY_CREATE" => {
+                        Ok(
+                            end_of_epoch_transaction_kind::Kind::ForwardingAddressRegistryCreate,
                         )
                     }
                     _ => Err(serde::de::Error::unknown_variant(value, FIELDS)),
@@ -9097,7 +9104,7 @@ impl<'de> serde::Deserialize<'de> for Epoch {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -9301,7 +9308,7 @@ impl<'de> serde::Deserialize<'de> for ErrorReason {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -9474,7 +9481,7 @@ impl<'de> serde::Deserialize<'de> for Event {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -9691,7 +9698,7 @@ impl<'de> serde::Deserialize<'de> for EventDigestEntry {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -9815,7 +9822,7 @@ impl<'de> serde::Deserialize<'de> for EventFilter {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -9952,7 +9959,7 @@ impl<'de> serde::Deserialize<'de> for EventLiteral {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -10101,7 +10108,7 @@ impl<'de> serde::Deserialize<'de> for EventStreamHeadFilter {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -10210,7 +10217,7 @@ impl<'de> serde::Deserialize<'de> for EventTerm {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -10315,7 +10322,7 @@ impl<'de> serde::Deserialize<'de> for EventTypeFilter {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -10439,7 +10446,7 @@ impl<'de> serde::Deserialize<'de> for ExecuteTransactionRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -10572,7 +10579,7 @@ impl<'de> serde::Deserialize<'de> for ExecuteTransactionResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -10765,7 +10772,7 @@ impl<'de> serde::Deserialize<'de> for ExecutedTransaction {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -11061,7 +11068,7 @@ impl<'de> serde::Deserialize<'de> for ExecutionError {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -11380,7 +11387,7 @@ impl<'de> serde::Deserialize<'de> for execution_error::ExecutionErrorKind {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -11627,7 +11634,7 @@ impl<'de> serde::Deserialize<'de> for ExecutionStatus {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -11772,7 +11779,7 @@ impl<'de> serde::Deserialize<'de> for ExecutionTimeObservation {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -11911,7 +11918,7 @@ for execution_time_observation::ExecutionTimeObservationKind {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -12045,7 +12052,7 @@ impl<'de> serde::Deserialize<'de> for ExecutionTimeObservations {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -12183,7 +12190,7 @@ impl<'de> serde::Deserialize<'de> for FieldDescriptor {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -12362,7 +12369,7 @@ impl<'de> serde::Deserialize<'de> for FunctionDescriptor {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -12508,7 +12515,7 @@ impl<'de> serde::Deserialize<'de> for function_descriptor::Visibility {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -12619,7 +12626,7 @@ impl<'de> serde::Deserialize<'de> for FundsWithdrawal {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -12737,7 +12744,7 @@ impl<'de> serde::Deserialize<'de> for funds_withdrawal::Source {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -12871,7 +12878,7 @@ impl<'de> serde::Deserialize<'de> for GasCostSummary {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -13060,7 +13067,7 @@ impl<'de> serde::Deserialize<'de> for GasPayment {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -13200,7 +13207,7 @@ impl<'de> serde::Deserialize<'de> for GenesisTransaction {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -13316,7 +13323,7 @@ impl<'de> serde::Deserialize<'de> for GetBalanceRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -13434,7 +13441,7 @@ impl<'de> serde::Deserialize<'de> for GetBalanceResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -13571,7 +13578,7 @@ impl<'de> serde::Deserialize<'de> for GetCheckpointRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -13712,7 +13719,7 @@ impl<'de> serde::Deserialize<'de> for GetCheckpointResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -13821,7 +13828,7 @@ impl<'de> serde::Deserialize<'de> for GetCoinInfoRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -13958,7 +13965,7 @@ impl<'de> serde::Deserialize<'de> for GetCoinInfoResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -14118,7 +14125,7 @@ impl<'de> serde::Deserialize<'de> for GetDatatypeRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -14247,7 +14254,7 @@ impl<'de> serde::Deserialize<'de> for GetDatatypeResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -14366,7 +14373,7 @@ impl<'de> serde::Deserialize<'de> for GetEpochRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -14492,7 +14499,7 @@ impl<'de> serde::Deserialize<'de> for GetEpochResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -14619,7 +14626,7 @@ impl<'de> serde::Deserialize<'de> for GetFunctionRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -14748,7 +14755,7 @@ impl<'de> serde::Deserialize<'de> for GetFunctionResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -14880,7 +14887,7 @@ impl<'de> serde::Deserialize<'de> for GetObjectRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -15015,7 +15022,7 @@ impl<'de> serde::Deserialize<'de> for GetObjectResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -15132,7 +15139,7 @@ impl<'de> serde::Deserialize<'de> for GetObjectResult {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -15252,7 +15259,7 @@ impl<'de> serde::Deserialize<'de> for GetPackageRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -15361,7 +15368,7 @@ impl<'de> serde::Deserialize<'de> for GetPackageResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -15463,7 +15470,7 @@ impl<'de> serde::Deserialize<'de> for GetServiceInfoRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -15636,7 +15643,7 @@ impl<'de> serde::Deserialize<'de> for GetServiceInfoResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -15854,7 +15861,7 @@ impl<'de> serde::Deserialize<'de> for GetTransactionRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -15976,7 +15983,7 @@ impl<'de> serde::Deserialize<'de> for GetTransactionResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -16095,7 +16102,7 @@ impl<'de> serde::Deserialize<'de> for GetTransactionResult {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -16224,7 +16231,7 @@ impl<'de> serde::Deserialize<'de> for IndexError {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -16426,7 +16433,7 @@ impl<'de> serde::Deserialize<'de> for Input {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -16612,7 +16619,7 @@ impl<'de> serde::Deserialize<'de> for input::InputKind {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -16694,7 +16701,7 @@ impl<'de> serde::Deserialize<'de> for input::Mutability {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -16805,7 +16812,7 @@ impl<'de> serde::Deserialize<'de> for Jwk {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -16939,7 +16946,7 @@ impl<'de> serde::Deserialize<'de> for JwkId {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -17069,7 +17076,7 @@ impl<'de> serde::Deserialize<'de> for Linkage {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -17227,7 +17234,7 @@ impl<'de> serde::Deserialize<'de> for ListBalancesRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -17375,7 +17382,7 @@ impl<'de> serde::Deserialize<'de> for ListBalancesResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -17545,7 +17552,7 @@ impl<'de> serde::Deserialize<'de> for ListCheckpointsRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -17724,7 +17731,7 @@ impl<'de> serde::Deserialize<'de> for ListCheckpointsResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -17887,7 +17894,7 @@ impl<'de> serde::Deserialize<'de> for ListDynamicFieldsRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -18053,7 +18060,7 @@ impl<'de> serde::Deserialize<'de> for ListDynamicFieldsResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -18227,7 +18234,7 @@ impl<'de> serde::Deserialize<'de> for ListEventsRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -18406,7 +18413,7 @@ impl<'de> serde::Deserialize<'de> for ListEventsResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -18578,7 +18585,7 @@ impl<'de> serde::Deserialize<'de> for ListOwnedObjectsRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -18750,7 +18757,7 @@ impl<'de> serde::Deserialize<'de> for ListOwnedObjectsResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -18903,7 +18910,7 @@ impl<'de> serde::Deserialize<'de> for ListPackageVersionsRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -19051,7 +19058,7 @@ impl<'de> serde::Deserialize<'de> for ListPackageVersionsResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -19221,7 +19228,7 @@ impl<'de> serde::Deserialize<'de> for ListTransactionsRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -19400,7 +19407,7 @@ impl<'de> serde::Deserialize<'de> for ListTransactionsResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -19529,7 +19536,7 @@ impl<'de> serde::Deserialize<'de> for LookupNameRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -19636,7 +19643,7 @@ impl<'de> serde::Deserialize<'de> for LookupNameResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -19752,7 +19759,7 @@ impl<'de> serde::Deserialize<'de> for MakeMoveVector {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -19877,7 +19884,7 @@ impl<'de> serde::Deserialize<'de> for MergeCoins {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -20021,7 +20028,7 @@ impl<'de> serde::Deserialize<'de> for Module {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -20175,7 +20182,7 @@ impl<'de> serde::Deserialize<'de> for MoveAbort {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -20340,7 +20347,7 @@ impl<'de> serde::Deserialize<'de> for MoveCall {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -20482,7 +20489,7 @@ impl<'de> serde::Deserialize<'de> for MoveCallFilter {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -20622,7 +20629,7 @@ impl<'de> serde::Deserialize<'de> for MoveLocation {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -20786,7 +20793,7 @@ impl<'de> serde::Deserialize<'de> for MoveTable {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -20937,7 +20944,7 @@ impl<'de> serde::Deserialize<'de> for MultisigAggregatedSignature {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -21092,7 +21099,7 @@ impl<'de> serde::Deserialize<'de> for MultisigCommittee {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -21221,7 +21228,7 @@ impl<'de> serde::Deserialize<'de> for MultisigMember {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -21363,7 +21370,7 @@ impl<'de> serde::Deserialize<'de> for MultisigMemberPublicKey {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -21527,7 +21534,7 @@ impl<'de> serde::Deserialize<'de> for MultisigMemberSignature {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -21718,7 +21725,7 @@ impl<'de> serde::Deserialize<'de> for NameRecord {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -22003,7 +22010,7 @@ impl<'de> serde::Deserialize<'de> for Object {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -22267,7 +22274,7 @@ impl<'de> serde::Deserialize<'de> for ObjectReference {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -22398,7 +22405,7 @@ impl<'de> serde::Deserialize<'de> for ObjectSet {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -22514,7 +22521,7 @@ impl<'de> serde::Deserialize<'de> for OpenSignature {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -22615,7 +22622,7 @@ impl<'de> serde::Deserialize<'de> for open_signature::Reference {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -22742,7 +22749,7 @@ impl<'de> serde::Deserialize<'de> for OpenSignatureBody {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -22903,7 +22910,7 @@ impl<'de> serde::Deserialize<'de> for open_signature_body::Type {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -22984,7 +22991,7 @@ impl<'de> serde::Deserialize<'de> for Ordering {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -23092,7 +23099,7 @@ impl<'de> serde::Deserialize<'de> for Owner {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -23210,7 +23217,7 @@ impl<'de> serde::Deserialize<'de> for owner::OwnerKind {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -23349,7 +23356,7 @@ impl<'de> serde::Deserialize<'de> for Package {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -23546,7 +23553,7 @@ impl<'de> serde::Deserialize<'de> for PackageUpgradeError {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -23696,7 +23703,7 @@ impl<'de> serde::Deserialize<'de> for package_upgrade_error::PackageUpgradeError
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -23823,7 +23830,7 @@ impl<'de> serde::Deserialize<'de> for PackageVersion {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -23934,7 +23941,7 @@ impl<'de> serde::Deserialize<'de> for PackageWriteFilter {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -24053,7 +24060,7 @@ impl<'de> serde::Deserialize<'de> for PasskeyAuthenticator {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -24199,7 +24206,7 @@ impl<'de> serde::Deserialize<'de> for ProgrammableTransaction {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -24353,7 +24360,7 @@ impl<'de> serde::Deserialize<'de> for ProtocolConfig {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -24526,7 +24533,7 @@ impl<'de> serde::Deserialize<'de> for Publish {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -24648,7 +24655,7 @@ impl<'de> serde::Deserialize<'de> for QueryEnd {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -24743,7 +24750,7 @@ impl<'de> serde::Deserialize<'de> for QueryEndReason {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -24869,7 +24876,7 @@ impl<'de> serde::Deserialize<'de> for QueryOptions {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -25061,7 +25068,7 @@ impl<'de> serde::Deserialize<'de> for RandomnessStateUpdate {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -25278,7 +25285,7 @@ impl<'de> serde::Deserialize<'de> for RegulatedCoinMetadata {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -25445,7 +25452,7 @@ impl<'de> serde::Deserialize<'de> for regulated_coin_metadata::CoinRegulatedStat
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -25541,7 +25548,7 @@ impl<'de> serde::Deserialize<'de> for ReverseLookupNameRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -25650,7 +25657,7 @@ impl<'de> serde::Deserialize<'de> for ReverseLookupNameResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -25759,7 +25766,7 @@ impl<'de> serde::Deserialize<'de> for SenderFilter {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -25857,7 +25864,7 @@ impl<'de> serde::Deserialize<'de> for SignatureScheme {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -25981,7 +25988,7 @@ impl<'de> serde::Deserialize<'de> for SimpleSignature {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -26151,7 +26158,7 @@ impl<'de> serde::Deserialize<'de> for SimulateTransactionRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -26285,7 +26292,7 @@ impl<'de> serde::Deserialize<'de> for simulate_transaction_request::TransactionC
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -26401,7 +26408,7 @@ impl<'de> serde::Deserialize<'de> for SimulateTransactionResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -26553,7 +26560,7 @@ impl<'de> serde::Deserialize<'de> for SizeError {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -26682,7 +26689,7 @@ impl<'de> serde::Deserialize<'de> for SplitCoins {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -26863,7 +26870,7 @@ impl<'de> serde::Deserialize<'de> for StakeSubsidy {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -27183,7 +27190,7 @@ impl<'de> serde::Deserialize<'de> for StakingPool {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -27480,7 +27487,7 @@ impl<'de> serde::Deserialize<'de> for StorageFund {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -27621,7 +27628,7 @@ impl<'de> serde::Deserialize<'de> for SubscribeCheckpointsRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -27752,7 +27759,7 @@ impl<'de> serde::Deserialize<'de> for SubscribeCheckpointsResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -27882,7 +27889,7 @@ impl<'de> serde::Deserialize<'de> for SubscribeEventsRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -28011,7 +28018,7 @@ impl<'de> serde::Deserialize<'de> for SubscribeEventsResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -28137,7 +28144,7 @@ impl<'de> serde::Deserialize<'de> for SubscribeTransactionsRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -28266,7 +28273,7 @@ impl<'de> serde::Deserialize<'de> for SubscribeTransactionsResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -28410,7 +28417,7 @@ impl<'de> serde::Deserialize<'de> for SystemPackage {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -28659,7 +28666,7 @@ impl<'de> serde::Deserialize<'de> for SystemParameters {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -29098,7 +29105,7 @@ impl<'de> serde::Deserialize<'de> for SystemState {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -29476,7 +29483,7 @@ impl<'de> serde::Deserialize<'de> for Transaction {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -29777,7 +29784,7 @@ impl<'de> serde::Deserialize<'de> for TransactionEffects {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -30078,7 +30085,7 @@ impl<'de> serde::Deserialize<'de> for TransactionEvents {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -30274,7 +30281,7 @@ impl<'de> serde::Deserialize<'de> for TransactionExpiration {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -30460,7 +30467,7 @@ impl<'de> serde::Deserialize<'de> for transaction_expiration::TransactionExpirat
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -30559,7 +30566,7 @@ impl<'de> serde::Deserialize<'de> for TransactionFilter {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -30722,7 +30729,7 @@ impl<'de> serde::Deserialize<'de> for TransactionKind {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -30929,7 +30936,7 @@ impl<'de> serde::Deserialize<'de> for transaction_kind::Kind {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -31100,7 +31107,7 @@ impl<'de> serde::Deserialize<'de> for TransactionLiteral {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -31301,7 +31308,7 @@ impl<'de> serde::Deserialize<'de> for TransactionTerm {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -31417,7 +31424,7 @@ impl<'de> serde::Deserialize<'de> for TransferObjects {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -31546,7 +31553,7 @@ impl<'de> serde::Deserialize<'de> for TypeArgumentError {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -31665,7 +31672,7 @@ impl<'de> serde::Deserialize<'de> for type_argument_error::TypeArgumentErrorKind
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -31784,7 +31791,7 @@ impl<'de> serde::Deserialize<'de> for TypeOrigin {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -31931,7 +31938,7 @@ impl<'de> serde::Deserialize<'de> for TypeParameter {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -32097,7 +32104,7 @@ impl<'de> serde::Deserialize<'de> for UnchangedConsensusObject {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -32248,7 +32255,7 @@ for unchanged_consensus_object::UnchangedConsensusObjectKind {
                 &self,
                 formatter: &mut std::fmt::Formatter<'_>,
             ) -> std::fmt::Result {
-                write!(formatter, "expected one of: {:?}", & FIELDS)
+                write!(formatter, "expected one of: {:?}", FIELDS)
             }
             fn visit_i64<E>(self, v: i64) -> std::result::Result<Self::Value, E>
             where
@@ -32393,7 +32400,7 @@ impl<'de> serde::Deserialize<'de> for Upgrade {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -32571,7 +32578,7 @@ impl<'de> serde::Deserialize<'de> for UserSignature {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -33062,7 +33069,7 @@ impl<'de> serde::Deserialize<'de> for Validator {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -33632,7 +33639,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorAggregatedSignature {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -33780,7 +33787,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorCommittee {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -33917,7 +33924,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorCommitteeMember {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -34057,7 +34064,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorExecutionTimeObservation {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -34191,7 +34198,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorReportRecord {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -34399,7 +34406,7 @@ impl<'de> serde::Deserialize<'de> for ValidatorSet {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -34645,7 +34652,7 @@ impl<'de> serde::Deserialize<'de> for VariantDescriptor {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -34797,7 +34804,7 @@ impl<'de> serde::Deserialize<'de> for VerifySignatureRequest {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -34940,7 +34947,7 @@ impl<'de> serde::Deserialize<'de> for VerifySignatureResponse {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -35083,7 +35090,7 @@ impl<'de> serde::Deserialize<'de> for VersionAssignment {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -35234,7 +35241,7 @@ impl<'de> serde::Deserialize<'de> for Watermark {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -35395,7 +35402,7 @@ impl<'de> serde::Deserialize<'de> for ZkLoginAuthenticator {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -35555,7 +35562,7 @@ impl<'de> serde::Deserialize<'de> for ZkLoginClaim {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -35703,7 +35710,7 @@ impl<'de> serde::Deserialize<'de> for ZkLoginInputs {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -35865,7 +35872,7 @@ impl<'de> serde::Deserialize<'de> for ZkLoginProof {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(
@@ -35995,7 +36002,7 @@ impl<'de> serde::Deserialize<'de> for ZkLoginPublicIdentifier {
                         &self,
                         formatter: &mut std::fmt::Formatter<'_>,
                     ) -> std::fmt::Result {
-                        write!(formatter, "expected one of: {:?}", & FIELDS)
+                        write!(formatter, "expected one of: {:?}", FIELDS)
                     }
                     #[allow(unused_variables)]
                     fn visit_str<E>(

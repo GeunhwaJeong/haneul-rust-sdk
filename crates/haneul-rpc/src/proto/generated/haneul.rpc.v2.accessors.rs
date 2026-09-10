@@ -329,6 +329,59 @@ mod _accessor_impls {
             self
         }
     }
+    impl super::AllowedProposers {
+        pub const fn const_default() -> Self {
+            Self {
+                epoch: None,
+                proposers: Vec::new(),
+            }
+        }
+        #[doc(hidden)]
+        pub fn default_instance() -> &'static Self {
+            static DEFAULT: super::AllowedProposers = super::AllowedProposers::const_default();
+            &DEFAULT
+        }
+        ///If `epoch` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn epoch_opt_mut(&mut self) -> Option<&mut u64> {
+            self.epoch.as_mut().map(|field| field as _)
+        }
+        ///Returns a mutable reference to `epoch`.
+        ///If the field is unset, it is first initialized with the default value.
+        pub fn epoch_mut(&mut self) -> &mut u64 {
+            self.epoch.get_or_insert_default()
+        }
+        ///If `epoch` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn epoch_opt(&self) -> Option<u64> {
+            self.epoch.as_ref().map(|field| *field)
+        }
+        ///Sets `epoch` with the provided value.
+        pub fn set_epoch(&mut self, field: u64) {
+            self.epoch = Some(field);
+        }
+        ///Sets `epoch` with the provided value.
+        pub fn with_epoch(mut self, field: u64) -> Self {
+            self.set_epoch(field);
+            self
+        }
+        ///Returns the value of `proposers`, or the default value if `proposers` is unset.
+        pub fn proposers(&self) -> &[u32] {
+            &self.proposers
+        }
+        ///Returns a mutable reference to `proposers`.
+        ///If the field is unset, it is first initialized with the default value.
+        pub fn proposers_mut(&mut self) -> &mut Vec<u32> {
+            &mut self.proposers
+        }
+        ///Sets `proposers` with the provided value.
+        pub fn set_proposers(&mut self, field: Vec<u32>) {
+            self.proposers = field;
+        }
+        ///Sets `proposers` with the provided value.
+        pub fn with_proposers(mut self, field: Vec<u32>) -> Self {
+            self.set_proposers(field);
+            self
+        }
+    }
     impl super::Argument {
         pub const fn const_default() -> Self {
             Self {
@@ -7350,6 +7403,8 @@ mod _accessor_impls {
                 amount: None,
                 coin_type: None,
                 source: None,
+                funder: None,
+                allowance: None,
             }
         }
         #[doc(hidden)]
@@ -7407,6 +7462,50 @@ mod _accessor_impls {
             field: T,
         ) -> Self {
             self.set_source(field.into());
+            self
+        }
+        ///If `funder` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn funder_opt_mut(&mut self) -> Option<&mut String> {
+            self.funder.as_mut().map(|field| field as _)
+        }
+        ///Returns a mutable reference to `funder`.
+        ///If the field is unset, it is first initialized with the default value.
+        pub fn funder_mut(&mut self) -> &mut String {
+            self.funder.get_or_insert_default()
+        }
+        ///If `funder` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn funder_opt(&self) -> Option<&str> {
+            self.funder.as_ref().map(|field| field as _)
+        }
+        ///Sets `funder` with the provided value.
+        pub fn set_funder<T: Into<String>>(&mut self, field: T) {
+            self.funder = Some(field.into().into());
+        }
+        ///Sets `funder` with the provided value.
+        pub fn with_funder<T: Into<String>>(mut self, field: T) -> Self {
+            self.set_funder(field.into());
+            self
+        }
+        ///If `allowance` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn allowance_opt_mut(&mut self) -> Option<&mut String> {
+            self.allowance.as_mut().map(|field| field as _)
+        }
+        ///Returns a mutable reference to `allowance`.
+        ///If the field is unset, it is first initialized with the default value.
+        pub fn allowance_mut(&mut self) -> &mut String {
+            self.allowance.get_or_insert_default()
+        }
+        ///If `allowance` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn allowance_opt(&self) -> Option<&str> {
+            self.allowance.as_ref().map(|field| field as _)
+        }
+        ///Sets `allowance` with the provided value.
+        pub fn set_allowance<T: Into<String>>(&mut self, field: T) {
+            self.allowance = Some(field.into().into());
+        }
+        ///Sets `allowance` with the provided value.
+        pub fn with_allowance<T: Into<String>>(mut self, field: T) -> Self {
+            self.set_allowance(field.into());
             self
         }
     }
@@ -16684,6 +16783,7 @@ mod _accessor_impls {
                 max_timestamp: None,
                 chain: None,
                 nonce: None,
+                allowed_proposers: None,
             }
         }
         #[doc(hidden)]
@@ -16844,6 +16944,43 @@ mod _accessor_impls {
         ///Sets `nonce` with the provided value.
         pub fn with_nonce(mut self, field: u32) -> Self {
             self.set_nonce(field);
+            self
+        }
+        ///Returns the value of `allowed_proposers`, or the default value if `allowed_proposers` is unset.
+        pub fn allowed_proposers(&self) -> &super::AllowedProposers {
+            self.allowed_proposers
+                .as_ref()
+                .map(|field| field as _)
+                .unwrap_or_else(|| super::AllowedProposers::default_instance() as _)
+        }
+        ///If `allowed_proposers` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn allowed_proposers_opt_mut(
+            &mut self,
+        ) -> Option<&mut super::AllowedProposers> {
+            self.allowed_proposers.as_mut().map(|field| field as _)
+        }
+        ///Returns a mutable reference to `allowed_proposers`.
+        ///If the field is unset, it is first initialized with the default value.
+        pub fn allowed_proposers_mut(&mut self) -> &mut super::AllowedProposers {
+            self.allowed_proposers.get_or_insert_default()
+        }
+        ///If `allowed_proposers` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn allowed_proposers_opt(&self) -> Option<&super::AllowedProposers> {
+            self.allowed_proposers.as_ref().map(|field| field as _)
+        }
+        ///Sets `allowed_proposers` with the provided value.
+        pub fn set_allowed_proposers<T: Into<super::AllowedProposers>>(
+            &mut self,
+            field: T,
+        ) {
+            self.allowed_proposers = Some(field.into().into());
+        }
+        ///Sets `allowed_proposers` with the provided value.
+        pub fn with_allowed_proposers<T: Into<super::AllowedProposers>>(
+            mut self,
+            field: T,
+        ) -> Self {
+            self.set_allowed_proposers(field.into());
             self
         }
     }

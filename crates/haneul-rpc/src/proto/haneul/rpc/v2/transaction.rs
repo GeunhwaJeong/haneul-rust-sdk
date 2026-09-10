@@ -229,11 +229,55 @@ impl From<haneul_sdk_types::TransactionExpiration> for TransactionExpiration {
                 });
                 TransactionExpirationKind::ValidDuring
             }
+            Validity {
+                min_epoch,
+                max_epoch,
+                min_timestamp,
+                max_timestamp,
+                chain,
+                nonce,
+                allowed_proposers,
+            } => {
+                message.epoch = max_epoch;
+                message.min_epoch = min_epoch;
+                message.set_chain(chain);
+                message.set_nonce(nonce);
+                message.min_timestamp = min_timestamp.map(|seconds| prost_types::Timestamp {
+                    seconds: seconds as _,
+                    nanos: 0,
+                });
+                message.max_timestamp = max_timestamp.map(|seconds| prost_types::Timestamp {
+                    seconds: seconds as _,
+                    nanos: 0,
+                });
+                if let Some(allowed_proposers) = allowed_proposers {
+                    message.set_allowed_proposers(AllowedProposers::from(allowed_proposers));
+                }
+                TransactionExpirationKind::Validity
+            }
             _ => TransactionExpirationKind::Unknown,
         };
 
         message.set_kind(kind);
         message
+    }
+}
+
+impl From<haneul_sdk_types::AllowedProposers> for AllowedProposers {
+    fn from(value: haneul_sdk_types::AllowedProposers) -> Self {
+        let mut message = Self::default();
+        message.set_epoch(value.epoch);
+        message.proposers = value.proposers;
+        message
+    }
+}
+
+impl From<&AllowedProposers> for haneul_sdk_types::AllowedProposers {
+    fn from(value: &AllowedProposers) -> Self {
+        Self {
+            epoch: value.epoch(),
+            proposers: value.proposers.clone(),
+        }
     }
 }
 
@@ -269,6 +313,25 @@ impl TryFrom<&TransactionExpiration> for haneul_sdk_types::TransactionExpiration
                 nonce: value
                     .nonce_opt()
                     .ok_or_else(|| TryFromProtoError::missing("nonce"))?,
+            },
+            TransactionExpirationKind::Validity => Self::Validity {
+                min_epoch: value.min_epoch_opt(),
+                max_epoch: value.epoch_opt(),
+                min_timestamp: value
+                    .min_timestamp_opt()
+                    .map(|timestamp| timestamp.seconds as _),
+                max_timestamp: value
+                    .max_timestamp_opt()
+                    .map(|timestamp| timestamp.seconds as _),
+                chain: value
+                    .chain_opt()
+                    .ok_or_else(|| TryFromProtoError::missing("chain"))?
+                    .parse()
+                    .map_err(|e| TryFromProtoError::invalid("chain", e))?,
+                nonce: value
+                    .nonce_opt()
+                    .ok_or_else(|| TryFromProtoError::missing("nonce"))?,
+                allowed_proposers: value.allowed_proposers_opt().map(Into::into),
             },
         }
         .pipe(Ok)
@@ -1705,6 +1768,10 @@ impl From<haneul_sdk_types::FundsWithdrawal> for FundsWithdrawal {
         let mut message = Self::default();
         message.set_coin_type(value.coin_type());
         message.set_source(value.source().into());
+        if let haneul_sdk_types::WithdrawFrom::Allowance { funder, allowance } = value.source() {
+            message.set_funder(funder.to_string());
+            message.set_allowance(allowance.to_string());
+        }
         message.amount = value.amount();
         message
     }
@@ -1728,6 +1795,19 @@ impl TryFrom<&FundsWithdrawal> for haneul_sdk_types::FundsWithdrawal {
             Source::Unknown => return Err(TryFromProtoError::invalid("source", "unknown source")),
             Source::Sender => haneul_sdk_types::WithdrawFrom::Sender,
             Source::Sponsor => haneul_sdk_types::WithdrawFrom::Sponsor,
+            Source::Allowance => {
+                let funder = value
+                    .funder_opt()
+                    .ok_or_else(|| TryFromProtoError::missing("funder"))?
+                    .parse()
+                    .map_err(|e| TryFromProtoError::invalid(FundsWithdrawal::FUNDER_FIELD, e))?;
+                let allowance = value
+                    .allowance_opt()
+                    .ok_or_else(|| TryFromProtoError::missing("allowance"))?
+                    .parse()
+                    .map_err(|e| TryFromProtoError::invalid(FundsWithdrawal::ALLOWANCE_FIELD, e))?;
+                haneul_sdk_types::WithdrawFrom::Allowance { funder, allowance }
+            }
         };
 
         Ok(Self::new(amount, coin_type, source))
@@ -1739,6 +1819,7 @@ impl From<haneul_sdk_types::WithdrawFrom> for funds_withdrawal::Source {
         match value {
             haneul_sdk_types::WithdrawFrom::Sender => Self::Sender,
             haneul_sdk_types::WithdrawFrom::Sponsor => Self::Sponsor,
+            haneul_sdk_types::WithdrawFrom::Allowance { .. } => Self::Allowance,
             _ => Self::Unknown,
         }
     }

@@ -1403,6 +1403,10 @@ pub mod command_argument_error {
         /// argument is a mutable reference and it conflicts with another argument to the call, or the
         /// argument is mutable and another reference extends it and will be used in a later command.
         InvalidReferenceArgument = 19,
+        /// Invalid usage of TxContext in the function signature. TxContext can only be used by
+        /// reference, `&TxContext` or `&mut TxContext`. If used mutably, it must be the only
+        /// TxContext parameter, and TxContext can never be returned from a Move call.
+        InvalidTxContext = 20,
     }
     impl CommandArgumentErrorKind {
         /// String value of the enum field names used in the ProtoBuf definition.
@@ -1439,6 +1443,7 @@ pub mod command_argument_error {
                     "CANNOT_WRITE_TO_EXTENDED_REFERENCE"
                 }
                 Self::InvalidReferenceArgument => "INVALID_REFERENCE_ARGUMENT",
+                Self::InvalidTxContext => "INVALID_TX_CONTEXT",
             }
         }
         /// Creates an enum from field names used in the ProtoBuf definition.
@@ -1474,6 +1479,7 @@ pub mod command_argument_error {
                     Some(Self::CannotWriteToExtendedReference)
                 }
                 "INVALID_REFERENCE_ARGUMENT" => Some(Self::InvalidReferenceArgument),
+                "INVALID_TX_CONTEXT" => Some(Self::InvalidTxContext),
                 _ => None,
             }
         }
@@ -2000,6 +2006,13 @@ pub struct FundsWithdrawal {
     pub coin_type: ::core::option::Option<::prost::alloc::string::String>,
     #[prost(enumeration = "funds_withdrawal::Source", optional, tag = "3")]
     pub source: ::core::option::Option<i32>,
+    /// The address whose balance is debited if `source` is `ALLOWANCE`.
+    #[prost(string, optional, tag = "4")]
+    pub funder: ::core::option::Option<::prost::alloc::string::String>,
+    /// `ObjectId` of the allowance object authorizing the withdrawal if `source`
+    /// is `ALLOWANCE`.
+    #[prost(string, optional, tag = "5")]
+    pub allowance: ::core::option::Option<::prost::alloc::string::String>,
 }
 /// Nested message and enum types in `FundsWithdrawal`.
 pub mod funds_withdrawal {
@@ -2020,6 +2033,8 @@ pub mod funds_withdrawal {
         Unknown = 0,
         Sender = 1,
         Sponsor = 2,
+        /// Withdraw from `funder`'s balance, authorized by the `allowance` object.
+        Allowance = 3,
     }
     impl Source {
         /// String value of the enum field names used in the ProtoBuf definition.
@@ -2031,6 +2046,7 @@ pub mod funds_withdrawal {
                 Self::Unknown => "SOURCE_UNKNOWN",
                 Self::Sender => "SENDER",
                 Self::Sponsor => "SPONSOR",
+                Self::Allowance => "ALLOWANCE",
             }
         }
         /// Creates an enum from field names used in the ProtoBuf definition.
@@ -2039,6 +2055,7 @@ pub mod funds_withdrawal {
                 "SOURCE_UNKNOWN" => Some(Self::Unknown),
                 "SENDER" => Some(Self::Sender),
                 "SPONSOR" => Some(Self::Sponsor),
+                "ALLOWANCE" => Some(Self::Allowance),
                 _ => None,
             }
         }
@@ -8295,6 +8312,10 @@ pub struct TransactionExpiration {
     /// User-provided uniqueness identifier to differentiate otherwise identical transactions
     #[prost(uint32, optional, tag = "7")]
     pub nonce: ::core::option::Option<u32>,
+    /// The validators allowed to propose this transaction in consensus. Only set when `kind`
+    /// is `VALIDITY`. Leave unset to let any validator propose the transaction.
+    #[prost(message, optional, tag = "8")]
+    pub allowed_proposers: ::core::option::Option<AllowedProposers>,
 }
 /// Nested message and enum types in `TransactionExpiration`.
 pub mod transaction_expiration {
@@ -8328,6 +8349,9 @@ pub mod transaction_expiration {
         /// executed digests for the maximum possible expiry range to differentiate
         /// retries from unique transactions with otherwise identical inputs.
         ValidDuring = 3,
+        /// Everything in VALID_DURING, plus a restriction on which validators may
+        /// propose the transaction in consensus.
+        Validity = 4,
     }
     impl TransactionExpirationKind {
         /// String value of the enum field names used in the ProtoBuf definition.
@@ -8340,6 +8364,7 @@ pub mod transaction_expiration {
                 Self::None => "NONE",
                 Self::Epoch => "EPOCH",
                 Self::ValidDuring => "VALID_DURING",
+                Self::Validity => "VALIDITY",
             }
         }
         /// Creates an enum from field names used in the ProtoBuf definition.
@@ -8349,10 +8374,30 @@ pub mod transaction_expiration {
                 "NONE" => Some(Self::None),
                 "EPOCH" => Some(Self::Epoch),
                 "VALID_DURING" => Some(Self::ValidDuring),
+                "VALIDITY" => Some(Self::Validity),
                 _ => None,
             }
         }
     }
+}
+/// The validators allowed to propose a transaction in consensus.
+///
+/// Proposal by any other validator is byzantine behavior and invalidates the whole block.
+#[non_exhaustive]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct AllowedProposers {
+    /// The epoch whose committee `proposers` indexes into.
+    ///
+    /// Committee indices are only meaningful against one committee, so a set recorded for any
+    /// other epoch is ignored and the transaction is treated as naming no proposers.
+    #[prost(uint64, optional, tag = "1")]
+    pub epoch: ::core::option::Option<u64>,
+    /// Committee indices of the allowed proposers, strictly increasing and non-empty.
+    ///
+    /// An empty list names no validator and is rejected; omit `allowed_proposers` entirely to
+    /// let any validator propose the transaction.
+    #[prost(uint32, repeated, tag = "2")]
+    pub proposers: ::prost::alloc::vec::Vec<u32>,
 }
 /// Transaction type.
 #[non_exhaustive]

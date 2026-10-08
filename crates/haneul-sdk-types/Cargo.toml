@@ -1,6 +1,6 @@
 [package]
 name = "haneul-sdk-types"
-version = "0.3.2"
+version = "0.4.0"
 authors = ["Brandon Williams <brandon@haneul-labs.com>"]
 repository = "https://github.com/GeunhwaJeong/haneul-rust-sdk/"
 license = "Apache-2.0"

@@ -1,6 +1,48 @@
+# [0.4.0] - 2026-09-09
+
+## Added
+
+- [`71ee84e1`] [`5f602785`] [`95a30b33`] add resumable ledger streams to
+  `Client`: finite `list_checkpoints`, `list_transactions`, and
+  `list_events` streams that yield response pages unchanged and continue
+  `ItemLimit` and `ScanLimit` pagination automatically, and infinite
+  `stream_checkpoints`, `stream_transactions`, and `stream_events` streams
+  that start from `Tip`, a `Checkpoint`, or an opaque `Resume` cursor,
+  replay history through the List RPCs, and then follow the ledger with
+  either `Subscribe` (a live subscription with gap repair) or `Poll`
+  delivery while retrying transient failures; tuned with
+  `LedgerStreamConfig` and `ListConfig`, and observable through
+  `LedgerStreamEvent` and `ListEvent` callbacks
+- [`6d52810a`] [`8ef3d800`] add `Client::with_num_connections` to spread
+  RPCs over several HTTP/2 connections instead of multiplexing every call
+  over one, for workloads whose throughput is bounded by a single
+  connection's flow-control window and driver task
+- [#288] add `EndOfEpochTransactionKind.FORWARDING_ADDRESS_REGISTRY_CREATE`
+- [#295] [#310] add the `SENDER_ALLOWANCE` source and the `funder` and
+  `allowance` fields to `FundsWithdrawal`
+- [#297] add `CommandArgumentError.INVALID_TX_CONTEXT`
+- [#293] add the `VALIDITY` expiration kind and the `AllowedProposers`
+  message to `TransactionExpiration`
+
+## Changed
+
+- update haneul-sdk-types to 0.4.0 and haneul-crypto to 0.4.0
+
+[#288]: https://github.com/GeunhwaJeong/haneul-rust-sdk/pull/288
+[#293]: https://github.com/GeunhwaJeong/haneul-rust-sdk/pull/293
+[#295]: https://github.com/GeunhwaJeong/haneul-rust-sdk/pull/295
+[#297]: https://github.com/GeunhwaJeong/haneul-rust-sdk/pull/297
+[#310]: https://github.com/GeunhwaJeong/haneul-rust-sdk/pull/310
+[`71ee84e1`]: https://github.com/GeunhwaJeong/haneul-rust-sdk/commit/71ee84e1
+[`5f602785`]: https://github.com/GeunhwaJeong/haneul-rust-sdk/commit/5f602785
+[`95a30b33`]: https://github.com/GeunhwaJeong/haneul-rust-sdk/commit/95a30b33
+[`6d52810a`]: https://github.com/GeunhwaJeong/haneul-rust-sdk/commit/6d52810a
+[`8ef3d800`]: https://github.com/GeunhwaJeong/haneul-rust-sdk/commit/8ef3d800
+
 # [0.3.2] - 2026-07-16
 
 ## Added
+
 - [#256] [#264] [#265] [#278] add filtered `ListCheckpoints`,
   `ListTransactions`, and `ListEvents` RPCs to the v2 `LedgerService`,
   filtered `SubscribeTransactions` and `SubscribeEvents` RPCs to the v2
@@ -29,6 +71,7 @@
   archive-first historical reads, behind the `unstable` feature
 
 ## Changed
+
 - [`668c7a3c`] [`ab33fca8`] harden the shared HTTP/2 connection against
   flow-control starvation: `Client::new` now sets explicit stream and
   connection receive windows (overridable with
@@ -44,6 +87,7 @@
   in the staking and execute-and-wait helpers
 
 ## Fixed
+
 - [`fb3d25a2`] enforce the deadline set with `tonic::Request::set_timeout`
   across the whole response body, so a per-call deadline now bounds the
   entire call instead of only the response-headers phase
@@ -74,7 +118,6 @@
 [#283]: https://github.com/GeunhwaJeong/haneul-rust-sdk/pull/283
 [#286]: https://github.com/GeunhwaJeong/haneul-rust-sdk/pull/286
 [#287]: https://github.com/GeunhwaJeong/haneul-rust-sdk/pull/287
-
 [`f3673da1`]: https://github.com/GeunhwaJeong/haneul-rust-sdk/commit/f3673da1
 [`3ef25b50`]: https://github.com/GeunhwaJeong/haneul-rust-sdk/commit/3ef25b50
 [`57343980`]: https://github.com/GeunhwaJeong/haneul-rust-sdk/commit/57343980
@@ -101,6 +144,7 @@
 # [0.3.1] - 2026-04-13
 
 ## Added
+
 - [#233] make `Client::calculate_rewards` and
   `Client::get_validator_address_by_pool_id` public
 - [#235] allow constructing a `Client` from a configured tonic `Endpoint`
@@ -109,6 +153,7 @@
   arbitrary `tower::Layer`
 
 ## Changed
+
 - [#236] update the default endpoint configuration
 
 [#233]: https://github.com/GeunhwaJeong/haneul-rust-sdk/pull/233
@@ -119,12 +164,14 @@
 # [0.3.0] - 2026-03-23
 
 ## Added
+
 - [#216] add support for `Object.display` and `SimulateTransactionResponse.suggested_gas_price`
 - [#231] add proto support for `AccumulatorValue::EventDigest` and `AccumulatorValue::IntegerTuple`
   for authenticated event streams
 - add `Unimplemented*` default stubs for all generated gRPC service traits
 
 ## Fixed
+
 - [#228] box `FieldViolation` in `TryFromProtoError` to reduce stack size
 - [#212] handle the case where a transaction has already been executed
 - support partial errors in `Object.display`
@@ -137,6 +184,7 @@
 # [0.2.2] - 2026-01-20
 
 ## Added
+
 - [#202] add support for TransactionKind::ProgrammableSystemTransaction
 - [#204] add support for EndOfEpochTransactionKind::WriteAccumulatorStorageCost
 
@@ -146,6 +194,7 @@
 # [0.2.1] - 2026-01-07
 
 ## Added
+
 - [#185] add `address_balance` and `coin_balance` fields to Balance message
 
 [#185]: https://github.com/GeunhwaJeong/haneul-rust-sdk/pull/185
@@ -153,6 +202,7 @@
 # [0.2.0] - 2026-01-05
 
 ## Added
+
 - Added support for address balances [#179]
 - Added support for address aliases [#177]
 - Added support for CheckpointContents V2 [#180]
@@ -164,11 +214,13 @@
 # [0.1.1] - 2025-12-11
 
 ## Added
+
 - Added new move vm adapter error variants
 
 # [0.1.0] - 2025-11-07
 
 ## Changed
+
 - Updated to rust 2024 edition [#171]
 - Updated to tonic/prost 0.14 [#168]
 - Removed `Into` requirement for setters of primitive types [`ec1547f1`]
@@ -183,6 +235,7 @@
 # [0.0.8] - 2025-10-03
 
 ## Added
+
 - Support for field path builders for proto messages
 - Support for field accessors and builder methods for proto messages
 - Add `Client::execute_transaction_and_wait_for_checkpoint` method
@@ -221,6 +274,7 @@
 
 Initial release
 
+[0.4.0]: https://github.com/GeunhwaJeong/haneul-rust-sdk/releases/tag/haneul-rpc-0.4.0
 [0.3.2]: https://github.com/GeunhwaJeong/haneul-rust-sdk/releases/tag/haneul-rpc-0.3.2
 [0.3.1]: https://github.com/GeunhwaJeong/haneul-rust-sdk/releases/tag/haneul-rpc-0.3.1
 [0.3.0]: https://github.com/GeunhwaJeong/haneul-rust-sdk/releases/tag/haneul-rpc-0.3.0

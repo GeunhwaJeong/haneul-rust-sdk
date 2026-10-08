@@ -19,6 +19,7 @@ fn compile_tests() {
     // Tests that should fail with expected errors
     t.compile_fail("tests/compile/missing_field_path_attr.rs");
     t.compile_fail("tests/compile/missing_field_attr.rs");
+    t.compile_fail("tests/compile/flatten_with_path.rs");
     t.compile_fail("tests/compile/empty_path.rs");
     t.compile_fail("tests/compile/tuple_struct_not_supported.rs");
 
@@ -58,6 +59,8 @@ fn compile_tests() {
     t.pass("tests/compile/graphql_query_simple.rs");
     t.pass("tests/compile/graphql_query_with_variables.rs");
     t.pass("tests/compile/graphql_query_mutation.rs");
+    t.pass("tests/compile/graphql_query_multiple_strings.rs");
+    t.compile_fail("tests/compile/graphql_query_empty.rs");
     t.compile_fail("tests/compile/graphql_query_unknown_field.rs");
     t.compile_fail("tests/compile/graphql_query_undefined_variable.rs");
     t.compile_fail("tests/compile/graphql_query_variable_typo.rs");

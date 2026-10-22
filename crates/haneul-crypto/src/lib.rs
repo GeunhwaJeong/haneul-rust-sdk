@@ -28,14 +28,22 @@ pub mod secp256r1;
 #[cfg_attr(doc_cfg, doc(cfg(feature = "passkey")))]
 pub mod passkey;
 
+#[cfg(feature = "mldsa65")]
+#[cfg_attr(doc_cfg, doc(cfg(feature = "mldsa65")))]
+pub mod mldsa65;
+
 #[cfg(feature = "zklogin")]
 #[cfg_attr(doc_cfg, doc(cfg(feature = "zklogin")))]
 pub mod zklogin;
+
+#[cfg(all(test, feature = "mldsa65"))]
+mod test_util;
 
 #[cfg(any(
     feature = "ed25519",
     feature = "secp256r1",
     feature = "secp256k1",
+    feature = "mldsa65",
     feature = "zklogin"
 ))]
 #[cfg_attr(
@@ -44,18 +52,25 @@ pub mod zklogin;
         feature = "ed25519",
         feature = "secp256r1",
         feature = "secp256k1",
+        feature = "mldsa65",
         feature = "zklogin"
     )))
 )]
 pub mod simple;
 
-#[cfg(any(feature = "ed25519", feature = "secp256r1", feature = "secp256k1"))]
+#[cfg(any(
+    feature = "ed25519",
+    feature = "secp256r1",
+    feature = "secp256k1",
+    feature = "mldsa65"
+))]
 mod haneulpriv;
 
 #[cfg(any(
     feature = "ed25519",
     feature = "secp256r1",
     feature = "secp256k1",
+    feature = "mldsa65",
     feature = "zklogin"
 ))]
 #[cfg_attr(
@@ -64,6 +79,7 @@ mod haneulpriv;
         feature = "ed25519",
         feature = "secp256r1",
         feature = "secp256k1",
+        feature = "mldsa65",
         feature = "zklogin"
     )))
 )]
@@ -73,6 +89,7 @@ pub mod multisig;
     feature = "ed25519",
     feature = "secp256r1",
     feature = "secp256k1",
+    feature = "mldsa65",
     feature = "zklogin"
 ))]
 #[cfg_attr(
@@ -81,6 +98,7 @@ pub mod multisig;
         feature = "ed25519",
         feature = "secp256r1",
         feature = "secp256k1",
+        feature = "mldsa65",
         feature = "zklogin"
     )))
 )]
@@ -115,6 +133,56 @@ impl<T: Signer<UserSignature>> HaneulSigner for T {
     ) -> Result<UserSignature, SignatureError> {
         let msg = message.signing_digest();
         self.try_sign(&msg)
+    }
+}
+
+/// Interface for signing user transactions and messages with a scheme that
+/// takes fresh randomness per signature
+///
+/// Randomized counterpart of [`HaneulSigner`]. Today that is ML-DSA-65 only.
+///
+/// # Note
+///
+/// There is a blanket implementation of `HaneulRandomizedSigner` for all `T`
+/// where `T: `[`signature::RandomizedSigner`]`<`[`UserSignature`]`>`, which handles the
+/// proper construction of the signing message.
+///
+/// The rng is taken as `&mut dyn CryptoRngCore` rather than `&mut impl
+/// CryptoRngCore` so that the trait stays dyn-compatible, like
+/// [`HaneulSigner`], and signers can be held as `dyn HaneulRandomizedSigner`.
+#[cfg(feature = "mldsa65")]
+#[cfg_attr(doc_cfg, doc(cfg(feature = "mldsa65")))]
+pub trait HaneulRandomizedSigner {
+    fn sign_transaction_with_rng(
+        &self,
+        rng: &mut dyn rand_core::CryptoRngCore,
+        transaction: &Transaction,
+    ) -> Result<UserSignature, SignatureError>;
+    fn sign_personal_message_with_rng(
+        &self,
+        rng: &mut dyn rand_core::CryptoRngCore,
+        message: &PersonalMessage<'_>,
+    ) -> Result<UserSignature, SignatureError>;
+}
+
+#[cfg(feature = "mldsa65")]
+impl<T: signature::RandomizedSigner<UserSignature>> HaneulRandomizedSigner for T {
+    fn sign_transaction_with_rng(
+        &self,
+        mut rng: &mut dyn rand_core::CryptoRngCore,
+        transaction: &Transaction,
+    ) -> Result<UserSignature, SignatureError> {
+        let msg = transaction.signing_digest();
+        self.try_sign_with_rng(&mut rng, &msg)
+    }
+
+    fn sign_personal_message_with_rng(
+        &self,
+        mut rng: &mut dyn rand_core::CryptoRngCore,
+        message: &PersonalMessage<'_>,
+    ) -> Result<UserSignature, SignatureError> {
+        let msg = message.signing_digest();
+        self.try_sign_with_rng(&mut rng, &msg)
     }
 }
 

@@ -9430,6 +9430,8 @@ impl serde::Serialize for ErrorReason {
             Self::Unknown => "ERROR_REASON_UNKNOWN",
             Self::FieldInvalid => "FIELD_INVALID",
             Self::FieldMissing => "FIELD_MISSING",
+            Self::InsufficientGasBalance => "INSUFFICIENT_GAS_BALANCE",
+            Self::TransactionExecutionFailed => "TRANSACTION_EXECUTION_FAILED",
         };
         serializer.serialize_str(variant)
     }
@@ -9444,6 +9446,8 @@ impl<'de> serde::Deserialize<'de> for ErrorReason {
             "ERROR_REASON_UNKNOWN",
             "FIELD_INVALID",
             "FIELD_MISSING",
+            "INSUFFICIENT_GAS_BALANCE",
+            "TRANSACTION_EXECUTION_FAILED",
         ];
         struct GeneratedVisitor;
         impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
@@ -9490,6 +9494,10 @@ impl<'de> serde::Deserialize<'de> for ErrorReason {
                     "ERROR_REASON_UNKNOWN" => Ok(ErrorReason::Unknown),
                     "FIELD_INVALID" => Ok(ErrorReason::FieldInvalid),
                     "FIELD_MISSING" => Ok(ErrorReason::FieldMissing),
+                    "INSUFFICIENT_GAS_BALANCE" => Ok(ErrorReason::InsufficientGasBalance),
+                    "TRANSACTION_EXECUTION_FAILED" => {
+                        Ok(ErrorReason::TransactionExecutionFailed)
+                    }
                     _ => Err(serde::de::Error::unknown_variant(value, FIELDS)),
                 }
             }
@@ -26086,6 +26094,7 @@ impl serde::Serialize for SignatureScheme {
             Self::Bls12381 => "BLS12381",
             Self::Zklogin => "ZKLOGIN",
             Self::Passkey => "PASSKEY",
+            Self::Mldsa65 => "MLDSA65",
         };
         serializer.serialize_str(variant)
     }
@@ -26104,6 +26113,7 @@ impl<'de> serde::Deserialize<'de> for SignatureScheme {
             "BLS12381",
             "ZKLOGIN",
             "PASSKEY",
+            "MLDSA65",
         ];
         struct GeneratedVisitor;
         impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
@@ -26154,6 +26164,7 @@ impl<'de> serde::Deserialize<'de> for SignatureScheme {
                     "BLS12381" => Ok(SignatureScheme::Bls12381),
                     "ZKLOGIN" => Ok(SignatureScheme::Zklogin),
                     "PASSKEY" => Ok(SignatureScheme::Passkey),
+                    "MLDSA65" => Ok(SignatureScheme::Mldsa65),
                     _ => Err(serde::de::Error::unknown_variant(value, FIELDS)),
                 }
             }

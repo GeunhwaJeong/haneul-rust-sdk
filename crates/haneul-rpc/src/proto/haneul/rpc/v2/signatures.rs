@@ -443,6 +443,7 @@ impl TryFrom<&SignatureScheme> for haneul_sdk_types::SignatureScheme {
             Bls12381 => Self::Bls12381,
             Zklogin => Self::ZkLogin,
             Passkey => Self::Passkey,
+            Mldsa65 => Self::MlDsa65,
         }
         .pipe(Ok)
     }
@@ -464,6 +465,10 @@ impl From<haneul_sdk_types::SimpleSignature> for SimpleSignature {
                 public_key,
             } => (signature.as_bytes(), public_key.as_bytes()),
             haneul_sdk_types::SimpleSignature::Secp256r1 {
+                signature,
+                public_key,
+            } => (signature.as_bytes(), public_key.as_bytes()),
+            haneul_sdk_types::SimpleSignature::MlDsa65 {
                 signature,
                 public_key,
             } => (signature.as_bytes(), public_key.as_bytes()),
@@ -525,6 +530,18 @@ impl TryFrom<&SimpleSignature> for haneul_sdk_types::SimpleSignature {
                 public_key: Secp256r1PublicKey::from_bytes(public_key).map_err(|e| {
                     TryFromProtoError::invalid(SimpleSignature::PUBLIC_KEY_FIELD, e)
                 })?,
+            },
+            SignatureScheme::Mldsa65 => Self::MlDsa65 {
+                signature: Box::new(
+                    haneul_sdk_types::MlDsa65Signature::from_bytes(signature).map_err(|e| {
+                        TryFromProtoError::invalid(SimpleSignature::SIGNATURE_FIELD, e)
+                    })?,
+                ),
+                public_key: Box::new(
+                    haneul_sdk_types::MlDsa65PublicKey::from_bytes(public_key).map_err(|e| {
+                        TryFromProtoError::invalid(SimpleSignature::PUBLIC_KEY_FIELD, e)
+                    })?,
+                ),
             },
             SignatureScheme::Multisig
             | SignatureScheme::Bls12381
@@ -615,6 +632,10 @@ impl From<&haneul_sdk_types::MultisigMemberPublicKey> for MultisigMemberPublicKe
                 message.public_key = Some(public_key.inner().as_bytes().to_vec().into());
                 SignatureScheme::Passkey
             }
+            MlDsa65(public_key) => {
+                message.public_key = Some(public_key.as_bytes().to_vec().into());
+                SignatureScheme::Mldsa65
+            }
             _ => return Self::default(),
         };
 
@@ -658,6 +679,11 @@ impl TryFrom<&MultisigMemberPublicKey> for haneul_sdk_types::MultisigMemberPubli
                 Secp256r1PublicKey::from_bytes(value.public_key()).map_err(|e| {
                     TryFromProtoError::invalid(MultisigMemberPublicKey::PUBLIC_KEY_FIELD, e)
                 })?,
+            )),
+            SignatureScheme::Mldsa65 => Self::MlDsa65(Box::new(
+                haneul_sdk_types::MlDsa65PublicKey::from_bytes(value.public_key()).map_err(
+                    |e| TryFromProtoError::invalid(MultisigMemberPublicKey::PUBLIC_KEY_FIELD, e),
+                )?,
             )),
             SignatureScheme::Multisig | SignatureScheme::Bls12381 => {
                 return Err(TryFromProtoError::invalid(
@@ -765,6 +791,10 @@ impl From<&haneul_sdk_types::MultisigMemberSignature> for MultisigMemberSignatur
                 message.passkey = Some(p.clone().into());
                 SignatureScheme::Passkey
             }
+            MlDsa65(signature) => {
+                message.signature = Some(signature.as_bytes().to_vec().into());
+                SignatureScheme::Mldsa65
+            }
             _ => return Self::default(),
         };
 
@@ -811,6 +841,11 @@ impl TryFrom<&MultisigMemberSignature> for haneul_sdk_types::MultisigMemberSigna
                     .ok_or_else(|| TryFromProtoError::missing("passkey"))?
                     .try_into()?,
             ),
+            SignatureScheme::Mldsa65 => Self::MlDsa65(Box::new(
+                haneul_sdk_types::MlDsa65Signature::from_bytes(value.signature()).map_err(|e| {
+                    TryFromProtoError::invalid(MultisigMemberSignature::SIGNATURE_FIELD, e)
+                })?,
+            )),
             SignatureScheme::Multisig | SignatureScheme::Bls12381 => {
                 return Err(TryFromProtoError::invalid(
                     MultisigMemberSignature::SCHEME_FIELD,
@@ -870,7 +905,11 @@ impl TryFrom<&MultisigAggregatedSignature> for haneul_sdk_types::MultisigAggrega
                 haneul_sdk_types::Bitmap::deserialize_from(legacy_bitmap).map_err(|e| {
                     TryFromProtoError::invalid(MultisigAggregatedSignature::LEGACY_BITMAP_FIELD, e)
                 })?;
-            signature.with_legacy_bitmap(legacy_bitmap);
+            signature
+                .try_with_legacy_bitmap(legacy_bitmap)
+                .map_err(|e| {
+                    TryFromProtoError::invalid(MultisigAggregatedSignature::LEGACY_BITMAP_FIELD, e)
+                })?;
         }
 
         Ok(signature)
@@ -987,5 +1026,88 @@ impl TryFrom<&UserSignature> for haneul_sdk_types::UserSignature {
             }
         }
         .pipe(Ok)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn legacy_bitmap_bytes(indices: &[u32]) -> prost::bytes::Bytes {
+        let bitmap: haneul_sdk_types::Bitmap = indices.iter().copied().collect();
+        let mut bytes = Vec::new();
+        bitmap.serialize_into(&mut bytes).unwrap();
+        bytes.into()
+    }
+
+    /// A proto multisig whose single-member committee has signed, per
+    /// `bitmap`, with no `legacy_bitmap` set yet.
+    fn single_member_multisig(
+        public_key: haneul_sdk_types::MultisigMemberPublicKey,
+    ) -> MultisigAggregatedSignature {
+        let committee = haneul_sdk_types::MultisigCommittee::new(
+            vec![haneul_sdk_types::MultisigMember::new(public_key, 1)],
+            1,
+        );
+        let signature =
+            haneul_sdk_types::MultisigAggregatedSignature::new(committee, Vec::new(), 0b1);
+        MultisigAggregatedSignature::from(&signature)
+    }
+
+    fn assert_invalid_legacy_bitmap(proto: &MultisigAggregatedSignature, description: &str) {
+        let err = haneul_sdk_types::MultisigAggregatedSignature::try_from(proto).unwrap_err();
+        let violation = err.field_violation();
+        assert_eq!(
+            violation.field,
+            MultisigAggregatedSignature::LEGACY_BITMAP_FIELD.name
+        );
+        assert_eq!(violation.description, description);
+    }
+
+    // Regression test: a `legacy_bitmap` on a committee with a member that
+    // the legacy format cannot encode used to convert successfully, and the
+    // resulting signature then panicked on its first `to_bytes()`.
+    #[test]
+    fn legacy_bitmap_with_unrepresentable_member_is_rejected() {
+        let public_key = haneul_sdk_types::MultisigMemberPublicKey::MlDsa65(Box::new(
+            haneul_sdk_types::MlDsa65PublicKey::new(
+                [0; haneul_sdk_types::MlDsa65PublicKey::LENGTH],
+            ),
+        ));
+        let mut proto = single_member_multisig(public_key);
+        proto.legacy_bitmap = Some(legacy_bitmap_bytes(&[0]));
+
+        assert_invalid_legacy_bitmap(
+            &proto,
+            "mldsa65 member is not representable in legacy multisig",
+        );
+    }
+
+    // Regression test: `bitmap` and `legacy_bitmap` used to be accepted
+    // even when they named different signers, so `bitmap()` and
+    // `to_bytes()` disagreed on who signed.
+    #[test]
+    fn legacy_bitmap_must_match_bitmap() {
+        let public_key = haneul_sdk_types::MultisigMemberPublicKey::Ed25519(
+            haneul_sdk_types::Ed25519PublicKey::new(
+                [1; haneul_sdk_types::Ed25519PublicKey::LENGTH],
+            ),
+        );
+        let mut proto = single_member_multisig(public_key);
+
+        proto.legacy_bitmap = Some(legacy_bitmap_bytes(&[1]));
+        assert_invalid_legacy_bitmap(&proto, "bitmap does not match legacy_bitmap");
+
+        proto.legacy_bitmap = Some(legacy_bitmap_bytes(&[0]));
+        let signature = haneul_sdk_types::MultisigAggregatedSignature::try_from(&proto).unwrap();
+        let expected: haneul_sdk_types::Bitmap = [0].into_iter().collect();
+        assert_eq!(signature.legacy_bitmap(), Some(&expected));
+
+        let signature = haneul_sdk_types::UserSignature::Multisig(signature);
+        let bytes = signature.to_bytes();
+        assert_eq!(
+            haneul_sdk_types::UserSignature::from_bytes(&bytes).unwrap(),
+            signature
+        );
     }
 }

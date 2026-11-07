@@ -9826,6 +9826,86 @@ mod _accessor_impls {
             self
         }
     }
+    impl super::LedgerPosition {
+        pub const fn const_default() -> Self {
+            Self {
+                checkpoint: None,
+                transaction_index: None,
+                event_index: None,
+            }
+        }
+        #[doc(hidden)]
+        pub fn default_instance() -> &'static Self {
+            static DEFAULT: super::LedgerPosition = super::LedgerPosition::const_default();
+            &DEFAULT
+        }
+        ///If `checkpoint` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn checkpoint_opt_mut(&mut self) -> Option<&mut u64> {
+            self.checkpoint.as_mut().map(|field| field as _)
+        }
+        ///Returns a mutable reference to `checkpoint`.
+        ///If the field is unset, it is first initialized with the default value.
+        pub fn checkpoint_mut(&mut self) -> &mut u64 {
+            self.checkpoint.get_or_insert_default()
+        }
+        ///If `checkpoint` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn checkpoint_opt(&self) -> Option<u64> {
+            self.checkpoint.as_ref().map(|field| *field)
+        }
+        ///Sets `checkpoint` with the provided value.
+        pub fn set_checkpoint(&mut self, field: u64) {
+            self.checkpoint = Some(field);
+        }
+        ///Sets `checkpoint` with the provided value.
+        pub fn with_checkpoint(mut self, field: u64) -> Self {
+            self.set_checkpoint(field);
+            self
+        }
+        ///If `transaction_index` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn transaction_index_opt_mut(&mut self) -> Option<&mut u64> {
+            self.transaction_index.as_mut().map(|field| field as _)
+        }
+        ///Returns a mutable reference to `transaction_index`.
+        ///If the field is unset, it is first initialized with the default value.
+        pub fn transaction_index_mut(&mut self) -> &mut u64 {
+            self.transaction_index.get_or_insert_default()
+        }
+        ///If `transaction_index` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn transaction_index_opt(&self) -> Option<u64> {
+            self.transaction_index.as_ref().map(|field| *field)
+        }
+        ///Sets `transaction_index` with the provided value.
+        pub fn set_transaction_index(&mut self, field: u64) {
+            self.transaction_index = Some(field);
+        }
+        ///Sets `transaction_index` with the provided value.
+        pub fn with_transaction_index(mut self, field: u64) -> Self {
+            self.set_transaction_index(field);
+            self
+        }
+        ///If `event_index` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn event_index_opt_mut(&mut self) -> Option<&mut u32> {
+            self.event_index.as_mut().map(|field| field as _)
+        }
+        ///Returns a mutable reference to `event_index`.
+        ///If the field is unset, it is first initialized with the default value.
+        pub fn event_index_mut(&mut self) -> &mut u32 {
+            self.event_index.get_or_insert_default()
+        }
+        ///If `event_index` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn event_index_opt(&self) -> Option<u32> {
+            self.event_index.as_ref().map(|field| *field)
+        }
+        ///Sets `event_index` with the provided value.
+        pub fn set_event_index(&mut self, field: u32) {
+            self.event_index = Some(field);
+        }
+        ///Sets `event_index` with the provided value.
+        pub fn with_event_index(mut self, field: u32) -> Self {
+            self.set_event_index(field);
+            self
+        }
+    }
     impl super::Linkage {
         pub const fn const_default() -> Self {
             Self {
@@ -10429,6 +10509,10 @@ mod _accessor_impls {
                 end_checkpoint: None,
                 filter: None,
                 options: None,
+                start_transaction_index: None,
+                start_event_index: None,
+                end_transaction_index: None,
+                end_event_index: None,
             }
         }
         #[doc(hidden)]
@@ -10561,6 +10645,94 @@ mod _accessor_impls {
         ///Sets `options` with the provided value.
         pub fn with_options<T: Into<super::QueryOptions>>(mut self, field: T) -> Self {
             self.set_options(field.into());
+            self
+        }
+        ///If `start_transaction_index` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn start_transaction_index_opt_mut(&mut self) -> Option<&mut u64> {
+            self.start_transaction_index.as_mut().map(|field| field as _)
+        }
+        ///Returns a mutable reference to `start_transaction_index`.
+        ///If the field is unset, it is first initialized with the default value.
+        pub fn start_transaction_index_mut(&mut self) -> &mut u64 {
+            self.start_transaction_index.get_or_insert_default()
+        }
+        ///If `start_transaction_index` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn start_transaction_index_opt(&self) -> Option<u64> {
+            self.start_transaction_index.as_ref().map(|field| *field)
+        }
+        ///Sets `start_transaction_index` with the provided value.
+        pub fn set_start_transaction_index(&mut self, field: u64) {
+            self.start_transaction_index = Some(field);
+        }
+        ///Sets `start_transaction_index` with the provided value.
+        pub fn with_start_transaction_index(mut self, field: u64) -> Self {
+            self.set_start_transaction_index(field);
+            self
+        }
+        ///If `start_event_index` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn start_event_index_opt_mut(&mut self) -> Option<&mut u32> {
+            self.start_event_index.as_mut().map(|field| field as _)
+        }
+        ///Returns a mutable reference to `start_event_index`.
+        ///If the field is unset, it is first initialized with the default value.
+        pub fn start_event_index_mut(&mut self) -> &mut u32 {
+            self.start_event_index.get_or_insert_default()
+        }
+        ///If `start_event_index` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn start_event_index_opt(&self) -> Option<u32> {
+            self.start_event_index.as_ref().map(|field| *field)
+        }
+        ///Sets `start_event_index` with the provided value.
+        pub fn set_start_event_index(&mut self, field: u32) {
+            self.start_event_index = Some(field);
+        }
+        ///Sets `start_event_index` with the provided value.
+        pub fn with_start_event_index(mut self, field: u32) -> Self {
+            self.set_start_event_index(field);
+            self
+        }
+        ///If `end_transaction_index` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn end_transaction_index_opt_mut(&mut self) -> Option<&mut u64> {
+            self.end_transaction_index.as_mut().map(|field| field as _)
+        }
+        ///Returns a mutable reference to `end_transaction_index`.
+        ///If the field is unset, it is first initialized with the default value.
+        pub fn end_transaction_index_mut(&mut self) -> &mut u64 {
+            self.end_transaction_index.get_or_insert_default()
+        }
+        ///If `end_transaction_index` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn end_transaction_index_opt(&self) -> Option<u64> {
+            self.end_transaction_index.as_ref().map(|field| *field)
+        }
+        ///Sets `end_transaction_index` with the provided value.
+        pub fn set_end_transaction_index(&mut self, field: u64) {
+            self.end_transaction_index = Some(field);
+        }
+        ///Sets `end_transaction_index` with the provided value.
+        pub fn with_end_transaction_index(mut self, field: u64) -> Self {
+            self.set_end_transaction_index(field);
+            self
+        }
+        ///If `end_event_index` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn end_event_index_opt_mut(&mut self) -> Option<&mut u32> {
+            self.end_event_index.as_mut().map(|field| field as _)
+        }
+        ///Returns a mutable reference to `end_event_index`.
+        ///If the field is unset, it is first initialized with the default value.
+        pub fn end_event_index_mut(&mut self) -> &mut u32 {
+            self.end_event_index.get_or_insert_default()
+        }
+        ///If `end_event_index` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn end_event_index_opt(&self) -> Option<u32> {
+            self.end_event_index.as_ref().map(|field| *field)
+        }
+        ///Sets `end_event_index` with the provided value.
+        pub fn set_end_event_index(&mut self, field: u32) {
+            self.end_event_index = Some(field);
+        }
+        ///Sets `end_event_index` with the provided value.
+        pub fn with_end_event_index(mut self, field: u32) -> Self {
+            self.set_end_event_index(field);
             self
         }
     }
@@ -10964,6 +11136,8 @@ mod _accessor_impls {
                 end_checkpoint: None,
                 filter: None,
                 options: None,
+                start_transaction_index: None,
+                end_transaction_index: None,
             }
         }
         #[doc(hidden)]
@@ -11099,6 +11273,50 @@ mod _accessor_impls {
         ///Sets `options` with the provided value.
         pub fn with_options<T: Into<super::QueryOptions>>(mut self, field: T) -> Self {
             self.set_options(field.into());
+            self
+        }
+        ///If `start_transaction_index` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn start_transaction_index_opt_mut(&mut self) -> Option<&mut u64> {
+            self.start_transaction_index.as_mut().map(|field| field as _)
+        }
+        ///Returns a mutable reference to `start_transaction_index`.
+        ///If the field is unset, it is first initialized with the default value.
+        pub fn start_transaction_index_mut(&mut self) -> &mut u64 {
+            self.start_transaction_index.get_or_insert_default()
+        }
+        ///If `start_transaction_index` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn start_transaction_index_opt(&self) -> Option<u64> {
+            self.start_transaction_index.as_ref().map(|field| *field)
+        }
+        ///Sets `start_transaction_index` with the provided value.
+        pub fn set_start_transaction_index(&mut self, field: u64) {
+            self.start_transaction_index = Some(field);
+        }
+        ///Sets `start_transaction_index` with the provided value.
+        pub fn with_start_transaction_index(mut self, field: u64) -> Self {
+            self.set_start_transaction_index(field);
+            self
+        }
+        ///If `end_transaction_index` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn end_transaction_index_opt_mut(&mut self) -> Option<&mut u64> {
+            self.end_transaction_index.as_mut().map(|field| field as _)
+        }
+        ///Returns a mutable reference to `end_transaction_index`.
+        ///If the field is unset, it is first initialized with the default value.
+        pub fn end_transaction_index_mut(&mut self) -> &mut u64 {
+            self.end_transaction_index.get_or_insert_default()
+        }
+        ///If `end_transaction_index` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn end_transaction_index_opt(&self) -> Option<u64> {
+            self.end_transaction_index.as_ref().map(|field| *field)
+        }
+        ///Sets `end_transaction_index` with the provided value.
+        pub fn set_end_transaction_index(&mut self, field: u64) {
+            self.end_transaction_index = Some(field);
+        }
+        ///Sets `end_transaction_index` with the provided value.
+        pub fn with_end_transaction_index(mut self, field: u64) -> Self {
+            self.set_end_transaction_index(field);
             self
         }
     }
@@ -20229,6 +20447,7 @@ mod _accessor_impls {
                 signature: None,
                 address: None,
                 jwks: Vec::new(),
+                check_address_aliases: None,
             }
         }
         #[doc(hidden)]
@@ -20337,12 +20556,35 @@ mod _accessor_impls {
             self.set_jwks(field);
             self
         }
+        ///If `check_address_aliases` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn check_address_aliases_opt_mut(&mut self) -> Option<&mut bool> {
+            self.check_address_aliases.as_mut().map(|field| field as _)
+        }
+        ///Returns a mutable reference to `check_address_aliases`.
+        ///If the field is unset, it is first initialized with the default value.
+        pub fn check_address_aliases_mut(&mut self) -> &mut bool {
+            self.check_address_aliases.get_or_insert_default()
+        }
+        ///If `check_address_aliases` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn check_address_aliases_opt(&self) -> Option<bool> {
+            self.check_address_aliases.as_ref().map(|field| *field)
+        }
+        ///Sets `check_address_aliases` with the provided value.
+        pub fn set_check_address_aliases(&mut self, field: bool) {
+            self.check_address_aliases = Some(field);
+        }
+        ///Sets `check_address_aliases` with the provided value.
+        pub fn with_check_address_aliases(mut self, field: bool) -> Self {
+            self.set_check_address_aliases(field);
+            self
+        }
     }
     impl super::VerifySignatureResponse {
         pub const fn const_default() -> Self {
             Self {
                 is_valid: None,
                 reason: None,
+                address_aliases_checked: None,
             }
         }
         #[doc(hidden)]
@@ -20392,6 +20634,28 @@ mod _accessor_impls {
         ///Sets `reason` with the provided value.
         pub fn with_reason<T: Into<String>>(mut self, field: T) -> Self {
             self.set_reason(field.into());
+            self
+        }
+        ///If `address_aliases_checked` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn address_aliases_checked_opt_mut(&mut self) -> Option<&mut bool> {
+            self.address_aliases_checked.as_mut().map(|field| field as _)
+        }
+        ///Returns a mutable reference to `address_aliases_checked`.
+        ///If the field is unset, it is first initialized with the default value.
+        pub fn address_aliases_checked_mut(&mut self) -> &mut bool {
+            self.address_aliases_checked.get_or_insert_default()
+        }
+        ///If `address_aliases_checked` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn address_aliases_checked_opt(&self) -> Option<bool> {
+            self.address_aliases_checked.as_ref().map(|field| *field)
+        }
+        ///Sets `address_aliases_checked` with the provided value.
+        pub fn set_address_aliases_checked(&mut self, field: bool) {
+            self.address_aliases_checked = Some(field);
+        }
+        ///Sets `address_aliases_checked` with the provided value.
+        pub fn with_address_aliases_checked(mut self, field: bool) -> Self {
+            self.set_address_aliases_checked(field);
             self
         }
     }
@@ -20480,6 +20744,7 @@ mod _accessor_impls {
             Self {
                 cursor: None,
                 checkpoint: None,
+                cursor_position: None,
             }
         }
         #[doc(hidden)]
@@ -20520,6 +20785,38 @@ mod _accessor_impls {
         ///Sets `checkpoint` with the provided value.
         pub fn with_checkpoint(mut self, field: u64) -> Self {
             self.set_checkpoint(field);
+            self
+        }
+        ///Returns the value of `cursor_position`, or the default value if `cursor_position` is unset.
+        pub fn cursor_position(&self) -> &super::LedgerPosition {
+            self.cursor_position
+                .as_ref()
+                .map(|field| field as _)
+                .unwrap_or_else(|| super::LedgerPosition::default_instance() as _)
+        }
+        ///If `cursor_position` is set, returns [`Some`] with a mutable reference to the value; otherwise returns [`None`].
+        pub fn cursor_position_opt_mut(&mut self) -> Option<&mut super::LedgerPosition> {
+            self.cursor_position.as_mut().map(|field| field as _)
+        }
+        ///Returns a mutable reference to `cursor_position`.
+        ///If the field is unset, it is first initialized with the default value.
+        pub fn cursor_position_mut(&mut self) -> &mut super::LedgerPosition {
+            self.cursor_position.get_or_insert_default()
+        }
+        ///If `cursor_position` is set, returns [`Some`] with the value; otherwise returns [`None`].
+        pub fn cursor_position_opt(&self) -> Option<&super::LedgerPosition> {
+            self.cursor_position.as_ref().map(|field| field as _)
+        }
+        ///Sets `cursor_position` with the provided value.
+        pub fn set_cursor_position<T: Into<super::LedgerPosition>>(&mut self, field: T) {
+            self.cursor_position = Some(field.into().into());
+        }
+        ///Sets `cursor_position` with the provided value.
+        pub fn with_cursor_position<T: Into<super::LedgerPosition>>(
+            mut self,
+            field: T,
+        ) -> Self {
+            self.set_cursor_position(field.into());
             self
         }
     }

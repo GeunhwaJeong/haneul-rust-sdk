@@ -52,6 +52,8 @@ impl SubscriptionAdapter for TransactionAdapter {
             start_checkpoint: None,
             end_checkpoint: None,
             options: None,
+            start_transaction_index: None,
+            end_transaction_index: None,
         }
     }
 
@@ -106,6 +108,10 @@ impl SubscriptionAdapter for TransactionAdapter {
     }
     fn item_position(item: &Self::Item) -> &Self::ItemPosition {
         item.position()
+    }
+
+    fn item_checkpoint(position: &Self::ItemPosition) -> u64 {
+        position.0
     }
 
     fn extract_metadata(

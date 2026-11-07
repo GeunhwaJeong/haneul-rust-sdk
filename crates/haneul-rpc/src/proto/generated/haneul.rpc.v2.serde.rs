@@ -9432,6 +9432,8 @@ impl serde::Serialize for ErrorReason {
             Self::FieldMissing => "FIELD_MISSING",
             Self::InsufficientGasBalance => "INSUFFICIENT_GAS_BALANCE",
             Self::TransactionExecutionFailed => "TRANSACTION_EXECUTION_FAILED",
+            Self::AboveLatestAvailable => "ABOVE_LATEST_AVAILABLE",
+            Self::BelowEarliestAvailable => "BELOW_EARLIEST_AVAILABLE",
         };
         serializer.serialize_str(variant)
     }
@@ -9448,6 +9450,8 @@ impl<'de> serde::Deserialize<'de> for ErrorReason {
             "FIELD_MISSING",
             "INSUFFICIENT_GAS_BALANCE",
             "TRANSACTION_EXECUTION_FAILED",
+            "ABOVE_LATEST_AVAILABLE",
+            "BELOW_EARLIEST_AVAILABLE",
         ];
         struct GeneratedVisitor;
         impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
@@ -9498,6 +9502,8 @@ impl<'de> serde::Deserialize<'de> for ErrorReason {
                     "TRANSACTION_EXECUTION_FAILED" => {
                         Ok(ErrorReason::TransactionExecutionFailed)
                     }
+                    "ABOVE_LATEST_AVAILABLE" => Ok(ErrorReason::AboveLatestAvailable),
+                    "BELOW_EARLIEST_AVAILABLE" => Ok(ErrorReason::BelowEarliestAvailable),
                     _ => Err(serde::de::Error::unknown_variant(value, FIELDS)),
                 }
             }
@@ -17264,6 +17270,172 @@ impl<'de> serde::Deserialize<'de> for JwkId {
         deserializer.deserialize_struct("haneul.rpc.v2.JwkId", FIELDS, GeneratedVisitor)
     }
 }
+impl serde::Serialize for LedgerPosition {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0usize;
+        if self.checkpoint.is_some() {
+            len += 1;
+        }
+        if self.transaction_index.is_some() {
+            len += 1;
+        }
+        if self.event_index.is_some() {
+            len += 1;
+        }
+        let mut struct_ser = serializer
+            .serialize_struct("haneul.rpc.v2.LedgerPosition", len)?;
+        if let Some(v) = self.checkpoint.as_ref() {
+            #[allow(clippy::needless_borrow)]
+            #[allow(clippy::needless_borrows_for_generic_args)]
+            struct_ser.serialize_field("checkpoint", ToString::to_string(&v).as_str())?;
+        }
+        if let Some(v) = self.transaction_index.as_ref() {
+            #[allow(clippy::needless_borrow)]
+            #[allow(clippy::needless_borrows_for_generic_args)]
+            struct_ser
+                .serialize_field("transactionIndex", ToString::to_string(&v).as_str())?;
+        }
+        if let Some(v) = self.event_index.as_ref() {
+            struct_ser.serialize_field("eventIndex", v)?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for LedgerPosition {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "checkpoint",
+            "transaction_index",
+            "transactionIndex",
+            "event_index",
+            "eventIndex",
+        ];
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            Checkpoint,
+            TransactionIndex,
+            EventIndex,
+            __SkipField__,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(
+                deserializer: D,
+            ) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+                    fn expecting(
+                        &self,
+                        formatter: &mut std::fmt::Formatter<'_>,
+                    ) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", FIELDS)
+                    }
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(
+                        self,
+                        value: &str,
+                    ) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "checkpoint" => Ok(GeneratedField::Checkpoint),
+                            "transactionIndex" | "transaction_index" => {
+                                Ok(GeneratedField::TransactionIndex)
+                            }
+                            "eventIndex" | "event_index" => {
+                                Ok(GeneratedField::EventIndex)
+                            }
+                            _ => Ok(GeneratedField::__SkipField__),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        #[allow(clippy::useless_conversion)]
+        #[allow(clippy::unit_arg)]
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = LedgerPosition;
+            fn expecting(
+                &self,
+                formatter: &mut std::fmt::Formatter<'_>,
+            ) -> std::fmt::Result {
+                formatter.write_str("struct haneul.rpc.v2.LedgerPosition")
+            }
+            fn visit_map<V>(
+                self,
+                mut map_: V,
+            ) -> std::result::Result<LedgerPosition, V::Error>
+            where
+                V: serde::de::MapAccess<'de>,
+            {
+                let mut checkpoint__ = None;
+                let mut transaction_index__ = None;
+                let mut event_index__ = None;
+                while let Some(k) = map_.next_key()? {
+                    match k {
+                        GeneratedField::Checkpoint => {
+                            if checkpoint__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("checkpoint"));
+                            }
+                            checkpoint__ = map_
+                                .next_value::<
+                                    ::std::option::Option<crate::_serde::NumberDeserialize<_>>,
+                                >()?
+                                .map(|x| x.0);
+                        }
+                        GeneratedField::TransactionIndex => {
+                            if transaction_index__.is_some() {
+                                return Err(
+                                    serde::de::Error::duplicate_field("transactionIndex"),
+                                );
+                            }
+                            transaction_index__ = map_
+                                .next_value::<
+                                    ::std::option::Option<crate::_serde::NumberDeserialize<_>>,
+                                >()?
+                                .map(|x| x.0);
+                        }
+                        GeneratedField::EventIndex => {
+                            if event_index__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("eventIndex"));
+                            }
+                            event_index__ = map_
+                                .next_value::<
+                                    ::std::option::Option<crate::_serde::NumberDeserialize<_>>,
+                                >()?
+                                .map(|x| x.0);
+                        }
+                        GeneratedField::__SkipField__ => {
+                            let _ = map_.next_value::<serde::de::IgnoredAny>()?;
+                        }
+                    }
+                }
+                Ok(LedgerPosition {
+                    checkpoint: checkpoint__,
+                    transaction_index: transaction_index__,
+                    event_index: event_index__,
+                })
+            }
+        }
+        deserializer
+            .deserialize_struct("haneul.rpc.v2.LedgerPosition", FIELDS, GeneratedVisitor)
+    }
+}
 impl serde::Serialize for Linkage {
     #[allow(deprecated)]
     fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
@@ -18424,6 +18596,18 @@ impl serde::Serialize for ListEventsRequest {
         if self.options.is_some() {
             len += 1;
         }
+        if self.start_transaction_index.is_some() {
+            len += 1;
+        }
+        if self.start_event_index.is_some() {
+            len += 1;
+        }
+        if self.end_transaction_index.is_some() {
+            len += 1;
+        }
+        if self.end_event_index.is_some() {
+            len += 1;
+        }
         let mut struct_ser = serializer
             .serialize_struct("haneul.rpc.v2.ListEventsRequest", len)?;
         if let Some(v) = self.read_mask.as_ref() {
@@ -18448,6 +18632,30 @@ impl serde::Serialize for ListEventsRequest {
         if let Some(v) = self.options.as_ref() {
             struct_ser.serialize_field("options", v)?;
         }
+        if let Some(v) = self.start_transaction_index.as_ref() {
+            #[allow(clippy::needless_borrow)]
+            #[allow(clippy::needless_borrows_for_generic_args)]
+            struct_ser
+                .serialize_field(
+                    "startTransactionIndex",
+                    ToString::to_string(&v).as_str(),
+                )?;
+        }
+        if let Some(v) = self.start_event_index.as_ref() {
+            struct_ser.serialize_field("startEventIndex", v)?;
+        }
+        if let Some(v) = self.end_transaction_index.as_ref() {
+            #[allow(clippy::needless_borrow)]
+            #[allow(clippy::needless_borrows_for_generic_args)]
+            struct_ser
+                .serialize_field(
+                    "endTransactionIndex",
+                    ToString::to_string(&v).as_str(),
+                )?;
+        }
+        if let Some(v) = self.end_event_index.as_ref() {
+            struct_ser.serialize_field("endEventIndex", v)?;
+        }
         struct_ser.end()
     }
 }
@@ -18466,6 +18674,14 @@ impl<'de> serde::Deserialize<'de> for ListEventsRequest {
             "endCheckpoint",
             "filter",
             "options",
+            "start_transaction_index",
+            "startTransactionIndex",
+            "start_event_index",
+            "startEventIndex",
+            "end_transaction_index",
+            "endTransactionIndex",
+            "end_event_index",
+            "endEventIndex",
         ];
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
@@ -18474,6 +18690,10 @@ impl<'de> serde::Deserialize<'de> for ListEventsRequest {
             EndCheckpoint,
             Filter,
             Options,
+            StartTransactionIndex,
+            StartEventIndex,
+            EndTransactionIndex,
+            EndEventIndex,
             __SkipField__,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
@@ -18510,6 +18730,18 @@ impl<'de> serde::Deserialize<'de> for ListEventsRequest {
                             }
                             "filter" => Ok(GeneratedField::Filter),
                             "options" => Ok(GeneratedField::Options),
+                            "startTransactionIndex" | "start_transaction_index" => {
+                                Ok(GeneratedField::StartTransactionIndex)
+                            }
+                            "startEventIndex" | "start_event_index" => {
+                                Ok(GeneratedField::StartEventIndex)
+                            }
+                            "endTransactionIndex" | "end_transaction_index" => {
+                                Ok(GeneratedField::EndTransactionIndex)
+                            }
+                            "endEventIndex" | "end_event_index" => {
+                                Ok(GeneratedField::EndEventIndex)
+                            }
                             _ => Ok(GeneratedField::__SkipField__),
                         }
                     }
@@ -18540,6 +18772,10 @@ impl<'de> serde::Deserialize<'de> for ListEventsRequest {
                 let mut end_checkpoint__ = None;
                 let mut filter__ = None;
                 let mut options__ = None;
+                let mut start_transaction_index__ = None;
+                let mut start_event_index__ = None;
+                let mut end_transaction_index__ = None;
+                let mut end_event_index__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
                         GeneratedField::ReadMask => {
@@ -18588,6 +18824,54 @@ impl<'de> serde::Deserialize<'de> for ListEventsRequest {
                             }
                             options__ = map_.next_value()?;
                         }
+                        GeneratedField::StartTransactionIndex => {
+                            if start_transaction_index__.is_some() {
+                                return Err(
+                                    serde::de::Error::duplicate_field("startTransactionIndex"),
+                                );
+                            }
+                            start_transaction_index__ = map_
+                                .next_value::<
+                                    ::std::option::Option<crate::_serde::NumberDeserialize<_>>,
+                                >()?
+                                .map(|x| x.0);
+                        }
+                        GeneratedField::StartEventIndex => {
+                            if start_event_index__.is_some() {
+                                return Err(
+                                    serde::de::Error::duplicate_field("startEventIndex"),
+                                );
+                            }
+                            start_event_index__ = map_
+                                .next_value::<
+                                    ::std::option::Option<crate::_serde::NumberDeserialize<_>>,
+                                >()?
+                                .map(|x| x.0);
+                        }
+                        GeneratedField::EndTransactionIndex => {
+                            if end_transaction_index__.is_some() {
+                                return Err(
+                                    serde::de::Error::duplicate_field("endTransactionIndex"),
+                                );
+                            }
+                            end_transaction_index__ = map_
+                                .next_value::<
+                                    ::std::option::Option<crate::_serde::NumberDeserialize<_>>,
+                                >()?
+                                .map(|x| x.0);
+                        }
+                        GeneratedField::EndEventIndex => {
+                            if end_event_index__.is_some() {
+                                return Err(
+                                    serde::de::Error::duplicate_field("endEventIndex"),
+                                );
+                            }
+                            end_event_index__ = map_
+                                .next_value::<
+                                    ::std::option::Option<crate::_serde::NumberDeserialize<_>>,
+                                >()?
+                                .map(|x| x.0);
+                        }
                         GeneratedField::__SkipField__ => {
                             let _ = map_.next_value::<serde::de::IgnoredAny>()?;
                         }
@@ -18599,6 +18883,10 @@ impl<'de> serde::Deserialize<'de> for ListEventsRequest {
                     end_checkpoint: end_checkpoint__,
                     filter: filter__,
                     options: options__,
+                    start_transaction_index: start_transaction_index__,
+                    start_event_index: start_event_index__,
+                    end_transaction_index: end_transaction_index__,
+                    end_event_index: end_event_index__,
                 })
             }
         }
@@ -19418,6 +19706,12 @@ impl serde::Serialize for ListTransactionsRequest {
         if self.options.is_some() {
             len += 1;
         }
+        if self.start_transaction_index.is_some() {
+            len += 1;
+        }
+        if self.end_transaction_index.is_some() {
+            len += 1;
+        }
         let mut struct_ser = serializer
             .serialize_struct("haneul.rpc.v2.ListTransactionsRequest", len)?;
         if let Some(v) = self.read_mask.as_ref() {
@@ -19442,6 +19736,24 @@ impl serde::Serialize for ListTransactionsRequest {
         if let Some(v) = self.options.as_ref() {
             struct_ser.serialize_field("options", v)?;
         }
+        if let Some(v) = self.start_transaction_index.as_ref() {
+            #[allow(clippy::needless_borrow)]
+            #[allow(clippy::needless_borrows_for_generic_args)]
+            struct_ser
+                .serialize_field(
+                    "startTransactionIndex",
+                    ToString::to_string(&v).as_str(),
+                )?;
+        }
+        if let Some(v) = self.end_transaction_index.as_ref() {
+            #[allow(clippy::needless_borrow)]
+            #[allow(clippy::needless_borrows_for_generic_args)]
+            struct_ser
+                .serialize_field(
+                    "endTransactionIndex",
+                    ToString::to_string(&v).as_str(),
+                )?;
+        }
         struct_ser.end()
     }
 }
@@ -19460,6 +19772,10 @@ impl<'de> serde::Deserialize<'de> for ListTransactionsRequest {
             "endCheckpoint",
             "filter",
             "options",
+            "start_transaction_index",
+            "startTransactionIndex",
+            "end_transaction_index",
+            "endTransactionIndex",
         ];
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
@@ -19468,6 +19784,8 @@ impl<'de> serde::Deserialize<'de> for ListTransactionsRequest {
             EndCheckpoint,
             Filter,
             Options,
+            StartTransactionIndex,
+            EndTransactionIndex,
             __SkipField__,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
@@ -19504,6 +19822,12 @@ impl<'de> serde::Deserialize<'de> for ListTransactionsRequest {
                             }
                             "filter" => Ok(GeneratedField::Filter),
                             "options" => Ok(GeneratedField::Options),
+                            "startTransactionIndex" | "start_transaction_index" => {
+                                Ok(GeneratedField::StartTransactionIndex)
+                            }
+                            "endTransactionIndex" | "end_transaction_index" => {
+                                Ok(GeneratedField::EndTransactionIndex)
+                            }
                             _ => Ok(GeneratedField::__SkipField__),
                         }
                     }
@@ -19534,6 +19858,8 @@ impl<'de> serde::Deserialize<'de> for ListTransactionsRequest {
                 let mut end_checkpoint__ = None;
                 let mut filter__ = None;
                 let mut options__ = None;
+                let mut start_transaction_index__ = None;
+                let mut end_transaction_index__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
                         GeneratedField::ReadMask => {
@@ -19582,6 +19908,30 @@ impl<'de> serde::Deserialize<'de> for ListTransactionsRequest {
                             }
                             options__ = map_.next_value()?;
                         }
+                        GeneratedField::StartTransactionIndex => {
+                            if start_transaction_index__.is_some() {
+                                return Err(
+                                    serde::de::Error::duplicate_field("startTransactionIndex"),
+                                );
+                            }
+                            start_transaction_index__ = map_
+                                .next_value::<
+                                    ::std::option::Option<crate::_serde::NumberDeserialize<_>>,
+                                >()?
+                                .map(|x| x.0);
+                        }
+                        GeneratedField::EndTransactionIndex => {
+                            if end_transaction_index__.is_some() {
+                                return Err(
+                                    serde::de::Error::duplicate_field("endTransactionIndex"),
+                                );
+                            }
+                            end_transaction_index__ = map_
+                                .next_value::<
+                                    ::std::option::Option<crate::_serde::NumberDeserialize<_>>,
+                                >()?
+                                .map(|x| x.0);
+                        }
                         GeneratedField::__SkipField__ => {
                             let _ = map_.next_value::<serde::de::IgnoredAny>()?;
                         }
@@ -19593,6 +19943,8 @@ impl<'de> serde::Deserialize<'de> for ListTransactionsRequest {
                     end_checkpoint: end_checkpoint__,
                     filter: filter__,
                     options: options__,
+                    start_transaction_index: start_transaction_index__,
+                    end_transaction_index: end_transaction_index__,
                 })
             }
         }
@@ -35044,6 +35396,9 @@ impl serde::Serialize for VerifySignatureRequest {
         if !self.jwks.is_empty() {
             len += 1;
         }
+        if self.check_address_aliases.is_some() {
+            len += 1;
+        }
         let mut struct_ser = serializer
             .serialize_struct("haneul.rpc.v2.VerifySignatureRequest", len)?;
         if let Some(v) = self.message.as_ref() {
@@ -35058,6 +35413,9 @@ impl serde::Serialize for VerifySignatureRequest {
         if !self.jwks.is_empty() {
             struct_ser.serialize_field("jwks", &self.jwks)?;
         }
+        if let Some(v) = self.check_address_aliases.as_ref() {
+            struct_ser.serialize_field("checkAddressAliases", v)?;
+        }
         struct_ser.end()
     }
 }
@@ -35067,13 +35425,21 @@ impl<'de> serde::Deserialize<'de> for VerifySignatureRequest {
     where
         D: serde::Deserializer<'de>,
     {
-        const FIELDS: &[&str] = &["message", "signature", "address", "jwks"];
+        const FIELDS: &[&str] = &[
+            "message",
+            "signature",
+            "address",
+            "jwks",
+            "check_address_aliases",
+            "checkAddressAliases",
+        ];
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
             Message,
             Signature,
             Address,
             Jwks,
+            CheckAddressAliases,
             __SkipField__,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
@@ -35105,6 +35471,9 @@ impl<'de> serde::Deserialize<'de> for VerifySignatureRequest {
                             "signature" => Ok(GeneratedField::Signature),
                             "address" => Ok(GeneratedField::Address),
                             "jwks" => Ok(GeneratedField::Jwks),
+                            "checkAddressAliases" | "check_address_aliases" => {
+                                Ok(GeneratedField::CheckAddressAliases)
+                            }
                             _ => Ok(GeneratedField::__SkipField__),
                         }
                     }
@@ -35134,6 +35503,7 @@ impl<'de> serde::Deserialize<'de> for VerifySignatureRequest {
                 let mut signature__ = None;
                 let mut address__ = None;
                 let mut jwks__ = None;
+                let mut check_address_aliases__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
                         GeneratedField::Message => {
@@ -35160,6 +35530,14 @@ impl<'de> serde::Deserialize<'de> for VerifySignatureRequest {
                             }
                             jwks__ = Some(map_.next_value()?);
                         }
+                        GeneratedField::CheckAddressAliases => {
+                            if check_address_aliases__.is_some() {
+                                return Err(
+                                    serde::de::Error::duplicate_field("checkAddressAliases"),
+                                );
+                            }
+                            check_address_aliases__ = map_.next_value()?;
+                        }
                         GeneratedField::__SkipField__ => {
                             let _ = map_.next_value::<serde::de::IgnoredAny>()?;
                         }
@@ -35170,6 +35548,7 @@ impl<'de> serde::Deserialize<'de> for VerifySignatureRequest {
                     signature: signature__,
                     address: address__,
                     jwks: jwks__.unwrap_or_default(),
+                    check_address_aliases: check_address_aliases__,
                 })
             }
         }
@@ -35195,6 +35574,9 @@ impl serde::Serialize for VerifySignatureResponse {
         if self.reason.is_some() {
             len += 1;
         }
+        if self.address_aliases_checked.is_some() {
+            len += 1;
+        }
         let mut struct_ser = serializer
             .serialize_struct("haneul.rpc.v2.VerifySignatureResponse", len)?;
         if let Some(v) = self.is_valid.as_ref() {
@@ -35202,6 +35584,9 @@ impl serde::Serialize for VerifySignatureResponse {
         }
         if let Some(v) = self.reason.as_ref() {
             struct_ser.serialize_field("reason", v)?;
+        }
+        if let Some(v) = self.address_aliases_checked.as_ref() {
+            struct_ser.serialize_field("addressAliasesChecked", v)?;
         }
         struct_ser.end()
     }
@@ -35212,11 +35597,18 @@ impl<'de> serde::Deserialize<'de> for VerifySignatureResponse {
     where
         D: serde::Deserializer<'de>,
     {
-        const FIELDS: &[&str] = &["is_valid", "isValid", "reason"];
+        const FIELDS: &[&str] = &[
+            "is_valid",
+            "isValid",
+            "reason",
+            "address_aliases_checked",
+            "addressAliasesChecked",
+        ];
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
             IsValid,
             Reason,
+            AddressAliasesChecked,
             __SkipField__,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
@@ -35246,6 +35638,9 @@ impl<'de> serde::Deserialize<'de> for VerifySignatureResponse {
                         match value {
                             "isValid" | "is_valid" => Ok(GeneratedField::IsValid),
                             "reason" => Ok(GeneratedField::Reason),
+                            "addressAliasesChecked" | "address_aliases_checked" => {
+                                Ok(GeneratedField::AddressAliasesChecked)
+                            }
                             _ => Ok(GeneratedField::__SkipField__),
                         }
                     }
@@ -35273,6 +35668,7 @@ impl<'de> serde::Deserialize<'de> for VerifySignatureResponse {
             {
                 let mut is_valid__ = None;
                 let mut reason__ = None;
+                let mut address_aliases_checked__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
                         GeneratedField::IsValid => {
@@ -35287,6 +35683,14 @@ impl<'de> serde::Deserialize<'de> for VerifySignatureResponse {
                             }
                             reason__ = map_.next_value()?;
                         }
+                        GeneratedField::AddressAliasesChecked => {
+                            if address_aliases_checked__.is_some() {
+                                return Err(
+                                    serde::de::Error::duplicate_field("addressAliasesChecked"),
+                                );
+                            }
+                            address_aliases_checked__ = map_.next_value()?;
+                        }
                         GeneratedField::__SkipField__ => {
                             let _ = map_.next_value::<serde::de::IgnoredAny>()?;
                         }
@@ -35295,6 +35699,7 @@ impl<'de> serde::Deserialize<'de> for VerifySignatureResponse {
                 Ok(VerifySignatureResponse {
                     is_valid: is_valid__,
                     reason: reason__,
+                    address_aliases_checked: address_aliases_checked__,
                 })
             }
         }
@@ -35484,6 +35889,9 @@ impl serde::Serialize for Watermark {
         if self.checkpoint.is_some() {
             len += 1;
         }
+        if self.cursor_position.is_some() {
+            len += 1;
+        }
         let mut struct_ser = serializer
             .serialize_struct("haneul.rpc.v2.Watermark", len)?;
         if let Some(v) = self.cursor.as_ref() {
@@ -35497,6 +35905,9 @@ impl serde::Serialize for Watermark {
             #[allow(clippy::needless_borrows_for_generic_args)]
             struct_ser.serialize_field("checkpoint", ToString::to_string(&v).as_str())?;
         }
+        if let Some(v) = self.cursor_position.as_ref() {
+            struct_ser.serialize_field("cursorPosition", v)?;
+        }
         struct_ser.end()
     }
 }
@@ -35506,11 +35917,17 @@ impl<'de> serde::Deserialize<'de> for Watermark {
     where
         D: serde::Deserializer<'de>,
     {
-        const FIELDS: &[&str] = &["cursor", "checkpoint"];
+        const FIELDS: &[&str] = &[
+            "cursor",
+            "checkpoint",
+            "cursor_position",
+            "cursorPosition",
+        ];
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
             Cursor,
             Checkpoint,
+            CursorPosition,
             __SkipField__,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
@@ -35540,6 +35957,9 @@ impl<'de> serde::Deserialize<'de> for Watermark {
                         match value {
                             "cursor" => Ok(GeneratedField::Cursor),
                             "checkpoint" => Ok(GeneratedField::Checkpoint),
+                            "cursorPosition" | "cursor_position" => {
+                                Ok(GeneratedField::CursorPosition)
+                            }
                             _ => Ok(GeneratedField::__SkipField__),
                         }
                     }
@@ -35567,6 +35987,7 @@ impl<'de> serde::Deserialize<'de> for Watermark {
             {
                 let mut cursor__ = None;
                 let mut checkpoint__ = None;
+                let mut cursor_position__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
                         GeneratedField::Cursor => {
@@ -35589,6 +36010,14 @@ impl<'de> serde::Deserialize<'de> for Watermark {
                                 >()?
                                 .map(|x| x.0);
                         }
+                        GeneratedField::CursorPosition => {
+                            if cursor_position__.is_some() {
+                                return Err(
+                                    serde::de::Error::duplicate_field("cursorPosition"),
+                                );
+                            }
+                            cursor_position__ = map_.next_value()?;
+                        }
                         GeneratedField::__SkipField__ => {
                             let _ = map_.next_value::<serde::de::IgnoredAny>()?;
                         }
@@ -35597,6 +36026,7 @@ impl<'de> serde::Deserialize<'de> for Watermark {
                 Ok(Watermark {
                     cursor: cursor__,
                     checkpoint: checkpoint__,
+                    cursor_position: cursor_position__,
                 })
             }
         }

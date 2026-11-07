@@ -872,6 +872,86 @@ pub enum ErrorReason {
     /// * `command`: index of the command that failed, as a decimal string, or
     ///   "" if no single command failed.
     TransactionExecutionFailed = 4,
+    /// The request reads ledger data above what this server has indexed. The
+    /// `LedgerService` `List*` RPCs return this with `OUT_OF_RANGE` for a
+    /// descending query when:
+    ///
+    /// * its `before` or `after` cursor names a position this server has not
+    ///   indexed.
+    /// * its `end_checkpoint`, which is exclusive, is above
+    ///   `firstUnavailableCheckpoint`, or, with `end_checkpoint` unset, its
+    ///   `start_checkpoint` is at or above `firstUnavailableCheckpoint`.
+    ///   An ascending query never gets this error. Its `before` cursor and its
+    ///   checkpoint range end at the latest indexed checkpoint, and an `after`
+    ///   cursor past it ends an empty response with `LEDGER_TIP` at the position
+    ///   that cursor resumes from.
+    ///
+    /// Such a cursor comes from a newer view of the ledger than this server's,
+    /// for example from another replica behind the same load balancer. The data
+    /// is not indexed here yet, so the same request becomes servable once this
+    /// server catches up, and a client may resend it unchanged after a delay. A
+    /// cursor comes from a server that had indexed its position, so a request
+    /// rejected for its cursor (`bound` is "cursor") is servable within the time
+    /// replicas take to catch up with each other. A checkpoint bound may name a
+    /// checkpoint the chain has not reached, so retrying it can wait
+    /// indefinitely.
+    ///
+    /// Example of an ErrorInfo for a descending query's `before` cursor at
+    /// checkpoint 1205, sent to a server whose latest indexed checkpoint is 1199:
+    ///
+    /// ```text
+    /// { "reason": "ABOVE_LATEST_AVAILABLE",
+    ///    "domain": "haneul.io",
+    ///    "metadata": {
+    ///      "bound": "cursor",
+    ///      "requestedCheckpoint": "1205",
+    ///      "firstUnavailableCheckpoint": "1200"
+    ///    }
+    /// }
+    /// ```
+    ///
+    /// Metadata, with checkpoints as decimal strings:
+    ///
+    /// * `bound`: what reads above the indexed data: "cursor" for a `before` or
+    ///   `after` cursor, or the name of the request field, "start_checkpoint"
+    ///   or "end_checkpoint".
+    /// * `requestedCheckpoint`: the checkpoint recorded in the cursor, or the
+    ///   value of the request field.
+    /// * `firstUnavailableCheckpoint`: the lowest checkpoint this server has not
+    ///   indexed, one above its latest indexed checkpoint, or "0" if it has
+    ///   indexed none.
+    AboveLatestAvailable = 5,
+    /// The request needs ledger data this server has pruned. The
+    /// `LedgerService` `List*` RPCs return this with `OUT_OF_RANGE` when the
+    /// request's `start_checkpoint` or `after` cursor is below the lowest
+    /// checkpoint this server serves, when its checkpoint range ends at or below
+    /// that checkpoint, when a descending query with no lower bound of its own
+    /// reaches it, or when the server prunes data a query has not read yet. A
+    /// descending query that reaches the lowest checkpoint fails after it
+    /// streams every item at or above that checkpoint, and its last response
+    /// carries a watermark at that checkpoint.
+    ///
+    /// Pruned data does not come back, so the same request fails the same way
+    /// on this server. A client can send it to a server that retains the data,
+    /// or resume at or above `lowestAvailableCheckpoint`.
+    ///
+    /// Example of an ErrorInfo from a server whose lowest available checkpoint
+    /// is 5000:
+    ///
+    /// ```text
+    /// { "reason": "BELOW_EARLIEST_AVAILABLE",
+    ///    "domain": "haneul.io",
+    ///    "metadata": {
+    ///      "lowestAvailableCheckpoint": "5000"
+    ///    }
+    /// }
+    /// ```
+    ///
+    /// Metadata:
+    ///
+    /// * `lowestAvailableCheckpoint`: the lowest checkpoint this server serves,
+    ///   as a decimal string.
+    BelowEarliestAvailable = 6,
 }
 impl ErrorReason {
     /// String value of the enum field names used in the ProtoBuf definition.
@@ -885,6 +965,8 @@ impl ErrorReason {
             Self::FieldMissing => "FIELD_MISSING",
             Self::InsufficientGasBalance => "INSUFFICIENT_GAS_BALANCE",
             Self::TransactionExecutionFailed => "TRANSACTION_EXECUTION_FAILED",
+            Self::AboveLatestAvailable => "ABOVE_LATEST_AVAILABLE",
+            Self::BelowEarliestAvailable => "BELOW_EARLIEST_AVAILABLE",
         }
     }
     /// Creates an enum from field names used in the ProtoBuf definition.
@@ -895,6 +977,8 @@ impl ErrorReason {
             "FIELD_MISSING" => Some(Self::FieldMissing),
             "INSUFFICIENT_GAS_BALANCE" => Some(Self::InsufficientGasBalance),
             "TRANSACTION_EXECUTION_FAILED" => Some(Self::TransactionExecutionFailed),
+            "ABOVE_LATEST_AVAILABLE" => Some(Self::AboveLatestAvailable),
+            "BELOW_EARLIEST_AVAILABLE" => Some(Self::BelowEarliestAvailable),
             _ => None,
         }
     }
@@ -2461,6 +2545,41 @@ pub struct ListTransactionsRequest {
     /// `options.before` (descending) on the next request.
     #[prost(message, optional, tag = "5")]
     pub options: ::core::option::Option<QueryOptions>,
+    /// Optional. Transaction position within `start_checkpoint` at which the
+    /// query starts (inclusive): within `start_checkpoint`, only transactions
+    /// whose `ExecutedTransaction.transaction_index` is at least this value are
+    /// returned. Unset starts at the beginning of `start_checkpoint`. An index at
+    /// or past the checkpoint's transaction count starts at the next checkpoint.
+    /// Requires `start_checkpoint`. When this position leaves transactions of
+    /// `start_checkpoint` out, a descending query does not report that checkpoint
+    /// as covered in `Watermark.checkpoint`.
+    ///
+    /// Combines with `options.after` by intersection: the query starts at
+    /// whichever of the two is later in ledger order.
+    ///
+    /// Servers that predate this field ignore it and start at the beginning of
+    /// `start_checkpoint`, so clients must still drop transactions before this
+    /// position themselves.
+    #[prost(uint64, optional, tag = "6")]
+    pub start_transaction_index: ::core::option::Option<u64>,
+    /// Optional. Transaction position within the last checkpoint of the range,
+    /// `end_checkpoint - 1`, at which the query ends (exclusive): within that
+    /// checkpoint, only transactions whose `ExecutedTransaction.transaction_index`
+    /// is below this value are returned, so 0 returns none of it. Unset ends after
+    /// the whole checkpoint. An index at or past the checkpoint's transaction
+    /// count ends after the whole checkpoint. Requires `end_checkpoint`. A query
+    /// that stops at this position ends with `QUERY_END_REASON_CHECKPOINT_BOUND`.
+    /// When this position leaves transactions of that checkpoint out, an
+    /// ascending query does not report it as covered in `Watermark.checkpoint`.
+    ///
+    /// Combines with `options.before` by intersection: the query ends at
+    /// whichever of the two is earlier in ledger order.
+    ///
+    /// Servers that predate this field ignore it and return the whole
+    /// checkpoint, so clients must still drop transactions at or after this
+    /// position themselves.
+    #[prost(uint64, optional, tag = "7")]
+    pub end_transaction_index: ::core::option::Option<u64>,
 }
 /// Response message for LedgerService.ListTransactions.
 ///
@@ -2514,6 +2633,64 @@ pub struct ListEventsRequest {
     /// `options.before` (descending) on the next request.
     #[prost(message, optional, tag = "5")]
     pub options: ::core::option::Option<QueryOptions>,
+    /// Optional. Transaction position within `start_checkpoint` at which the
+    /// query starts (inclusive): within `start_checkpoint`, only events of
+    /// transactions whose `Event.transaction_index` is at least this value are
+    /// returned. Unset starts at the beginning of `start_checkpoint`. An index at
+    /// or past the checkpoint's transaction count starts at the next checkpoint,
+    /// ignoring `start_event_index`. Requires `start_checkpoint`. When this
+    /// position leaves events of `start_checkpoint` out, a descending query does
+    /// not report that checkpoint as covered in `Watermark.checkpoint`.
+    ///
+    /// Combines with `options.after` by intersection: the query starts at
+    /// whichever of the two is later in ledger order.
+    ///
+    /// Servers that predate this field ignore it and start at the beginning of
+    /// `start_checkpoint`, so clients must still drop events before this
+    /// position themselves.
+    #[prost(uint64, optional, tag = "6")]
+    pub start_transaction_index: ::core::option::Option<u64>,
+    /// Optional. Event position within the transaction at
+    /// `start_transaction_index` at which the query starts (inclusive): within
+    /// that transaction, only events whose `Event.event_index` is at least this
+    /// value are returned. Unset starts at the transaction's first event. An
+    /// index past the transaction's last event starts at the next transaction.
+    /// Requires `start_transaction_index`.
+    ///
+    /// Servers that predate this field ignore it, as for
+    /// `start_transaction_index`.
+    #[prost(uint32, optional, tag = "7")]
+    pub start_event_index: ::core::option::Option<u32>,
+    /// Optional. Transaction position within the last checkpoint of the range,
+    /// `end_checkpoint - 1`, at which the query ends (exclusive): within that
+    /// checkpoint, only events of transactions whose `Event.transaction_index` is
+    /// below this value are returned, plus, with `end_event_index`, the events
+    /// of the transaction at this index that precede it. Unset ends after the
+    /// whole checkpoint. An index at or past the checkpoint's transaction count
+    /// ends after the whole checkpoint. Requires `end_checkpoint`. A query that
+    /// stops at this position ends with `QUERY_END_REASON_CHECKPOINT_BOUND`.
+    /// When this position leaves events of that checkpoint out, an ascending
+    /// query does not report it as covered in `Watermark.checkpoint`.
+    ///
+    /// Combines with `options.before` by intersection: the query ends at
+    /// whichever of the two is earlier in ledger order.
+    ///
+    /// Servers that predate this field ignore it and return the whole
+    /// checkpoint, so clients must still drop events at or after this position
+    /// themselves.
+    #[prost(uint64, optional, tag = "8")]
+    pub end_transaction_index: ::core::option::Option<u64>,
+    /// Optional. Event position within the transaction at
+    /// `end_transaction_index` at which the query ends (exclusive): events of
+    /// that transaction whose `Event.event_index` is below this value are also
+    /// returned. Unset, like 0, returns none of the transaction's events. An
+    /// index past the transaction's last event returns all of them. Requires
+    /// `end_transaction_index`.
+    ///
+    /// Servers that predate this field ignore it, as for
+    /// `end_transaction_index`.
+    #[prost(uint32, optional, tag = "9")]
+    pub end_event_index: ::core::option::Option<u32>,
 }
 /// Response message for LedgerService.ListEvents.
 ///
@@ -5412,17 +5589,75 @@ pub struct QueryOptions {
     #[prost(enumeration = "Ordering", optional, tag = "4")]
     pub ordering: ::core::option::Option<i32>,
 }
-/// Progress marker for a query scan. Carried on every response frame, whether or
-/// not the frame delivers a matching item. Watermarks never regress in the
-/// requested ordering, but consecutive frames may carry the same watermark when
+/// A point in ledger order: the boundary between the items whose keys sort
+/// below this position and the items whose keys sort at or above it.
+///
+/// An item's key is (`sequence_number`) for a `Checkpoint`, (`checkpoint`,
+/// `transaction_index`) for an `ExecutedTransaction`, and (`checkpoint`,
+/// `transaction_index`, `event_index`) for an `Event`. Keys and positions sort
+/// lexicographically, with unset fields counting as 0.
+///
+/// An index past the last transaction of a checkpoint, or past the last event of
+/// a transaction, names the start of the next one, so different positions can
+/// name the same boundary: after the last of checkpoint `c`'s `n` transactions,
+/// both (`c`, `n`) and (`c + 1`, 0) name the start of checkpoint `c + 1`.
+/// Sorting never contradicts ledger order: a position that sorts below another
+/// is at or before it. Use comparisons to drop what is behind, and never assume
+/// that positions that differ name different boundaries.
+///
+/// To bound a request at a position: as its start, set `start_checkpoint` to
+/// `checkpoint` and, when either index is nonzero, the start index fields to
+/// both indexes, including one that is 0 (`start_transaction_index`, plus
+/// `start_event_index` for events). As its end, set `end_checkpoint` to
+/// `checkpoint` when both indexes are 0; otherwise set `end_checkpoint` to
+/// `checkpoint + 1` and the end index fields to both indexes
+/// (`end_transaction_index`, plus `end_event_index` for events). Checkpoint
+/// positions carry only `checkpoint`, so they set only `start_checkpoint` or
+/// `end_checkpoint`.
+#[non_exhaustive]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct LedgerPosition {
+    /// Checkpoint sequence number.
+    #[prost(uint64, optional, tag = "1")]
+    pub checkpoint: ::core::option::Option<u64>,
+    /// Zero-based position of a transaction within `checkpoint`.
+    #[prost(uint64, optional, tag = "2")]
+    pub transaction_index: ::core::option::Option<u64>,
+    /// Zero-based index of an event within its transaction's event list. Event
+    /// streams only.
+    #[prost(uint32, optional, tag = "3")]
+    pub event_index: ::core::option::Option<u32>,
+}
+/// Progress of a scan, carried on every response frame, whether or not the
+/// frame delivers a matching item. Watermarks never regress in the requested
+/// ordering, but consecutive frames may carry the same watermark when
 /// additional work does not advance the safe resume frontier.
+///
+/// A watermark has two parts:
+///
+/// * The resume point, in two forms: `cursor`, opaque, for the server, and
+///   `cursor_position`, in ledger coordinates, for clients to order frames and
+///   drop duplicates.
+/// * Coverage: `checkpoint`, the boundary checkpoint the scan has proven fully
+///   covered. It trails the resume point.
+///
+/// To continue in the same direction, set the request's start (ascending) or
+/// end (descending) at `cursor_position`. To read in the other direction, set
+/// the other bound at `cursor_position` from a frame without an item; from a
+/// frame with an item, start a page after the item at its key with the finest
+/// index incremented, or end a page before it at its key. In both cases pass
+/// `cursor` as `options.after` with a start and as `options.before` with an
+/// end.
 #[non_exhaustive]
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct Watermark {
-    /// Opaque cursor at this scan position. Set on every watermark. Use as
+    /// Opaque cursor at the resume point. Set on every watermark. Use as
     /// `options.after` (ascending) or `options.before` (descending) on the next
     /// request to resume from here. The most recently received cursor is always
     /// the safe resume point.
+    ///
+    /// Pass cursors back unchanged; never compare or inspect them. Cursors that
+    /// differ can name the same point, and their encoding may change.
     #[prost(bytes = "bytes", optional, tag = "1")]
     pub cursor: ::core::option::Option<::prost::bytes::Bytes>,
     /// The inclusive boundary checkpoint that the scan has fully covered within
@@ -5439,6 +5674,27 @@ pub struct Watermark {
     /// A watermark still has a valid resume cursor while this field is unset.
     #[prost(uint64, optional, tag = "2")]
     pub checkpoint: ::core::option::Option<u64>,
+    /// The resume point in ledger coordinates. Set on every watermark by servers
+    /// that support it.
+    ///
+    /// Ascending, every match from the request's start up to (excluding)
+    /// `cursor_position` has been delivered. Descending, every match from
+    /// `cursor_position` up to (excluding) the request's end has been delivered.
+    ///
+    /// On a frame that carries an item, ascending, it is the boundary just past
+    /// the item, so it is not the item's own key: it is that key with its finest
+    /// index incremented (`event_index` for events, `transaction_index` for
+    /// transactions, `checkpoint` for checkpoints). Descending, it is the boundary
+    /// just before the item, which is the item's key.
+    ///
+    /// It never moves before the request's start (ascending) or past its end
+    /// (descending), so an ascending request that starts beyond what the server
+    /// has indexed gets its start echoed back: the resume point says where the
+    /// client is, not where the ledger is. `cursor` may then name an earlier
+    /// point; bounds intersect, so resuming with both starts at
+    /// `cursor_position`.
+    #[prost(message, optional, tag = "4")]
+    pub cursor_position: ::core::option::Option<LedgerPosition>,
 }
 /// Marker for the final frame of a successful query stream. Every successful
 /// stream sets `QueryEnd` on exactly one frame, after which no further frames
@@ -5462,9 +5718,9 @@ pub struct QueryEnd {
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum Ordering {
-    /// Return results in increasing cursor order.
+    /// Return results in increasing ledger order.
     Ascending = 0,
-    /// Return results in decreasing cursor order.
+    /// Return results in decreasing ledger order.
     Descending = 1,
 }
 impl Ordering {
@@ -5503,8 +5759,10 @@ pub enum QueryEndReason {
     /// frame carries no item. Its watermark cursor is the authoritative scan
     /// frontier from which to resume.
     ScanLimit = 2,
-    /// The scan reached a requested checkpoint range bound. The terminal frame
-    /// carries no item.
+    /// The scan reached the edge of the window the request set: its checkpoint
+    /// range bound, or a start or end position the request set within a
+    /// checkpoint at that range's edge (for example `end_transaction_index` on
+    /// `ListTransactionsRequest`). The terminal frame carries no item.
     CheckpointBound = 3,
     /// The scan reached an exclusive cursor bound. The terminal frame carries no
     /// item. Its watermark cursor represents that resolved bound without claiming
@@ -5907,6 +6165,15 @@ pub struct VerifySignatureRequest {
     /// If this is empty the current set of valid JWKs stored onchain will be used
     #[prost(message, repeated, tag = "4")]
     pub jwks: ::prost::alloc::vec::Vec<ActiveJwk>,
+    /// Optional. If true, `address` is required and the signature must be from a
+    /// member of `address`'s current `AddressAliases` set rather than from
+    /// `address` itself. An address with no `AddressAliases` set is its own only
+    /// alias.
+    ///
+    /// Servers that predate this field ignore it, so clients must check
+    /// `address_aliases_checked` in the response.
+    #[prost(bool, optional, tag = "6")]
+    pub check_address_aliases: ::core::option::Option<bool>,
 }
 #[non_exhaustive]
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
@@ -5917,6 +6184,10 @@ pub struct VerifySignatureResponse {
     /// If `is_valid` is `false`, this is the reason for why the signature verification failed.
     #[prost(string, optional, tag = "2")]
     pub reason: ::core::option::Option<::prost::alloc::string::String>,
+    /// Set to true when the server applied `check_address_aliases`, whether or
+    /// not the signature is valid. Unset by servers that predate it.
+    #[prost(bool, optional, tag = "3")]
+    pub address_aliases_checked: ::core::option::Option<bool>,
 }
 /// Generated client implementations.
 pub mod signature_verification_service_client {
@@ -7460,11 +7731,14 @@ pub mod subscription_service_client {
     /// at the current tip of the chain as seen by the server (the latest executed
     /// checkpoint). To recover data missed between subscriptions, replay the gap
     /// with the paired List API: pass the last received `Watermark.cursor` as
-    /// `options.after` on the List request (for checkpoints, pass the last
-    /// received `cursor + 1` as `start_checkpoint`). The List scan reads from the
-    /// indexed tip, which may trail the subscription's start position; repeat the
-    /// List call as the index advances until the replay reaches the position
-    /// established by the subscription's first frame.
+    /// `options.after`, with the request's start at its `cursor_position` (for
+    /// checkpoints, pass the last received `cursor + 1` as `start_checkpoint`). The
+    /// List scan reads from the indexed tip, which may trail the subscription's
+    /// start position; repeat the List call as the index advances until the replay
+    /// reaches the position established by the subscription's first frame: for
+    /// transactions and events, that frame's item key if it carries an item, and
+    /// its `cursor_position` otherwise. Compare positions and item keys, never
+    /// cursor bytes.
     ///
     /// A subscription behaves like an unbounded ascending scan: every frame
     /// carries the subscriber's resume point, and progress advances as
@@ -7729,11 +8003,14 @@ pub mod subscription_service_server {
     /// at the current tip of the chain as seen by the server (the latest executed
     /// checkpoint). To recover data missed between subscriptions, replay the gap
     /// with the paired List API: pass the last received `Watermark.cursor` as
-    /// `options.after` on the List request (for checkpoints, pass the last
-    /// received `cursor + 1` as `start_checkpoint`). The List scan reads from the
-    /// indexed tip, which may trail the subscription's start position; repeat the
-    /// List call as the index advances until the replay reaches the position
-    /// established by the subscription's first frame.
+    /// `options.after`, with the request's start at its `cursor_position` (for
+    /// checkpoints, pass the last received `cursor + 1` as `start_checkpoint`). The
+    /// List scan reads from the indexed tip, which may trail the subscription's
+    /// start position; repeat the List call as the index advances until the replay
+    /// reaches the position established by the subscription's first frame: for
+    /// transactions and events, that frame's item key if it carries an item, and
+    /// its `cursor_position` otherwise. Compare positions and item keys, never
+    /// cursor bytes.
     ///
     /// A subscription behaves like an unbounded ascending scan: every frame
     /// carries the subscriber's resume point, and progress advances as

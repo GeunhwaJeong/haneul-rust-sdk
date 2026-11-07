@@ -4584,6 +4584,18 @@ pub(crate) mod _field_impls {
             number: 5i32,
             message_fields: Some(QueryOptions::FIELDS),
         };
+        pub const START_TRANSACTION_INDEX_FIELD: &'static MessageField = &MessageField {
+            name: "start_transaction_index",
+            json_name: "startTransactionIndex",
+            number: 6i32,
+            message_fields: None,
+        };
+        pub const END_TRANSACTION_INDEX_FIELD: &'static MessageField = &MessageField {
+            name: "end_transaction_index",
+            json_name: "endTransactionIndex",
+            number: 7i32,
+            message_fields: None,
+        };
     }
     impl MessageFields for ListTransactionsRequest {
         const FIELDS: &'static [&'static MessageField] = &[
@@ -4592,6 +4604,8 @@ pub(crate) mod _field_impls {
             Self::END_CHECKPOINT_FIELD,
             Self::FILTER_FIELD,
             Self::OPTIONS_FIELD,
+            Self::START_TRANSACTION_INDEX_FIELD,
+            Self::END_TRANSACTION_INDEX_FIELD,
         ];
     }
     impl ListTransactionsRequest {
@@ -4633,6 +4647,14 @@ pub(crate) mod _field_impls {
         pub fn options(mut self) -> QueryOptionsFieldPathBuilder {
             self.path.push(ListTransactionsRequest::OPTIONS_FIELD.name);
             QueryOptionsFieldPathBuilder::new_with_base(self.path)
+        }
+        pub fn start_transaction_index(mut self) -> String {
+            self.path.push(ListTransactionsRequest::START_TRANSACTION_INDEX_FIELD.name);
+            self.finish()
+        }
+        pub fn end_transaction_index(mut self) -> String {
+            self.path.push(ListTransactionsRequest::END_TRANSACTION_INDEX_FIELD.name);
+            self.finish()
         }
     }
     impl ListTransactionsResponse {
@@ -4726,6 +4748,30 @@ pub(crate) mod _field_impls {
             number: 5i32,
             message_fields: Some(QueryOptions::FIELDS),
         };
+        pub const START_TRANSACTION_INDEX_FIELD: &'static MessageField = &MessageField {
+            name: "start_transaction_index",
+            json_name: "startTransactionIndex",
+            number: 6i32,
+            message_fields: None,
+        };
+        pub const START_EVENT_INDEX_FIELD: &'static MessageField = &MessageField {
+            name: "start_event_index",
+            json_name: "startEventIndex",
+            number: 7i32,
+            message_fields: None,
+        };
+        pub const END_TRANSACTION_INDEX_FIELD: &'static MessageField = &MessageField {
+            name: "end_transaction_index",
+            json_name: "endTransactionIndex",
+            number: 8i32,
+            message_fields: None,
+        };
+        pub const END_EVENT_INDEX_FIELD: &'static MessageField = &MessageField {
+            name: "end_event_index",
+            json_name: "endEventIndex",
+            number: 9i32,
+            message_fields: None,
+        };
     }
     impl MessageFields for ListEventsRequest {
         const FIELDS: &'static [&'static MessageField] = &[
@@ -4734,6 +4780,10 @@ pub(crate) mod _field_impls {
             Self::END_CHECKPOINT_FIELD,
             Self::FILTER_FIELD,
             Self::OPTIONS_FIELD,
+            Self::START_TRANSACTION_INDEX_FIELD,
+            Self::START_EVENT_INDEX_FIELD,
+            Self::END_TRANSACTION_INDEX_FIELD,
+            Self::END_EVENT_INDEX_FIELD,
         ];
     }
     impl ListEventsRequest {
@@ -4775,6 +4825,22 @@ pub(crate) mod _field_impls {
         pub fn options(mut self) -> QueryOptionsFieldPathBuilder {
             self.path.push(ListEventsRequest::OPTIONS_FIELD.name);
             QueryOptionsFieldPathBuilder::new_with_base(self.path)
+        }
+        pub fn start_transaction_index(mut self) -> String {
+            self.path.push(ListEventsRequest::START_TRANSACTION_INDEX_FIELD.name);
+            self.finish()
+        }
+        pub fn start_event_index(mut self) -> String {
+            self.path.push(ListEventsRequest::START_EVENT_INDEX_FIELD.name);
+            self.finish()
+        }
+        pub fn end_transaction_index(mut self) -> String {
+            self.path.push(ListEventsRequest::END_TRANSACTION_INDEX_FIELD.name);
+            self.finish()
+        }
+        pub fn end_event_index(mut self) -> String {
+            self.path.push(ListEventsRequest::END_EVENT_INDEX_FIELD.name);
+            self.finish()
         }
     }
     impl ListEventsResponse {
@@ -6840,6 +6906,66 @@ pub(crate) mod _field_impls {
             self.finish()
         }
     }
+    impl LedgerPosition {
+        pub const CHECKPOINT_FIELD: &'static MessageField = &MessageField {
+            name: "checkpoint",
+            json_name: "checkpoint",
+            number: 1i32,
+            message_fields: None,
+        };
+        pub const TRANSACTION_INDEX_FIELD: &'static MessageField = &MessageField {
+            name: "transaction_index",
+            json_name: "transactionIndex",
+            number: 2i32,
+            message_fields: None,
+        };
+        pub const EVENT_INDEX_FIELD: &'static MessageField = &MessageField {
+            name: "event_index",
+            json_name: "eventIndex",
+            number: 3i32,
+            message_fields: None,
+        };
+    }
+    impl MessageFields for LedgerPosition {
+        const FIELDS: &'static [&'static MessageField] = &[
+            Self::CHECKPOINT_FIELD,
+            Self::TRANSACTION_INDEX_FIELD,
+            Self::EVENT_INDEX_FIELD,
+        ];
+    }
+    impl LedgerPosition {
+        pub fn path_builder() -> LedgerPositionFieldPathBuilder {
+            LedgerPositionFieldPathBuilder::new()
+        }
+    }
+    pub struct LedgerPositionFieldPathBuilder {
+        path: Vec<&'static str>,
+    }
+    impl LedgerPositionFieldPathBuilder {
+        #[allow(clippy::new_without_default)]
+        pub fn new() -> Self {
+            Self { path: Default::default() }
+        }
+        #[doc(hidden)]
+        pub fn new_with_base(base: Vec<&'static str>) -> Self {
+            Self { path: base }
+        }
+        pub fn finish(self) -> String {
+            self.path.join(".")
+        }
+        pub fn checkpoint(mut self) -> String {
+            self.path.push(LedgerPosition::CHECKPOINT_FIELD.name);
+            self.finish()
+        }
+        pub fn transaction_index(mut self) -> String {
+            self.path.push(LedgerPosition::TRANSACTION_INDEX_FIELD.name);
+            self.finish()
+        }
+        pub fn event_index(mut self) -> String {
+            self.path.push(LedgerPosition::EVENT_INDEX_FIELD.name);
+            self.finish()
+        }
+    }
     impl Watermark {
         pub const CURSOR_FIELD: &'static MessageField = &MessageField {
             name: "cursor",
@@ -6853,11 +6979,18 @@ pub(crate) mod _field_impls {
             number: 2i32,
             message_fields: None,
         };
+        pub const CURSOR_POSITION_FIELD: &'static MessageField = &MessageField {
+            name: "cursor_position",
+            json_name: "cursorPosition",
+            number: 4i32,
+            message_fields: Some(LedgerPosition::FIELDS),
+        };
     }
     impl MessageFields for Watermark {
         const FIELDS: &'static [&'static MessageField] = &[
             Self::CURSOR_FIELD,
             Self::CHECKPOINT_FIELD,
+            Self::CURSOR_POSITION_FIELD,
         ];
     }
     impl Watermark {
@@ -6887,6 +7020,10 @@ pub(crate) mod _field_impls {
         pub fn checkpoint(mut self) -> String {
             self.path.push(Watermark::CHECKPOINT_FIELD.name);
             self.finish()
+        }
+        pub fn cursor_position(mut self) -> LedgerPositionFieldPathBuilder {
+            self.path.push(Watermark::CURSOR_POSITION_FIELD.name);
+            LedgerPositionFieldPathBuilder::new_with_base(self.path)
         }
     }
     impl QueryEnd {
@@ -8085,6 +8222,12 @@ pub(crate) mod _field_impls {
             number: 4i32,
             message_fields: Some(ActiveJwk::FIELDS),
         };
+        pub const CHECK_ADDRESS_ALIASES_FIELD: &'static MessageField = &MessageField {
+            name: "check_address_aliases",
+            json_name: "checkAddressAliases",
+            number: 6i32,
+            message_fields: None,
+        };
     }
     impl MessageFields for VerifySignatureRequest {
         const FIELDS: &'static [&'static MessageField] = &[
@@ -8092,6 +8235,7 @@ pub(crate) mod _field_impls {
             Self::SIGNATURE_FIELD,
             Self::ADDRESS_FIELD,
             Self::JWKS_FIELD,
+            Self::CHECK_ADDRESS_ALIASES_FIELD,
         ];
     }
     impl VerifySignatureRequest {
@@ -8130,6 +8274,10 @@ pub(crate) mod _field_impls {
             self.path.push(VerifySignatureRequest::JWKS_FIELD.name);
             ActiveJwkFieldPathBuilder::new_with_base(self.path)
         }
+        pub fn check_address_aliases(mut self) -> String {
+            self.path.push(VerifySignatureRequest::CHECK_ADDRESS_ALIASES_FIELD.name);
+            self.finish()
+        }
     }
     impl VerifySignatureResponse {
         pub const IS_VALID_FIELD: &'static MessageField = &MessageField {
@@ -8144,11 +8292,18 @@ pub(crate) mod _field_impls {
             number: 2i32,
             message_fields: None,
         };
+        pub const ADDRESS_ALIASES_CHECKED_FIELD: &'static MessageField = &MessageField {
+            name: "address_aliases_checked",
+            json_name: "addressAliasesChecked",
+            number: 3i32,
+            message_fields: None,
+        };
     }
     impl MessageFields for VerifySignatureResponse {
         const FIELDS: &'static [&'static MessageField] = &[
             Self::IS_VALID_FIELD,
             Self::REASON_FIELD,
+            Self::ADDRESS_ALIASES_CHECKED_FIELD,
         ];
     }
     impl VerifySignatureResponse {
@@ -8177,6 +8332,10 @@ pub(crate) mod _field_impls {
         }
         pub fn reason(mut self) -> String {
             self.path.push(VerifySignatureResponse::REASON_FIELD.name);
+            self.finish()
+        }
+        pub fn address_aliases_checked(mut self) -> String {
+            self.path.push(VerifySignatureResponse::ADDRESS_ALIASES_CHECKED_FIELD.name);
             self.finish()
         }
     }
